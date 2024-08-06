@@ -19,11 +19,11 @@ from django.urls import path, include
 from about import views as about_views
 from review import views as review_views
 
-
 urlpatterns = [
     path('about/', about_views.about_us, name='about'),
     path("", include("reservation.urls"), name="reservation-urls"),
     path('review/', review_views.my_review, name='review'),
     path('summernote/', include('django_summernote.urls')),
+    path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
 ]
