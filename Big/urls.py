@@ -18,11 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from reservation import views as reservation_views
 from about import views as about_views
+from review import views as review_views
 
 
 urlpatterns = [
     path('big/', reservation_views.my_res,name='home'),
     path('about/', about_views.about_us, name='about'),
     path('reservations/', reservation_views.my_res, name='reservation'),
+    path('review/', review_views.my_review, name='review'),
     path('admin/', admin.site.urls),
 ]
