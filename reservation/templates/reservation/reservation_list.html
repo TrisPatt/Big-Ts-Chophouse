@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reservation List</title>
+</head>
+<body>
+    <h1>Bookings</h1>
+    <a href="{% url 'reservation_create' %}">Create new booking</a>
+    <ul>
+        {% for reservation in reservations %}
+            <li>{{ reservation.user_id }} - {{ reservation.date }} at {{ reservation.time }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

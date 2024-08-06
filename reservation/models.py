@@ -15,3 +15,6 @@ class reservation(models.Model):
     reservation_status = models.IntegerField(choices= STATUS)
     created_on = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"Booking for {self.user_id} on {self.date} at {self.time}"
+
