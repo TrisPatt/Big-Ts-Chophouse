@@ -21,7 +21,6 @@ from review import views as review_views
 
 
 urlpatterns = [
-    path('big/', include("reservation.urls"),name='home'),
     path('about/', about_views.about_us, name='about'),
     path("", include("reservation.urls"), name="reservation-urls"),
     path('review/', review_views.my_review, name='review'),
