@@ -24,5 +24,6 @@ urlpatterns = [
     path('about/', about_views.about_us, name='about'),
     path("", include("reservation.urls"), name="reservation-urls"),
     path('review/', review_views.my_review, name='review'),
+    path('summernote/', include('django_summernote.urls')),
     path('admin/', admin.site.urls),
 ]
