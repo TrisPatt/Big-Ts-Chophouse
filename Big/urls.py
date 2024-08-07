@@ -16,13 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Big import views as Big_views
+from reservation import views as reservation_views
 from about import views as about_views
 from review import views as review_views
 
 
 urlpatterns = [
-    path('', Big_views.home, name='home'),
+    path('', reservation_views.home, name='home'),
     path('about/', about_views.about_us, name='about'),
     path("", include("reservation.urls"), name="reservation-urls"),
     path('review/', review_views.my_review, name='review'),
