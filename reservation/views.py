@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.views import generic
 from .models import reservation
 from .forms import reservationForm
 
@@ -10,7 +9,7 @@ def home(request):
 
 def reservation_list(request):
     reservations = reservation.objects.all()
-    return render(request, '/workspace/Big-Ts-Chophouse/reservation/templates/reservation/reservation_list.html', {'reservations': reservations})
+    return render(request, 'reservation/reservation_list.html', {'reservations': reservations})
 
 def reservation_create(request):
     if request.method == 'POST':
@@ -20,4 +19,4 @@ def reservation_create(request):
             return redirect('reservation_list')
     else:
         form = reservationForm()
-    return render(request, '/workspace/Big-Ts-Chophouse/reservation/templates/reservation/reservation_form.html', {'form': form})
+    return render(request, 'reservation/reservation_form.html', {'form': form})
