@@ -5,7 +5,7 @@ from .forms import reservationForm
 
 # Create your views here.
 def home(request):
-    return render(request, '/workspace/Big-Ts-Chophouse/reservation/templates/reservation/home.html')
+    return render(request, 'reservation/home.html')
 
 def reservation_list(request):
     reservations = reservation.objects.all()
