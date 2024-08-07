@@ -15,6 +15,18 @@ class reservation(models.Model):
     reservation_status = models.IntegerField(choices= STATUS)
     created_on = models.DateTimeField(auto_now_add=True)
 
+
+    # Creates a unique reservation number automaticaaly for each booking to save multiple reservation numbers being created
+    def save(self, *args, **kwargs):
+        if not self.pk:  # Only set reservation_number on creation
+            last_reservation = Reservation.objects.aggregate(Max('reservation_number'))
+            last_number = last_reservation['reservation_number__max']
+            if last_number is not None:
+                self.reservation_number = last_number + 1
+            else:
+                self.reservation_number = 1
+        super(Reservation, self).save(*args, **kwargs)
+
     def __str__(self):
         return f"Booking for {self.user_id} on {self.date} at {self.time}"
 
