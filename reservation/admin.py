@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import reservation
+from .models import Reservation
 from django_summernote.admin import SummernoteModelAdmin
 
-@admin.register(reservation)
+@admin.register(Reservation)
 
 
 class ReservationAdmin(SummernoteModelAdmin):
