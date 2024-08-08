@@ -6,7 +6,10 @@
     <a href="{% url 'reservation_create' %}">Create new booking</a>
     <ul>
         {% for reservation in reservations %}
-            <li>{{ reservation.user_id }} - {{ reservation.date }} at {{ reservation.time }}</li>
+            <li>{{ reservation.reservation_number }} -{{ reservation.user_id }} - {{ reservation.date }} at {{ reservation.time }} </li>
+            <a href="{% url 'cancel_reservation' %}">Cancel</a>
         {% endfor %}
+        
     </ul>
 {% endblock %}
+
