@@ -30,7 +30,7 @@ def reservation_create(request):
 
 @login_required #cancel reservations once logged in
 def cancel_reservation(request, reservation_number):
-    reservation = get_object_or_404(Reservation, reservation_number=Reservation_number)
+    reservation = get_object_or_404(Reservation, reservation_number=reservation_number)
     
     if request.method == 'POST':
         form = CancelReservationForm(request.POST, instance=reservation)
