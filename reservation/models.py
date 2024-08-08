@@ -28,6 +28,12 @@ class Reservation(models.Model):
             if self.reservation_status is None:
                 self.reservation_status = 0
 
+        # Check if the status is being changed to canceled
+        if self.pk:  # If the object already exists
+            existing_reservation = Reservation.objects.get(pk=self.pk)
+            if existing_reservation.reservation_status == 1 and self.reservation_status != 1:
+                raise ValidationError("You cannot modify a canceled reservation.")
+
         super().save(*args, **kwargs)
 
     def __str__(self):

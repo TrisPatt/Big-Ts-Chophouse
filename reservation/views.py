@@ -35,7 +35,8 @@ def cancel_reservation(request, reservation_number):
     if request.method == 'POST':
         form = CancelReservationForm(request.POST, instance=reservation)
         if form.is_valid():
-            form.save()
+            reservation.reservation_status = 1
+            form.save() # Save the reservation with the new status
             return redirect('reservation_list')  # Redirect to a list of reservations 
     else:
         form = CancelReservationForm(instance=reservation)

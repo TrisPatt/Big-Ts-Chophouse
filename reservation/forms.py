@@ -17,7 +17,7 @@ class ReservationForm(forms.ModelForm):
 class CancelReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = ['reservation_status']
+        fields = ['reservation_status']             
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
