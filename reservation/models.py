@@ -23,6 +23,11 @@ class Reservation(models.Model):
             last_reservation = Reservation.objects.aggregate(Max('reservation_number'))
             max_number = last_reservation['reservation_number__max'] or 0
             self.reservation_number = max_number + 1
+
+        # Automatically set the status to confirmed (0)
+            if self.reservation_status is None:
+                self.reservation_status = 0
+
         super().save(*args, **kwargs)
 
     def __str__(self):
