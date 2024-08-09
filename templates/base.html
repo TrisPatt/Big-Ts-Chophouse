@@ -10,6 +10,8 @@
 {% url 'account_logout' as logout_url %}
 
 
+
+
 <!DOCTYPE html>
 <html class="h-100" lang="en">
 
@@ -90,6 +92,7 @@
         </div>
     </nav>
 
+    
     <main class="flex-shrink-0 main-bg">
         {% if user.is_authenticated %}
         <p class="text-end m-3">You are logged in as {{ user.username }}</p>
@@ -102,6 +105,15 @@
         {% endblock content %}
 
     </main>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+   
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">

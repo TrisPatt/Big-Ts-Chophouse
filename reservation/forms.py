@@ -1,5 +1,7 @@
 from django import forms
 from .models import Reservation
+from django.core.exceptions import ValidationError
+from django.db.models import Sum
 
 class ReservationForm(forms.ModelForm):
     date = forms.DateField(
@@ -12,6 +14,20 @@ class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
         fields = ['date', 'time', 'number_of_guests', 'allergies', 'special_requirements']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        date = cleaned_data.get('date')
+        time = cleaned_data.get('time')
+        number_of_guests = cleaned_data.get('number_of_guests')
+
+        if date and time and number_of_guests:
+            total_guests = Reservation.objects.filter(date=date, time=time).aggregate(total_guests=Sum('number_of_guests'))['total_guests'] or 0
+            if total_guests + number_of_guests > 24:
+                raise ValidationError('Cannot make reservation. Exceeds maximum capacity.')
+
+        return cleaned_data
+
 
 #cancel reervation
 class CancelReservationForm(forms.ModelForm):
