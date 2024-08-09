@@ -132,6 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Internationalization
