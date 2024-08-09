@@ -5,6 +5,13 @@ from django.db.models import Max
 STATUS = ((0, "confirmed"), (1, "cancelled"))
 
 # Create your models here.
+class Table(models.Model):
+    table_number = models.PositiveIntegerField(unique=True)  # Unique table identifier
+    seats = models.PositiveIntegerField(default=2)  # All tables have 2 seats by default
+
+    def __str__(self):
+        return f"Table {self.table_number} - {self.seats} seats"
+
 class Reservation(models.Model):
     reservation_number = models.IntegerField(unique=True, editable=False)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -15,6 +22,7 @@ class Reservation(models.Model):
     special_requirements = models.TextField(blank=True, null=True)
     reservation_status = models.IntegerField(choices=STATUS)
     created_on = models.DateTimeField(auto_now_add=True)
+    tables = models.ManyToManyField(Table, related_name='reservations')
 
 
     # Creates a unique reservation number automaticaaly for each booking to save multiple reservation numbers being created

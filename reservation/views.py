@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Reservation
+from .models import Reservation, Table
 from .forms import ReservationForm, CancelReservationForm
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
+from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 
 
@@ -13,7 +14,7 @@ def home(request):
 
 #review reservations
 def reservation_list(request):
-    reservations = Reservation.objects.all()
+    reservations = Reservation.objects.filter(user_id=request.user)
     return render(request, 'reservation/reservation_list.html', {'reservations': reservations})
 
 
@@ -25,9 +26,32 @@ def reservation_create(request):
             reservation = form.save(commit=False)
             reservation.user_id = request.user
             reservation.save()
-            return redirect('reservation_list')
+
+            num_guests = reservation.number_of_guests
+            tables_needed = (num_guests + 1) // 2  # Calculate how many tables of 2 are needed
+
+            # Calculate available tables
+            available_tables = Table.objects.exclude(
+                reservations__date=reservation.date,
+                reservations__time=reservation.time
+            ).filter(
+                reservations__isnull=True
+            ).count()
+
+            if tables_needed <= available_tables:
+                tables = Table.objects.filter(
+                    reservations__isnull=True
+                )[:tables_needed]
+                reservation.tables.add(*tables)
+                reservation.save()
+                messages.success(request, "Reservation confirmed.")
+                return redirect('reservation_list')
+            else:
+                messages.error(request, "Sorry, we can't accommodate your party size at the requested time.")
+                return redirect('reservation_create')
     else:
         form = ReservationForm()
+
     return render(request, 'reservation/reservation_form.html', {'form': form})
 
 @login_required # Cancel reservations once logged in
@@ -45,6 +69,7 @@ def cancel_reservation(request, reservation_number):
             form.save() # Save the reservation with the new status
             messages.success(request, 'Your reservation has been successfully cancelled.') # Display confirmation message
 
+            #sends email to user- set as backend to display in console during dev
             send_mail(
                 'Reservation Cancelled',
                 f'Your reservation on {reservation.date} at {reservation.time} has been successfully cancelled.',
