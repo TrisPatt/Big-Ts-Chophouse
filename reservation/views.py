@@ -52,6 +52,17 @@ def reservation_create(request):
                 reservation.tables.add(*tables)
                 reservation.save()
                 messages.success(request, "Reservation confirmed.")
+
+                #sends email to user- set as backend to display in console during dev
+                send_mail(
+                'Reservation Confirmed !',
+                f'Your reservation on {reservation.date} at {reservation.time} has been successfully booked.',
+                settings.DEFAULT_FROM_EMAIL,
+                [request.user.email],
+                fail_silently=False,
+                )
+
+                
                 return redirect('reservation_list')
             else:
                 messages.error(request, "Sorry, we can't accommodate your party size at the requested time.")
