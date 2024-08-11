@@ -1,5 +1,5 @@
 from django import forms
-from .models import Reservation
+from .models import Reservation, Table
 from django.core.exceptions import ValidationError
 from django.db.models import Sum
 
