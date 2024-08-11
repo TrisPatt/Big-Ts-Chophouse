@@ -159,3 +159,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+RESTAURANT_OPENING_HOURS = {
+    'monday': {'open': '12:00', 'close': '22:00'},
+    'tuesday': {'open': '12:00', 'close': '22:00'},
+    'wednesday': {'open': '12:00', 'close': '22:00'},
+    'thursday': {'open': '12:00', 'close': '22:00'},
+    'friday': {'open': '12:00', 'close': '23:00'},
+    'saturday': {'open': '12:00', 'close': '23:00'},
+    'sunday': {''},
+}
