@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db import models
 from .models import Reservation, Table
 from .forms import ReservationForm, CancelReservationForm
 from django.contrib import messages
@@ -30,18 +31,22 @@ def reservation_create(request):
             num_guests = reservation.number_of_guests
             tables_needed = (num_guests + 1) // 2  # Calculate how many tables of 2 are needed
 
-            # Calculate available tables
-            available_tables = Table.objects.exclude(
-                reservations__date=reservation.date,
-                reservations__time=reservation.time
-            ).filter(
-                reservations__isnull=True
-            ).count()
+            # Calculate available tables on a partcular date and time
+            available_tables = Table.objects.annotate(
+                reserved_count=models.Count('reservations', filter=models.Q(
+                    reservations__date=reservation.date,
+                    reservations__time=reservation.time
+                ))
+            ).filter(reserved_count=0).count()
 
             if tables_needed <= available_tables:
-                tables = Table.objects.filter(
-                    reservations__isnull=True
-                )[:tables_needed]
+                tables = Table.objects.annotate(
+                    reserved_count=models.Count('reservations', filter=models.Q(
+                        reservations__date=reservation.date,
+                        reservations__time=reservation.time
+                    ))
+                ).filter(reserved_count=0)[:tables_needed]
+
                 reservation.tables.add(*tables)
                 reservation.save()
                 messages.success(request, "Reservation confirmed.")
