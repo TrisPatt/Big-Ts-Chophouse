@@ -74,7 +74,7 @@ def cancel_reservation(request, reservation_number):
     if request.method == 'POST':
         form = CancelReservationForm(request.POST, instance=reservation)
         if form.is_valid():
-            reservation.reservation_status = 1
+            reservation.reservation_status = 1 #update status to cancelled
             form.save() # Save the reservation with the new status
             messages.success(request, 'Your reservation has been successfully cancelled.') # Display confirmation message
 
