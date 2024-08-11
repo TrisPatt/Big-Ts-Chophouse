@@ -35,7 +35,8 @@ def reservation_create(request):
             available_tables = Table.objects.annotate(
                 reserved_count=models.Count('reservations', filter=models.Q(
                     reservations__date=reservation.date,
-                    reservations__time=reservation.time
+                    reservations__time=reservation.time,
+                    reservations__reservation_status=0
                 ))
             ).filter(reserved_count=0).count()
 
@@ -43,7 +44,8 @@ def reservation_create(request):
                 tables = Table.objects.annotate(
                     reserved_count=models.Count('reservations', filter=models.Q(
                         reservations__date=reservation.date,
-                        reservations__time=reservation.time
+                        reservations__time=reservation.time,
+                        reservations__reservation_status=0
                     ))
                 ).filter(reserved_count=0)[:tables_needed]
 
@@ -61,8 +63,10 @@ def reservation_create(request):
 
 @login_required # Cancel reservations once logged in
 def cancel_reservation(request, reservation_number):
-    reservation = get_object_or_404(Reservation, reservation_number=reservation_number)
+    # Fetch the reservation based on the reservation_number and ensure the user is authorized
+    reservation = get_object_or_404(Reservation, reservation_number=reservation_number, user_id=request.user)
 
+    # If the reservation has already been canceled, inform the user and redirect
     if reservation.reservation_status == 1:
         messages.info(request, 'This reservation has been cancelled.')
         return redirect('reservation_list')

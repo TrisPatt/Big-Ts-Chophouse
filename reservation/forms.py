@@ -22,7 +22,7 @@ class ReservationForm(forms.ModelForm):
         number_of_guests = cleaned_data.get('number_of_guests')
 
         if date and time and number_of_guests:
-            total_guests = Reservation.objects.filter(date=date, time=time).aggregate(total_guests=Sum('number_of_guests'))['total_guests'] or 0
+            total_guests = Reservation.objects.filter(date=date, time=time, reservation_status=0 ).aggregate(total_guests=Sum('number_of_guests'))['total_guests'] or 0
             if total_guests + number_of_guests > 24:
                 raise ValidationError('Cannot make reservation. Exceeds maximum capacity.')
 
