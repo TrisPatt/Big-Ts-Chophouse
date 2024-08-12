@@ -2,18 +2,52 @@
 
 
 {% block content %}
-    <h1>Reservations</h1>
-    <a href="{% url 'reservation_create' %}">Create new booking</a>
-    <ul>
-        {% for reservation in reservations %}
-            <li>{{ reservation.reservation_number }} -{{ reservation.user_id }} - {{ reservation.date }} at {{ reservation.time }} -{{ reservation.reservation_status }} </li>
-            {% if reservation.reservation_status == 1 %}
-                <span style="color: red;">This reservation has been cancelled</span>
-            {% else %}
-                <a href="{% url 'cancel_reservation' reservation.reservation_number %}">Cancel</a>
-            {% endif %}
-        {% endfor %}
-        
-    </ul>
+<div class="container">
+    <h1 class="text-center">My Reservations</h1>
+    <div class="text-center mb-3">
+        <a href="{% url 'reservation_create' %}" class="btn btn-primary">Create new booking</a>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-12">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th style="white-space: nowrap;">Reservation Number</th>
+                        <th>User ID</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reservation in reservations %}
+                        <tr>
+                            <td style="white-space: nowrap;">{{ reservation.reservation_number }}</td>
+                            <td>{{ reservation.user_id }}</td>
+                            <td>{{ reservation.date }}</td>
+                            <td>{{ reservation.time }}</td>
+                            <td>
+                                {% if reservation.reservation_status == 1 %}
+                                    <span style="color: red;">Cancelled</span>
+                                {% else %}
+                                    <span>Active</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if reservation.reservation_status != 1 %}
+                                    <a href="{% url 'cancel_reservation' reservation.reservation_number %}" class="btn btn-danger btn-sm">Cancel</a>
+                                {% else %}
+                                    N/A
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}
 

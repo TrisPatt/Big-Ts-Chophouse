@@ -20,25 +20,7 @@ class ReservationForm(forms.ModelForm):
         model = Reservation
         fields = ['date', 'time', 'number_of_guests', 'allergies', 'special_requirements']
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['time'].choices = self.get_available_times()
-
-    def get_available_times(self):
-        """
-        Returns a list of available time slots based on the restaurant's operating hours.
-        """
-        date = self.initial.get('date')
-        if date:
-            day_of_week = date.strftime('%A').lower()
-            opening_hours = settings.RESTAURANT_OPENING_HOURS.get(day_of_week)
-            if opening_hours:
-                open_time = datetime.strptime(opening_hours[0], '%H:%M')
-                close_time = datetime.strptime(opening_hours[1], '%H:%M')
-                time_slots = [(f"{(open_time + timedelta(minutes=30*i)).strftime('%H:%M')}", f"{(open_time + timedelta(minutes=30*i)).strftime('%H:%M')}") for i in range((close_time - open_time).seconds // 1800 + 1)]
-                return time_slots
-        return []
-
+    
     def clean(self):
         cleaned_data = super().clean()
         date = cleaned_data.get('date')
