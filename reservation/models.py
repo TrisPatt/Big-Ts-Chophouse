@@ -16,14 +16,14 @@ class TimeSlot(models.Model):
     time = models.TimeField()
     
     def __str__(self):
-        return f"{self.time}" 
+        return self.time.strftime('%H:%M')
 
 
 class Reservation(models.Model):
     reservation_number = models.IntegerField(unique=True, editable=False)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField()
-    time = models.ForeignKey(TimeSlot, on_delete=models.CASCADE, default=1)
+    time = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
     number_of_guests = models.IntegerField()
     allergies = models.TextField(blank=True, null=True)
     special_requirements = models.TextField(blank=True, null=True)

@@ -2,6 +2,8 @@ from django import forms
 from .models import Reservation, Table, TimeSlot
 from django.core.exceptions import ValidationError
 from django.db.models import Sum
+from django.utils import timezone
+
 
 class ReservationForm(forms.ModelForm):
     date = forms.DateField(
@@ -9,7 +11,8 @@ class ReservationForm(forms.ModelForm):
             'class': 'form-control datetimepicker-input',
             'id': 'reservation-date',
             'data-provide': 'datepicker',  
-            'data-date-format': 'dd-mm-yyyy'
+            'data-date-format': 'dd-mm-yyyy',
+            'min': timezone.now().date().strftime('%Y-%m-%d'),
         })
     )
     time_slot = forms.ModelChoiceField(
