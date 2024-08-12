@@ -19,7 +19,7 @@ class ReservationForm(forms.ModelForm):
 
     class Meta:
         model = Reservation
-        fields = ['date', 'time_slot', 'number_of_guests', 'allergies', 'special_requirements']
+        fields = ['date', 'time', 'number_of_guests', 'allergies', 'special_requirements']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

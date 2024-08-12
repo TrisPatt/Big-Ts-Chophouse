@@ -13,10 +13,8 @@ class Table(models.Model):
         return f"Table {self.table_number} - {self.seats} seats"
 
 class TimeSlot(models.Model):
-    weekday = models.CharField(max_length=9)  # 'Monday', 'Tuesday', etc.
-    start_time = models.TimeField()
-    end_time = models.TimeField()
-
+    time = models.TimeField()
+    
     def __str__(self):
         return f"{self.weekday} {self.start_time.strftime('%H:%M')} - {self.end_time.strftime('%H:%M')}"
 
@@ -25,7 +23,7 @@ class Reservation(models.Model):
     reservation_number = models.IntegerField(unique=True, editable=False)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField()
-    time_slot = models.ForeignKey(TimeSlot, on_delete=models.CASCADE, default=1)
+    time = models.ForeignKey(TimeSlot, on_delete=models.CASCADE, default=1)
     number_of_guests = models.IntegerField()
     allergies = models.TextField(blank=True, null=True)
     special_requirements = models.TextField(blank=True, null=True)

@@ -11,7 +11,7 @@ class TableAdmin(SummernoteModelAdmin):
 @admin.register(Reservation)
 class ReservationAdmin(SummernoteModelAdmin):
 
-    list_display = ('user_id', 'reservation_number', 'date', 'time_slot','get_tables', 'reservation_status')
+    list_display = ('user_id', 'reservation_number', 'date', 'time','get_tables', 'reservation_status')
     search_fields = ['allergies']
     list_filter = ('reservation_status', 'date')
     summernote_fields = ('allergies', 'special_reqs')
@@ -22,8 +22,8 @@ class ReservationAdmin(SummernoteModelAdmin):
 
 @admin.register(TimeSlot)
 class TimeSlotAdmin(admin.ModelAdmin):
-    list_display = ['weekday', 'start_time', 'end_time']
-    list_filter = ['weekday']
+    list_display = ['time']
+    list_filter = ['time']
 
 
 
