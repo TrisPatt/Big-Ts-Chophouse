@@ -1,7 +1,7 @@
 ///Date picker///
 $(document).ready(function(){
     $('#reservation-date').datepicker({
-      format: 'dd-mm-yyyy',
+      format: 'yyyy-mm-dd',
       autoclose: true,
       todayHighlight: true,
       startDate: new Date()

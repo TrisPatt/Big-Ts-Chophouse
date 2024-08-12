@@ -14,9 +14,9 @@
                 <thead>
                     <tr>
                         <th style="width: 10%; white-space: nowrap; padding: 5px;">Reservation Number</th>
-                        <th>User ID</th>
                         <th>Date</th>
                         <th>Time</th>
+                        <th>Number of Guests</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -25,9 +25,9 @@
                     {% for reservation in reservations %}
                         <tr>
                             <td style="width: 10%; white-space: nowrap; padding: 5px;">{{ reservation.reservation_number }}</td>
-                            <td>{{ reservation.user_id }}</td>
                             <td>{{ reservation.date }}</td>
                             <td>{{ reservation.time }}</td>
+                            <td>{{ reservation.number_of_guests }}</td>
                             <td>
                                 {% if reservation.reservation_status == 1 %}
                                     <span style="color: red;">Cancelled</span>
