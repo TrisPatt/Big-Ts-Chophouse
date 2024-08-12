@@ -14,9 +14,14 @@ def home(request):
     return render(request, 'reservation/home.html')
 
 #review reservations
+@login_required #Only allow logged in users to view reservation with their unique id
 def reservation_list(request):
-    reservations = Reservation.objects.filter(user_id=request.user)
-    return render(request, 'reservation/reservation_list.html', {'reservations': reservations})
+    if request.user.is_authenticated:
+        reservations = Reservation.objects.filter(user_id=request.user.id)
+        return render(request, 'reservation/reservation_list.html', {'reservations': reservations})
+    else:
+        # Redirect to login page if the user is not authenticated
+        return redirect('templates/account/login.html') 
 
 
 @login_required #Only allow logged in users to create a reservation with their unique id

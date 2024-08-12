@@ -8,7 +8,8 @@ class ReservationForm(forms.ModelForm):
         widget=forms.DateInput(attrs={
             'class': 'form-control datetimepicker-input',
             'id': 'reservation-date',
-            'data-target': '#datetimepicker1'
+            'data-provide': 'datepicker',  
+            'data-date-format': 'dd-mm-yyyy'
         })
     )
     time = forms.ChoiceField(

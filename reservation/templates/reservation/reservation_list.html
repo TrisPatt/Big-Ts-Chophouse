@@ -13,7 +13,7 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th style="white-space: nowrap;">Reservation Number</th>
+                        <th style="width: 10%; white-space: nowrap; padding: 5px;">Reservation Number</th>
                         <th>User ID</th>
                         <th>Date</th>
                         <th>Time</th>
@@ -24,7 +24,7 @@
                 <tbody>
                     {% for reservation in reservations %}
                         <tr>
-                            <td style="white-space: nowrap;">{{ reservation.reservation_number }}</td>
+                            <td style="width: 10%; white-space: nowrap; padding: 5px;">{{ reservation.reservation_number }}</td>
                             <td>{{ reservation.user_id }}</td>
                             <td>{{ reservation.date }}</td>
                             <td>{{ reservation.time }}</td>
