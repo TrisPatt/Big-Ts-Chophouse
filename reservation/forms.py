@@ -1,5 +1,5 @@
 from django import forms
-from .models import Reservation, Table
+from .models import Reservation, Table, TimeSlot
 from django.core.exceptions import ValidationError
 from django.db.models import Sum
 
@@ -12,14 +12,31 @@ class ReservationForm(forms.ModelForm):
             'data-date-format': 'dd-mm-yyyy'
         })
     )
-    time = forms.ChoiceField(
-        choices=[],  # Choices will be populated dynamically
+    time_slot = forms.ModelChoiceField(
+        queryset=TimeSlot.objects.none(),
         widget=forms.Select(attrs={'class': 'form-control'})
     )
 
     class Meta:
         model = Reservation
-        fields = ['date', 'time', 'number_of_guests', 'allergies', 'special_requirements']
+        fields = ['date', 'time_slot', 'number_of_guests', 'allergies', 'special_requirements']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if 'date' in self.data:
+            try:
+                selected_date = self.data.get('date')
+                selected_date = datetime.datetime.strptime(selected_date, '%d-%m-%Y').date()
+                weekday = selected_date.strftime('%A')
+                self.fields['time_slot'].queryset = TimeSlot.objects.filter(weekday=weekday)
+            except (ValueError, TypeError):
+                pass
+
+    def clean_date(self):
+        date = self.cleaned_data.get('date')
+        if date and date < timezone.now().date():
+            raise ValidationError("The date cannot be in the past.")
+        return date
 
     
     def clean(self):
