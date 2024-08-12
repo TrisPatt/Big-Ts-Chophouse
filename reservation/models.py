@@ -16,7 +16,7 @@ class TimeSlot(models.Model):
     time = models.TimeField()
     
     def __str__(self):
-        return f"{self.weekday} {self.start_time.strftime('%H:%M')} - {self.end_time.strftime('%H:%M')}"
+        return f"{self.time}" 
 
 
 class Reservation(models.Model):
@@ -32,7 +32,7 @@ class Reservation(models.Model):
     tables = models.ManyToManyField(Table, related_name='reservations')
 
     def __str__(self):
-        return f"{self.date} - {self.time_slot}"
+        return f"{self.date} - {self.time}"
 
 
     # Creates a unique reservation number automaticaaly for each booking to save multiple reservation numbers being created
