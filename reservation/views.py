@@ -13,6 +13,10 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, 'reservation/home.html')
 
+# Confirmed reservation
+def reservation_confirmed(request):
+    return render(request, 'reservation/reservation_confirmed.html')
+
 #review reservations
 @login_required #Only allow logged in users to view reservation with their unique id
 def reservation_list(request):
@@ -68,7 +72,7 @@ def reservation_create(request):
                 )
 
                 
-                return redirect('reservation_list')
+                return redirect('reservation_confirmed')
             else:
                 messages.error(request, "Sorry, we can't accommodate your party size at the requested time.")
                 return redirect('reservation_create')

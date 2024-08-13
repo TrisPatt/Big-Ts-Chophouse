@@ -27,31 +27,15 @@ class ReservationForm(forms.ModelForm):
         # Initialize the 'time' field's queryset
         self.fields['time'].queryset = TimeSlot.objects.all()
 
-        if 'date' in self.data:
-            try:
-                date_str = self.data.get('date')
-                if date_str:
-                    # Parse the date string to a date object
-                    date_obj = timezone.datetime.strptime(date_str, '%Y-%m-%d').date()
 
-                    # Annotate each TimeSlot with the total number of guests booked on the selected date
-                    available_time_slots = TimeSlot.objects.annotate(
-                        total_guests=Sum(
-                            'reservation__number_of_guests',
-                            filter=Q(reservation__date=date_obj) & Q(reservation__reservation_status=0)
-                        )
-                    ).filter(
-                        Q(total_guests__lt=24) | Q(total_guests__isnull=True)  # Include time slots with less than 24 guests or no reservations
-                    )
+    def available_time_slots(request):
+        selected_date = request.GET.get('date', date.today())
+        all_time_slots = TimeSlot.objects.all()
+        booked_slots = Booking.objects.filter(date=selected_date).values('time').annotate(total_guests=models.Sum('number_of_guests')).filter(total_guests__gte=24)
+        available_slots = all_time_slots.exclude(id__in=[slot['time'] for slot in booked_slots])
 
-                    self.fields['time'].queryset = available_time_slots
-                else:
-                    self.fields['time'].queryset = TimeSlot.objects.none()
-            except (ValueError, TypeError):
-                self.fields['time'].queryset = TimeSlot.objects.none()
-        else:
-            # For initial form rendering, display all time slots
-            self.fields['time'].queryset = TimeSlot.objects.all()
+        return render(request, 'available_time_slots.html', {'available_slots': available_slots})
+
 
     class Meta:
         model = Reservation
