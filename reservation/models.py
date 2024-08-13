@@ -1,16 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import User
 from django.db.models import Max
 from django.conf import settings
 
 STATUS = ((0, "confirmed"), (1, "cancelled"))
 
 # Create your models here.
-class customuser(AbstractUser):
-    first_name = models.CharField(blank=False, null=False)
-    last_name = models.CharField(blank=False, null=False)
-    phone_number = models.CharField(max_length=15, blank=True, null=True)
-
 
 class Table(models.Model):
     table_number = models.PositiveIntegerField(unique=True)  # Unique table identifier
