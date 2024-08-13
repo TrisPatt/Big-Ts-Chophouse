@@ -6,7 +6,7 @@ from django.conf import settings
 STATUS = ((0, "confirmed"), (1, "cancelled"))
 
 # Create your models here.
-class CustomUser(AbstractUser):
+class customuser(AbstractUser):
     first_name = models.CharField(blank=False, null=False)
     last_name = models.CharField(blank=False, null=False)
     phone_number = models.CharField(max_length=15, blank=True, null=True)

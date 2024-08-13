@@ -1,5 +1,5 @@
 from django import forms
-from .models import Reservation, Table, TimeSlot, CustomUser
+from .models import Reservation, Table, TimeSlot, customuser
 from django.core.exceptions import ValidationError
 from django.db.models import Sum, Q
 from django.utils import timezone
@@ -84,7 +84,7 @@ class CustomUserCreationForm(UserCreationForm):
     phone_number = forms.CharField(max_length=15, required=True)
 
     class Meta(UserCreationForm.Meta):
-        model = CustomUser
+        model = customuser
         fields = ('username', 'first_name', 'last_name', 'email', 'phone_number', 'password1', 'password2')
 
 # allows customers to update their details
@@ -95,5 +95,5 @@ class CustomUserChangeForm(forms.ModelForm):
     phone_number = forms.CharField(max_length=15, required=True)
 
     class Meta:
-        model = CustomUser
+        model = customuser
         fields = ('first_name', 'last_name', 'email', 'phone_number')

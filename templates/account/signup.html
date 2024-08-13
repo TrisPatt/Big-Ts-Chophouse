@@ -1,20 +1,11 @@
 {% extends "base.html" %}
 
-{% load i18n %}
-
-{% block head_title %}{% trans "Signup" %}{% endblock head_title %}
-
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
-
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-
 <h2>Sign Up</h2>
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Sign Up</button>
 </form>
-
-{% endblock content %}
+{% endblock %}
 
