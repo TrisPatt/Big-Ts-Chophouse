@@ -1,8 +1,9 @@
 from django import forms
-from .models import Reservation, Table, TimeSlot
+from .models import Reservation, Table, TimeSlot, CustomUser
 from django.core.exceptions import ValidationError
 from django.db.models import Sum, Q
 from django.utils import timezone
+from django.contrib.auth.forms import UserCreationForm
 
 
 class ReservationForm(forms.ModelForm):
@@ -74,3 +75,25 @@ class CancelReservationForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['reservation_status'].initial = 1  # Set initial value to "cancelled"
         self.fields['reservation_status'].widget = forms.HiddenInput()  # Hide the field from the form
+
+# create a custom user form
+class CustomUserCreationForm(UserCreationForm):
+    first_name = forms.CharField(max_length=30, required=True)
+    last_name = forms.CharField(max_length=30, required=True)
+    email = forms.EmailField(max_length=254, required=True)
+    phone_number = forms.CharField(max_length=15, required=True)
+
+    class Meta(UserCreationForm.Meta):
+        model = CustomUser
+        fields = ('username', 'first_name', 'last_name', 'email', 'phone_number', 'password1', 'password2')
+
+# allows customers to update their details
+class CustomUserChangeForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=30, required=True)
+    last_name = forms.CharField(max_length=30, required=True)
+    email = forms.EmailField(max_length=254, required=True)
+    phone_number = forms.CharField(max_length=15, required=True)
+
+    class Meta:
+        model = CustomUser
+        fields = ('first_name', 'last_name', 'email', 'phone_number')

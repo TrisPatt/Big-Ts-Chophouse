@@ -1,10 +1,17 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.db.models import Max
+from django.conf import settings
 
 STATUS = ((0, "confirmed"), (1, "cancelled"))
 
 # Create your models here.
+class CustomUser(AbstractUser):
+    first_name = models.CharField(blank=False, null=False)
+    last_name = models.CharField(blank=False, null=False)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
+
+
 class Table(models.Model):
     table_number = models.PositiveIntegerField(unique=True)  # Unique table identifier
     seats = models.PositiveIntegerField(default=2)  # All tables have 2 seats by default
@@ -21,7 +28,7 @@ class TimeSlot(models.Model):
 
 class Reservation(models.Model):
     reservation_number = models.IntegerField(unique=True, editable=False)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
     number_of_guests = models.IntegerField()

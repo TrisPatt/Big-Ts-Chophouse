@@ -136,7 +136,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'profile'
+ACCOUNT_USERNAME_REQUIRED = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
@@ -165,12 +168,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-RESTAURANT_OPENING_HOURS = {
-    'monday': {'open': '12:00', 'close': '22:00'},
-    'tuesday': {'open': '12:00', 'close': '22:00'},
-    'wednesday': {'open': '12:00', 'close': '22:00'},
-    'thursday': {'open': '12:00', 'close': '22:00'},
-    'friday': {'open': '12:00', 'close': '23:00'},
-    'saturday': {'open': '12:00', 'close': '23:00'},
-    'sunday': {''},
-}
+AUTH_USER_MODEL = 'reservation.CustomUser'

@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db import models
 from .models import Reservation, Table
-from .forms import ReservationForm, CancelReservationForm
+from .forms import ReservationForm, CancelReservationForm, CustomUserCreationForm, CustomUserChangeForm
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
+from allauth.account.views import SignupView
 
 
 # home page
@@ -16,6 +17,22 @@ def home(request):
 # Confirmed reservation
 def reservation_confirmed(request):
     return render(request, 'reservation/reservation_confirmed.html')
+
+# custom signup dets
+class CustomSignupView(SignupView):
+    form_class = CustomUserCreationForm
+
+# update user account details
+@login_required
+def update_profile(request):
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+    return render(request, 'account/update_profile.html', {'form': form})
 
 #review reservations
 @login_required #Only allow logged in users to view reservation with their unique id
@@ -60,8 +77,7 @@ def reservation_create(request):
 
                 reservation.tables.add(*tables)
                 reservation.save()
-                messages.success(request, "Reservation confirmed.")
-
+                
                 #sends email to user- set as backend to display in console during dev
                 send_mail(
                 'Reservation Confirmed !',
