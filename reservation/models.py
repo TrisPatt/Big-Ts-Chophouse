@@ -23,7 +23,7 @@ class TimeSlot(models.Model):
 
 class Reservation(models.Model):
     reservation_number = models.IntegerField(unique=True, editable=False)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
     number_of_guests = models.IntegerField()
