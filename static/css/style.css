@@ -142,8 +142,8 @@ button:hover, .btn:hover {
 #logo-nav {
     background: url('/static/images/logo-transparent.webp') no-repeat center center;
     background-size: contain;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 }
 
 
