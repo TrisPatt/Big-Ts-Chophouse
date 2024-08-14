@@ -1,8 +1,6 @@
 /* Base Styles */
 body {
     font-family: 'Open Sans', Arial, sans-serif;
-    color: #333333;
-    background-color: #F5F5DC;
     margin: 0;
     padding: 0;
 }
@@ -76,7 +74,7 @@ button:hover, .btn:hover {
 /* Hero Section */
 .hero {
     position: relative;
-    background: url("{% static 'images/hero.jpg' %}") no-repeat center center;
+    background: url("{% static 'images/hero.webp' %}") no-repeat center center;
     background-size: cover; 
     height: 80vh; 
     display: flex;
