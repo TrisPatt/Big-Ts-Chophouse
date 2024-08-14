@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'reservation',
     'review',
     'menu',
+    'user_profile',
     'django_summernote',
     'cloudinary',
     'crispy_forms',
