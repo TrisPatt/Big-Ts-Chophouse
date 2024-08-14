@@ -13,14 +13,7 @@
         <button class="btn btn-secondary"
           type="submit">Submit</button>
         </form>
-        <div class="text-center mt-3">
-            <button class="btn btn-secondary"
-            href="{% url 'reservation_list' %}">Back to booking list</button>
-            {% for slot in available_slots %}
-                <option value="{{ slot.id }}">{{ slot }}</option>
-            {% endfor %}
-        </div>
-    </div>
+        
 </div>
 
 

@@ -3,6 +3,7 @@ body {
     font-family: 'Open Sans', Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color:bisque ;
 }
 
 /* Headers */
@@ -145,14 +146,18 @@ table {
 }
 
 th, td {
+    width: 10%; 
+    white-space: nowrap; 
+    padding: 5px;
     border: 1px solid #8B4513; 
     padding: 10px;
-    text-align: left;
+    text-align: center;
 }
 
-th {
+thead {
     background-color: #B22222; 
     color: #FFF;
+    text-align: center;
 }
 
 td {
