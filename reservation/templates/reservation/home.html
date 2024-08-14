@@ -1,13 +1,19 @@
 {% extends "base.html" %}
+{% load static %}
+
 
 {% block content %}
 
 <!-- index.html content starts here -->
 
-    <h1>Welcome to Big T's Chophouse</h1>
-    <p>The best restaurant in town</p>
-    <a href="{% url 'reservation_list' %}">View Reservations</a>
-    <a href="{% url 'reservation_create' %}">Create a Reservation</a>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Welcome to Big T's Chophouse!</h1>
+        <p>Your go-to spot for the best steaks and burgers in town</p>
+        <a href="{% url 'reservation_list' %}" class="btn btn-primary btn-lg">Make a Reservation</a>
+    </div>
+</section>
     
 
 {% endblock %}

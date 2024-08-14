@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     'reservation',
     'review',
     'django_summernote',
+    'cloudinary',
     'crispy_forms',
     'crispy_bootstrap5',
 ]
@@ -159,6 +161,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_URL = '/static/'
+
+
 
 
 # Default primary key field type
