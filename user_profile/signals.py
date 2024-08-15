@@ -7,3 +7,6 @@ from .models import Profile
 def create_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.get_or_create(user=instance)
+    else:      
+        if not hasattr(instance, 'profile'):
+            Profile.objects.create(user=instance)
