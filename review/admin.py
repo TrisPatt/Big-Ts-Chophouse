@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+@admin.register(review)
+class reviewAdmin(SummernoteModelAdmin):
+    list_display = ('user', 'overall_rating', 'comment', 'creaed_on')
