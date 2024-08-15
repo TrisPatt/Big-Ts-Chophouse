@@ -16,7 +16,6 @@ class ReservationForm(forms.ModelForm):
             'min': timezone.now().date().strftime('%y-%m-%d'),
         })
     )
-
     time = forms.ModelChoiceField(
         queryset=TimeSlot.objects.none(), 
         widget=forms.Select(attrs={'class': 'form-control'})

@@ -14,8 +14,9 @@ def home(request):
     return render(request, 'reservation/home.html')
 
 # Confirmed reservation
-def reservation_confirmed(request):
-    return render(request, 'reservation/reservation_confirmed.html')
+def reservation_confirmed(request, reservation_number):
+    reservation = get_object_or_404(Reservation, pk=reservation_number)
+    return render(request, 'reservation/reservation_confirmed.html', {'reservation': reservation})
 
 #review reservations
 @login_required #Only allow logged in users to view reservation with their unique id
@@ -69,9 +70,8 @@ def reservation_create(request):
                 [request.user.email],
                 fail_silently=False,
                 )
+                return redirect('reservation_confirmed', reservation_number=reservation.pk)
 
-                
-                return redirect('reservation_confirmed')
             else:
                 messages.error(request, "Sorry, we can't accommodate your party size at the requested time.")
                 return redirect('reservation_create')
@@ -84,11 +84,6 @@ def reservation_create(request):
 def cancel_reservation(request, reservation_number):
     # Fetch the reservation based on the reservation_number and ensure the user is authorized
     reservation = get_object_or_404(Reservation, reservation_number=reservation_number, user_id=request.user)
-
-    # If the reservation has already been canceled, inform the user and redirect
-    if reservation.reservation_status == 1:
-        messages.info(request, 'This reservation has been cancelled.')
-        return redirect('reservation_list')
     
     if request.method == 'POST':
         form = CancelReservationForm(request.POST, instance=reservation)
