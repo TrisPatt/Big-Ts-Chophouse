@@ -25,7 +25,7 @@ from user_profile import views as profile_views
 urlpatterns = [
     path('', reservation_views.home, name='home'),
     path('reservation/', include('reservation.urls'), name='reservation.urls'),
-    path('review/', review_views.my_review, name='review'),
+    path('review/', include('review.urls')),
     path('menu/', include('menu.urls')),
     path('user_profile/', include('user_profile.urls')),
     path('summernote/', include('django_summernote.urls')),
