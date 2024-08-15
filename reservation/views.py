@@ -106,3 +106,4 @@ def cancel_reservation(request, reservation_number):
         form = CancelReservationForm(instance=reservation)
     
     return render(request, 'reservation/cancel_reservation.html', {'form': form, 'reservation': reservation})
+    

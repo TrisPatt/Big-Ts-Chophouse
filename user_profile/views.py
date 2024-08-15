@@ -1,7 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Profile
 from .forms import CombinedUserProfileForm
+from django.contrib.auth.models import User
+from django.contrib import messages
 
+# Update profile information
 def profile_update(request):
     # Get or create a user profile for the logged-in user
     user = request.user
@@ -20,5 +24,16 @@ def profile_update(request):
     
     return render (request, 'user_profile/profile_update.html', {'form': form})
 
+# Confirm updates
 def profile_update_confirmation(request):
     return render(request, 'user_profile/profile_confirmation.html')
+
+# Delete user account
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        messages.success(request, "Your account has been deleted.")
+        return redirect('home')  
+    return render(request, 'user_profile/delete_account.html')
