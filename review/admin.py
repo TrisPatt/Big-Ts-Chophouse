@@ -4,4 +4,4 @@ from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
-    list_display = ('user', 'overall_rating', 'comment', 'creaed_on')
+    list_display = ('user', 'overall_rating', 'comment', 'created_on')
