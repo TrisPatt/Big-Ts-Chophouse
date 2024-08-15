@@ -55,24 +55,6 @@ button:hover, .btn:hover {
     background-color: #A52A2A; 
 }
 
-/* Menu Section */
-.menu-item {
-    background-color: #FFFDD0; 
-    border: 1px solid #8B4513; 
-    margin: 20px 0;
-    padding: 15px;
-}
-
-.menu-item h3 {
-    color: #A52A2A;
-    margin-bottom: 10px;
-}
-
-.menu-item p {
-    color: #333333;
-    font-size: 16px;
-}
-
 /* Hero Section */
 .hero {
     position: relative;
@@ -191,6 +173,16 @@ thead {
 td {
     background-color: #FFFDD0; 
 
+}
+
+/* Review styles */
+.stars {
+    display: inline-block;
+    font-size: 100px;
+    color: #ffd700;  
+}
+.star-empty {
+    color: #ccc;  
 }
 
 /* Footer Styles */

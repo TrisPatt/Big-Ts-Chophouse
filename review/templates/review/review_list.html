@@ -3,14 +3,28 @@
 {% block content %}
 
 <h1>All Reviews</h1>
+<a class="btn btn-secondary" href="{% url 'submit_review' %}"><button>Write a review</button></a>
 {% for review in reviews %}
-    <div>
-        <h2>Review by {{ review.user.username }} - Rating: {{ review.rating }}</h2>
-        <p>{{ review.comment }}</p>
-        <p><small>Posted on {{ review.created_on }}</small></p>
-    </div>
-{% empty %}
-    <p>No reviews yet.</p>
-{% endfor %}
+<ul>
+    {% for review in reviews %}
+        <li>
+            <strong>User:</strong> {{ review.user.username }}<br>
+            <strong>Comment:</strong> {{ review.comment }}<br>
+            <strong>Rating:</strong> 
+            <span class="stars">
+                {% for i in rating_range %}
+                    {% if i <= review.overall_rating|add:0 %}
+                        ★  
+                    {% else %}
+                        <span class="star-empty"></span> 
+                    {% endif %}
+                {% endfor %}
+            </span>
+        </li>
+    {% empty %}
+        <li>No reviews yet</li>
+    {% endfor %}
+</ul>
+
   
 {% endblock %}

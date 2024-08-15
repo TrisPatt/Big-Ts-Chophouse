@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     visit_date = models.DateField()
-    overall_rating = models.PositiveIntegerField()
-    food_rating = models.PositiveIntegerField()
-    service_rating = models.PositiveIntegerField()
-    ambience_rating = models.PositiveIntegerField()
+    overall_rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
+    food_rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
+    service_rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
+    ambience_rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
     comment = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 

@@ -18,4 +18,5 @@ def submit_review(request):
 
 def review_list(request):
     reviews = Review.objects.all().order_by('-created_on')
-    return render(request, 'review/review_list.html', {'reviews': reviews})
+    rating_range = range(1, 6)  
+    return render(request, 'review/review_list.html', {'reviews': reviews, 'rating_range': rating_range})
