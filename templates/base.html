@@ -61,12 +61,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link
-                          {% if request.path == reservation_url %}active{%endif%}" aria-current="page"
-                          href="{% url 'reservation_list' %}"
-                          >My Reservations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link
                           {% if request.path == review_url %}active{%endif%}" aria-current="page"
                           href="{% url 'review' %}"
                           >Reviews</a>
@@ -75,7 +69,12 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                     </li>
-                    
+                    <li class="nav-item">
+                        <a class="nav-link
+                          {% if request.path == user_profile_url %}active{%endif%}" aria-current="page"
+                          href="{% url 'profile' %}"
+                          >My Profile</a>
+                    </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"

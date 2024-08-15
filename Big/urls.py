@@ -19,6 +19,7 @@ from django.urls import path, include
 from reservation import views as reservation_views
 from review import views as review_views
 from menu import views as menu_views
+from user_profile import views as profile_views
 
 
 urlpatterns = [
@@ -28,5 +29,6 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path("accounts/", include("allauth.urls")),
     path('menu/', include('menu.urls')),
+    path('user_profile/', include('user_profile.urls')),
     path('admin/', admin.site.urls),
 ]

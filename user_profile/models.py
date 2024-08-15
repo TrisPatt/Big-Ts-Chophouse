@@ -5,7 +5,9 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    email_address = models.TextField(max_length=500, blank=True)
+    first_name = models.TextField(max_length=500, blank=True)
+    last_name = models.TextField(max_length=500, blank=True)
+    email_address = models.EmailField(null=True, blank=True)
     phone_number = models.CharField(max_length=30, blank=True)
     date_of_birth = models.DateField(null=True, blank=True)
 
