@@ -9,7 +9,7 @@ body {
 /* Headers */
 h1, h2 {
     font-family: 'Bebas Neue', Impact, sans-serif;
-    color: #B22222; 
+    color: #764141; 
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 20px 0;
@@ -30,14 +30,37 @@ nav a {
     display: inline-block;
 }
 
-.navbar-nav .nav-link {
-    transition: transform 0.2s ease, font-size 0.2s ease;
-    font-size: 16px;
+/* Custom nav link hover effect */
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff; 
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
 }
 
-.navbar-nav .nav-link:hover {
-    transform: scale(1.2);
-    font-size: 18px;
+.navbar-dark .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px; 
+    background-color: #000; 
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #000; 
+}
+
+.navbar-dark .navbar-nav .nav-link:hover::after {
+    width: 100%; 
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #ccc; 
+}
+
 }
 
 /* Button Styles */
@@ -145,40 +168,26 @@ button:hover, .btn:hover {
     height: 60px;
 }
 
+/* Reservation styles */
 
-/* Table Styles */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background-color: #FFF;
+.datepicker {
+    background-color: #f8f9fa; 
 }
 
-th, td {
-    width: 10%; 
-    white-space: nowrap; 
-    padding: 5px;
-    border: 1px solid #8B4513; 
-    padding: 10px;
-    text-align: center;
-    background-color: #FFF;
+.datepicker-header {
+    background-color: #007bff; 
+    color: #ffffff; 
 }
 
-thead {
-    background-color: #B22222; 
-    color: #FFF;
-    text-align: center;
-}
-
-td {
-    background-color: #FFFDD0; 
-
+/* Change the color of the disabled dates */
+.datepicker-days .datepicker-day.disabled {
+    color: #6c757d; 
 }
 
 /* Review styles */
 .stars {
     display: inline-block;
-    font-size: 25px;
+    font-size: 15px;
     color: #ffd700;  
 }
 .star-empty {

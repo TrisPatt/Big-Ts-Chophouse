@@ -7,7 +7,7 @@
 <div class="d-flex justify-content-center mt-5">
     <div class="card p-4" style="width: 100%; max-width: 500px;">
         <h1 class="d-flex justify-content-center">Create Booking</h1>
-        <form method="post">
+        <form method="post" autocomplete="off">
         {{ form | crispy }}
         {% csrf_token %}
         <button class="btn btn-secondary"
@@ -16,7 +16,18 @@
         
 </div>
 
+<script src="{% static 'path/to/jquery.min.js' %}"></script>
+<script src="{% static 'path/to/bootstrap-datepicker.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'path/to/bootstrap-datepicker.min.css' %}">
 
+<script>
+    $(document).ready(function(){
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd', 
+            autoclose: true
+        });
+    });
+</script>
 
 
 {% endblock %}
