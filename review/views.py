@@ -42,3 +42,19 @@ def edit_review(request, review_id):
         form = ReviewForm(instance=review)
     
     return render(request, 'review/edit_review.html', {'form': form})
+
+
+@login_required
+def delete_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id)
+
+    # Check if the user is the owner of the review
+    if review.user != request.user:
+        raise PermissionDenied
+
+    if request.method == "POST":
+        review.delete()
+        messages.success(request, 'Review deleted successfully.') 
+        return redirect('review_list')  # Redirect to the review list page 
+    else:
+        return render(request, 'review/confirm_delete.html', {'review': review})
