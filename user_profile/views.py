@@ -28,6 +28,10 @@ def profile_update(request):
 def profile_update_confirmation(request):
     return render(request, 'user_profile/profile_confirmation.html')
 
+# My account page
+def my_account(request):
+    return render(request, 'user_profile/account.html')
+
 # Delete user account
 @login_required
 def delete_account(request):

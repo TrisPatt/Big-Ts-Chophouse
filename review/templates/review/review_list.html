@@ -7,65 +7,62 @@
     <button>Write a review</button>
 </a>
 
-<ul>
-    {% for review in reviews %}
-        <li>
-            <strong>User:</strong> {{ review.user.username }}<br>
-            
-            <div>
-                <strong>Overall:</strong> 
-                <span class="stars">
-                {% for i in rating_range %}
-                    {% if i <= review.overall_rating %}
-                        ★ 
-                    {% else %}
-                        <span class="star-empty">★</span>
-                    {% endif %}
-                {% endfor %}
-                </span>
-            </div>
-            <div>
-                <strong>Food:</strong> 
-                <span class="stars">
-                {% for i in rating_range %}
-                    {% if i <= review.food_rating %}
-                        ★ 
-                    {% else %}
-                        <span class="star-empty">★</span>
-                    {% endif %}
-                {% endfor %}
-                </span>
-            </div>
-            <div>
-                <strong>service:</strong> 
-                <span class="stars">
-                {% for i in rating_range %}
-                    {% if i <= review.service_rating %}
-                        ★ 
-                    {% else %}
-                        <span class="star-empty">★</span>
-                    {% endif %}
-                {% endfor %}
-                </span>
-            </div>
-            <div>
-                <strong>Ambience:</strong> 
-                <span class="stars">
-                {% for i in rating_range %}
-                    {% if i <= review.ambience_rating %}
-                        ★ 
-                    {% else %}
-                        <span class="star-empty">★</span>
-                    {% endif %}
-                {% endfor %}
-                </span>
-            </div>
-            <strong>Comment:</strong> {{ review.comment }}<br>
-            
-        </li>
-    {% empty %}
-        <li>No reviews yet</li>
-    {% endfor %}
-</ul>
-
+<div class="review-list">
+    <ul>
+        {% for review in reviews %}
+                <strong>User:</strong> {{ review.user.username }}<br>  
+                <div>
+                    <strong>Overall:</strong> 
+                    <span class="stars">
+                    {% for i in rating_range %}
+                        {% if i <= review.overall_rating %}
+                            ★ 
+                        {% else %}
+                            <span class="star-empty">★</span>
+                        {% endif %}
+                    {% endfor %}
+                    </span>
+                </div>
+                <div>
+                    <strong>Food:</strong> 
+                    <span class="stars">
+                    {% for i in rating_range %}
+                        {% if i <= review.food_rating %}
+                            ★ 
+                        {% else %}
+                            <span class="star-empty">★</span>
+                        {% endif %}
+                    {% endfor %}
+                    </span>
+                </div>
+                <div>
+                    <strong>service:</strong> 
+                    <span class="stars">
+                    {% for i in rating_range %}
+                        {% if i <= review.service_rating %}
+                            ★ 
+                        {% else %}
+                            <span class="star-empty">★</span>
+                        {% endif %}
+                    {% endfor %}
+                    </span>
+                </div>
+                <div>
+                    <strong>Ambience:</strong> 
+                    <span class="stars">
+                    {% for i in rating_range %}
+                        {% if i <= review.ambience_rating %}
+                            ★ 
+                        {% else %}
+                            <span class="star-empty">★</span>
+                        {% endif %}
+                    {% endfor %}
+                    </span>
+                </div>
+                <strong>Comment:</strong> {{ review.comment }}<br>
+        {% empty %}
+            <li>No reviews yet</li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

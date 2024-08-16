@@ -178,13 +178,17 @@ td {
 /* Review styles */
 .stars {
     display: inline-block;
-    font-size: 40px;
+    font-size: 25px;
     color: #ffd700;  
 }
 .star-empty {
     color: #ccc;  
 }
 
+.review-list {
+    padding-bottom: 50px;
+    border:#000;
+}
 /* Footer Styles */
 footer {
     background-color: #654321; 
