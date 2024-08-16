@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
 
@@ -7,7 +8,7 @@
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
             <h1>Submit a Review</h1>
-                <form method="post">
+                <form method="post" autocomplete="off">
                     {{ form | crispy }}
                     {% csrf_token %}
                     <button type="submit">Submit Review</button>
@@ -15,5 +16,13 @@
         </div>
     </div>
 </div>
-  
+
+<script>
+    $(document).ready(function(){
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd', 
+            autoclose: true
+        });
+    });
+</script>
 {% endblock %}
