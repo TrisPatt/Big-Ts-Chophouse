@@ -5,6 +5,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     
     path('user_profile/', views.profile_update, name='profile'), 
+    path('update/profile/', views.profile_update, name='profile_update'), 
     path('update/confirmed/', views.profile_update_confirmation, name='profile_confirmed'), 
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),

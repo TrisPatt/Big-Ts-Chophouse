@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     visit_date = models.DateField()
+    title = models.TextField(max_length=50, default='untitled')
     overall_rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
     food_rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
     service_rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])

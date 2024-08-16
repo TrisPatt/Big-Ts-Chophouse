@@ -10,7 +10,8 @@
 <div class="review-list">
     <ul>
         {% for review in reviews %}
-                <strong>User:</strong> {{ review.user.username }}<br>  
+                <strong>Title:</strong> {{ review.title}}<br>  
+                <strong>Visit Date:</strong> {{ review.visit_date}}<br> 
                 <div>
                     <strong>Overall:</strong> 
                     <span class="stars">
@@ -60,8 +61,9 @@
                     </span>
                 </div>
                 <strong>Comment:</strong> {{ review.comment }}<br>
-        {% empty %}
-            <li>No reviews yet</li>
+                <span>created by {{ review.user.username }} on {{ review.created_on }}</span>
+                {% empty %}
+                    <li>No reviews yet</li>
         {% endfor %}
     </ul>
 </div>
