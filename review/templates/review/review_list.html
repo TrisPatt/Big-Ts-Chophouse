@@ -10,60 +10,60 @@
 <div class="review-list">
     <ul>
         {% for review in reviews %}
-                <strong>Title:</strong> {{ review.title}}<br>  
-                <strong>Visit Date:</strong> {{ review.visit_date}}<br> 
-                <div>
-                    <strong>Overall:</strong> 
-                    <span class="stars">
-                    {% for i in rating_range %}
-                        {% if i <= review.overall_rating %}
-                            ★ 
-                        {% else %}
-                            <span class="star-empty">★</span>
-                        {% endif %}
-                    {% endfor %}
-                    </span>
-                </div>
-                <div>
-                    <strong>Food:</strong> 
-                    <span class="stars">
-                    {% for i in rating_range %}
-                        {% if i <= review.food_rating %}
-                            ★ 
-                        {% else %}
-                            <span class="star-empty">★</span>
-                        {% endif %}
-                    {% endfor %}
-                    </span>
-                </div>
-                <div>
-                    <strong>service:</strong> 
-                    <span class="stars">
-                    {% for i in rating_range %}
-                        {% if i <= review.service_rating %}
-                            ★ 
-                        {% else %}
-                            <span class="star-empty">★</span>
-                        {% endif %}
-                    {% endfor %}
-                    </span>
-                </div>
-                <div>
-                    <strong>Ambience:</strong> 
-                    <span class="stars">
-                    {% for i in rating_range %}
-                        {% if i <= review.ambience_rating %}
-                            ★ 
-                        {% else %}
-                            <span class="star-empty">★</span>
-                        {% endif %}
-                    {% endfor %}
-                    </span>
-                </div>
-                <strong>Comment:</strong> {{ review.comment }}<br>
-                <span>created by {{ review.user.username }} on {{ review.created_on }}</span>
-                {% empty %}
-                    <li>No reviews yet</li>
+            <strong>Title:</strong> {{ review.title}}<br>  
+            <strong>Visit Date:</strong> {{ review.visit_date}}<br> 
+            <div>
+                <strong>Overall:</strong> 
+                <span class="stars">
+                {% for i in rating_range %}
+                    {% if i <= review.overall_rating %}
+                        ★ 
+                    {% else %}
+                        <span class="star-empty">★</span>
+                    {% endif %}
+                {% endfor %}
+                </span>
+            </div>
+            <div>
+                <strong>Food:</strong> 
+                <span class="stars">
+                {% for i in rating_range %}
+                    {% if i <= review.food_rating %}
+                        ★ 
+                    {% else %}
+                        <span class="star-empty">★</span>
+                    {% endif %}
+                {% endfor %}
+                </span>
+            </div>
+            <div>
+                <strong>service:</strong> 
+                <span class="stars">
+                {% for i in rating_range %}
+                    {% if i <= review.service_rating %}
+                        ★ 
+                    {% else %}
+                        <span class="star-empty">★</span>
+                    {% endif %}
+                {% endfor %}
+                </span>
+            </div>
+            <div>
+                <strong>Ambience:</strong> 
+                <span class="stars">
+                {% for i in rating_range %}
+                    {% if i <= review.ambience_rating %}
+                        ★ 
+                    {% else %}
+                        <span class="star-empty">★</span>
+                    {% endif %}
+                {% endfor %}
+                </span>
+            </div>
+            <strong>Comment:</strong> {{ review.comment }}<br>
+            <span>created by {{ review.user.username }} on {{ review.created_on }}</span>
+        {% empty %}
+            <li>No reviews yet</li>
         {% endfor %}
     </ul>
 </div>
