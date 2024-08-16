@@ -178,7 +178,7 @@ td {
 /* Review styles */
 .stars {
     display: inline-block;
-    font-size: 100px;
+    font-size: 40px;
     color: #ffd700;  
 }
 .star-empty {
