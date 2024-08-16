@@ -3,18 +3,37 @@
 
 
 {% block content %}
-<div>
-<h1>my account</h1>
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2">
+            <h1>My Account</h1>
+            
+            <!-- Home Page Button -->
+            <div class="d-flex align-items-center mb-2">
+                <span class="me-2">Home page:</span>
+                <a class="btn btn-secondary" href="{% url 'home' %}">Back to home</a>
+            </div>
 
-<a class="btn btn-secondary" href="{% url 'home' %}"><button>back to home</button></a>
+            <!-- Update Profile Button -->
+            <div class="d-flex align-items-center mb-2">
+                <span class="me-2">Update your profile details or delete your account:</span>
+                <a class="btn btn-secondary" href="{% url 'profile_update' %}">Update my details</a>
+            </div>
 
-<a class="btn btn-secondary" href="{% url 'profile_update' %}"><button>Update my details</button></a>
+            <!-- Bookings Button -->
+            <div class="d-flex align-items-center mb-2">
+                <span class="me-2">View your recent active and cancelled bookings:</span>
+                <a class="btn btn-secondary" href="{% url 'reservation_list' %}">My bookings</a>
+            </div>
 
-<a class="btn btn-secondary" href="{% url 'reservation_list' %}"><button>My bookings</button></a>
-
-<a class="btn btn-secondary" href="{% url 'review_list' %}"><button>My Reviews</button></a>
-
+            <!-- Reviews Button -->
+            <div class="d-flex align-items-center mb-2">
+                <span class="me-2">View all and edit your reviews:</span>
+                <a class="btn btn-secondary" href="{% url 'review_list' %}">My Reviews</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
