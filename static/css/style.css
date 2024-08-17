@@ -1,18 +1,21 @@
 /* Base Styles */
 body {
-    font-family: 'Open Sans', Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: rgb(166, 114, 49);
 }
 
 /* Headers */
-h1, h2 {
-    font-family: 'Bebas Neue', Impact, sans-serif;
-    color: #764141; 
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin: 20px 0;
+h1, h2, h3, h4 {
+    font-family: 'Lora', serif;
+    font-weight: 700; 
+}
+
+p, li {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.5; 
 }
 
 /* Nav Bar */
@@ -164,6 +167,57 @@ button:hover, .btn:hover {
     background-size: contain;
     width: 60px;
     height: 60px;
+}
+
+/* Menu styles */
+.menu-section {
+    margin-bottom: 2rem;
+}
+
+.menu-category {
+    font-size: 1.75rem;
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.menu-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.menu-item p {
+    font-size: 1rem;
+    color: #373131;
+    margin: 0.5rem 0;
+}
+
+.price {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.underline {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.menu-items li {
+    margin-bottom: 10px; 
+}
+
+.menu-section {
+    margin-bottom: 30px; 
+}
+
+.menu-item span.price {
+    margin-top: 5px; 
+    display: block;  
 }
 
 /* Reservation styles */
