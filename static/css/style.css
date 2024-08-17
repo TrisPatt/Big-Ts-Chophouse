@@ -237,12 +237,30 @@ button:hover, .btn:hover {
 }
 
 /* Review styles */
-.stars {
+.review-box {
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    padding: 20px; 
+    margin-bottom: 20px; 
+    background-color: #f9f9f9; 
+}
+
+.review-box a {
+    margin-right: 10px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.review-box li {
+    list-style: none; 
+}
+
+.stars .review-box{
     display: inline-block;
     font-size: 15px;
     color: #ffd700;  
 }
-.star-empty {
+.star-empty .review-box{
     color: #ccc;  
 }
 

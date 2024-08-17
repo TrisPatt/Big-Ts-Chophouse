@@ -5,70 +5,76 @@
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
             <h1>All Reviews</h1>
-            <a class="btn btn-secondary" href="{% url 'submit_review' %}">Write a review</a>
-            <div class="border rounded p-3 mb-3 bg-light">
-                <ul>
+            <a class="btn btn-secondary mb-3" href="{% url 'submit_review' %}">Write a review</a>
+            <div class="review-list">
+                <ul class="list-unstyled">
                     {% for review in reviews %}
-                        <li>
-                            <strong>Title:</strong> {{ review.title }}<br>
-                            <strong>Visit Date:</strong> {{ review.visit_date }}<br>
-                            <div>
-                                <strong>Overall:</strong> 
-                                <span class="stars">
-                                    {% for i in rating_range %}
-                                        {% if i <= review.overall_rating %}
-                                            ★ 
-                                        {% else %}
-                                            <span class="star-empty">★</span>
-                                        {% endif %}
-                                    {% endfor %}
-                                </span>
-                            </div>
-                            <div>
-                                <strong>Food:</strong> 
-                                <span class="stars">
-                                    {% for i in rating_range %}
-                                        {% if i <= review.food_rating %}
-                                            ★ 
-                                        {% else %}
-                                            <span class="star-empty">★</span>
-                                        {% endif %}
-                                    {% endfor %}
-                                </span>
-                            </div>
-                            <div>
-                                <strong>Service:</strong> 
-                                <span class="stars">
-                                    {% for i in rating_range %}
-                                        {% if i <= review.service_rating %}
-                                            ★ 
-                                        {% else %}
-                                            <span class="star-empty">★</span>
-                                        {% endif %}
-                                    {% endfor %}
-                                </span>
-                            </div>
-                            <div>
-                                <strong>Ambience:</strong> 
-                                <span class="stars">
-                                    {% for i in rating_range %}
-                                        {% if i <= review.ambience_rating %}
-                                            ★ 
-                                        {% else %}
-                                            <span class="star-empty">★</span>
-                                        {% endif %}
-                                    {% endfor %}
-                                </span>
-                            </div>
-                            <strong>Comment:</strong> {{ review.comment }}<br>
-                            <span>Created by {{ review.user.username }} on {{ review.created_on }}</span>
-                            {% if review.user == request.user %}
-                                <a href="{% url 'edit_review' review.id %}">Edit</a>
-                            {% endif %}
-                            {% if review.user == request.user %}
-                                <a href="{% url 'delete_review' review.id %}">Delete</a>
-                            {% endif %}
-                        </li>
+                        <div class="review-box border rounded p-3 mb-4 bg-light">
+                            <li>
+                                <strong>Title:</strong> {{ review.title }}<br>
+                                <strong>Visit Date:</strong> {{ review.visit_date }}<br>
+                                
+                                <div>
+                                    <strong>Overall:</strong> 
+                                    <span class="stars">
+                                        {% for i in rating_range %}
+                                            {% if i <= review.overall_rating %}
+                                                ★ 
+                                            {% else %}
+                                                <span class="star-empty">★</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </span>
+                                </div>
+                                
+                                <div>
+                                    <strong>Food:</strong> 
+                                    <span class="stars">
+                                        {% for i in rating_range %}
+                                            {% if i <= review.food_rating %}
+                                                ★ 
+                                            {% else %}
+                                                <span class="star-empty">★</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </span>
+                                </div>
+                                
+                                <div>
+                                    <strong>Service:</strong> 
+                                    <span class="stars">
+                                        {% for i in rating_range %}
+                                            {% if i <= review.service_rating %}
+                                                ★ 
+                                            {% else %}
+                                                <span class="star-empty">★</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </span>
+                                </div>
+                                
+                                <div>
+                                    <strong>Ambience:</strong> 
+                                    <span class="stars">
+                                        {% for i in rating_range %}
+                                            {% if i <= review.ambience_rating %}
+                                                ★ 
+                                            {% else %}
+                                                <span class="star-empty">★</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </span>
+                                </div>
+                                
+                                <strong>Comment:</strong> {{ review.comment }}<br>
+                                <span>Created by {{ review.user.username }} on {{ review.created_on }}</span><br>
+                                
+                                {% if review.user == request.user %}
+                                    <a href="{% url 'edit_review' review.id %}">Edit</a>
+                                    <a href="{% url 'delete_review' review.id %}">Delete</a>
+                                {% endif %}
+                            </li>
+                        </div>
                     {% empty %}
                         <li>No reviews yet</li>
                     {% endfor %}
@@ -77,5 +83,4 @@
         </div>
     </div>
 </div>
-            
 {% endblock %}
