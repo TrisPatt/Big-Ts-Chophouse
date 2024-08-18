@@ -36,7 +36,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -48,62 +47,50 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark-brown">
         <div class="container-fluid">
-            <a class="navbar-brand" id= "logo-nav" href="{% url 'home' %}"><span class="brand"></span></span></a>
+            <a class="navbar-brand" id="logo-nav" href="{% url 'home' %}"><span class="brand"></span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
+                <!-- Left-aligned navigation items -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link
-                          {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'home' %}">Home</a>
+                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link
-                          {% if request.path == about_url %}active{%endif%}" aria-current="page"
-                          href="{% url 'menu' %}"
-                          >Menus</a>
+                        <a class="nav-link {% if request.path == about_url %}active{% endif %}" aria-current="page" href="{% url 'menu' %}">Menus</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link
-                          {% if request.path == review_url %}active{%endif%}" aria-current="page"
-                          href="{% url 'reservation_create' %}"
-                          >Book a table</a>
+                        <a class="nav-link {% if request.path == reservation_list_url %}active{% endif %}" aria-current="page" href="{% url 'reservation_create' %}">Book a table</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link
-                          {% if request.path == review_url %}active{%endif%}" aria-current="page"
-                          href="{% url 'review_list' %}"
-                          >Reviews</a>
+                        <a class="nav-link {% if request.path == review_url %}active{% endif %}" aria-current="page" href="{% url 'review_list' %}">Reviews</a>
                     </li>
+                </ul>
+    
+                <!-- Right-aligned Login and Register links -->
+                <ul class="navbar-nav ms-auto">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link
-                          {% if request.path == user_profile_url %}active{%endif%}" aria-current="page"
-                          href="{% url 'my_account' %}"
-                          >My Account</a>
+                        <a class="nav-link {% if request.path == user_profile_url %}active{% endif %}" aria-current="page" href="{% url 'my_account' %}">My Account</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_signup' %}">Register</a>
+                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
                     </li>
                     {% endif %}
                 </ul>
-                <span class="navbar-text text-muted">
-                    
-                </span>
             </div>
         </div>
     </nav>
+    
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -115,9 +102,9 @@
     
     <main class="flex-shrink-0 main-bg p-4g">
         {% if user.is_authenticated %}
-        <p class="text-end m-3">You are logged in as {{ user.username }}</p>
+        <p class="text-end m-3 text-white">You are logged in as {{ user.username }}</p>
         {% else %}
-        <p class="text-end m-3">You are not logged in</p>
+        <p class="text-end m-3 text-white">You are not logged in</p>
         {% endif %}
         
         {% block content %}
