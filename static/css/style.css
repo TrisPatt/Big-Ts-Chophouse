@@ -99,7 +99,7 @@ button:hover, .btn:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); 
+    background: rgba(0, 0, 0, 0.6); 
     z-index: 1; 
 }
 
@@ -121,8 +121,10 @@ button:hover, .btn:hover {
 }
 
 .carousel-caption h1 {
+    font-family: 'Lora', serif;
+    font-weight: 200;
     font-size: 4rem;
-    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
     margin-bottom: 0.5rem;
     color: white;
 }
