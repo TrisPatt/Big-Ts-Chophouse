@@ -22,7 +22,7 @@ p, li {
 
 /* Nav Bar */
 nav {
-    background-color: rgb(166, 114, 49);
+    background-color: #aa730b;
     color: #FFF;
     padding: 10px 20px;
     box-shadow: 0 3px 3px #333333;
@@ -247,9 +247,17 @@ button:hover, .btn:hover {
 }
 
 /* Review styles */
+.review-back {
+    background-color: white;
+    border-radius: 27px !important;
+    padding: 20px; 
+    border: 2px solid #070707 !important; 
+
+}
+
 .review-box {
-    border: 1px solid #ccc; 
-    border-radius: 25px; 
+    border: 2px solid #070707 !important; 
+    border-radius: 27px !important;
     padding: 20px; 
     margin-bottom: 20px; 
     background-color: #f9f9f9; 
