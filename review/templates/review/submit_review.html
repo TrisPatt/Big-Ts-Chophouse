@@ -6,8 +6,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <h1>Submit a Review</h1>
+        <div class="col-md-8 mt-3 offset-md-2 review-submit rounded">
+            <h1 class="text-center">Submit a Review</h1>
                 <form method="post" autocomplete="off">
                     {{ form | crispy }}
                     {% csrf_token %}

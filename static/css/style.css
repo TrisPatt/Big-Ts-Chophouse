@@ -120,8 +120,6 @@ button:hover, .btn:hover {
     width: 100%;
 }
 
-/* Text Styling */
-
 .carousel-caption h1 {
     font-size: 4rem;
     font-family: 'Roboto', sans-serif;
@@ -195,6 +193,7 @@ button:hover, .btn:hover {
     border-radius: 25px; 
     overflow: hidden; 
     padding: 30px;
+    margin-bottom: 35px;
 }
 
 .menu-category {
@@ -238,7 +237,7 @@ button:hover, .btn:hover {
     margin-bottom: 30px; 
 }
 
-.menu-item span.price {
+.menu-item, span.price {
     margin-top: 5px; 
     display: block;  
 }
@@ -254,14 +253,22 @@ button:hover, .btn:hover {
     color: #ffffff; 
 }
 
+.reservation-list, .account-menu {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
 /* Change the color of the disabled dates */
-.datepicker-days .datepicker-day.disabled {
+.datepicker-days, .datepicker-day.disabled {
     color: #6c757d; 
 }
 
 /* Review styles */
-.review-back {
-    background-color: white;
+.review-back, .review-submit {
+    background-color: #aa730b;
+    color:white;
     border-radius: 27px !important;
     padding: 20px; 
     border: 2px solid #070707 !important; 
@@ -269,12 +276,13 @@ button:hover, .btn:hover {
 
 }
 
-.review-box {
+.review-box  {
     border: 2px solid #070707 !important; 
+    color: black;
     border-radius: 27px !important;
     padding: 20px; 
     margin-bottom: 20px; 
-    background-color: #f9f9f9; 
+    background-color: white; 
 }
 
 .review-box a {
@@ -300,6 +308,7 @@ button:hover, .btn:hover {
     padding-bottom: 50px;
     border:#000;
 }
+
 /* Footer Styles */
 footer {
     background-color: #654321; 
