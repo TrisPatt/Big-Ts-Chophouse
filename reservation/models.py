@@ -26,9 +26,9 @@ class TimeSlot(models.Model):
 class Reservation(models.Model):
     reservation_number = models.IntegerField(unique=True, editable=False)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    first_name = models.CharField(User, max_length=30, default="bob")
-    last_name = models.CharField(User, max_length=30, default="smith")
-    email = models.EmailField(User, max_length=100, default='default@example.com')
+    first_name = models.CharField(User, max_length=30)
+    last_name = models.CharField(User, max_length=30)
+    email = models.EmailField(User, max_length=100)
     date = models.DateField()
     time = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
     number_of_guests = models.IntegerField()
