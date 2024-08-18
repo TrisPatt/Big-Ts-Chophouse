@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.db.models import Sum, Q
 from django.utils import timezone
 from django.contrib.auth.forms import UserCreationForm
+from datetime import datetime
 
 
 class ReservationForm(forms.ModelForm):
@@ -42,20 +43,24 @@ class ReservationForm(forms.ModelForm):
         fields = ['date', 'time', 'number_of_guests', 'first_name', 'last_name', 'email', 'allergies','special_requirements']
 
 
-    def clean_date(self):
-        date = self.cleaned_data.get('date')
-        if date and date < timezone.now().date():
-            raise ValidationError("The date cannot be in the past.")
-        return date
-
-    
     def clean(self):
         cleaned_data = super().clean()
         date = cleaned_data.get('date')
-        time = cleaned_data.get('time')
+        time_slot = cleaned_data.get('time')
         number_of_guests = cleaned_data.get('number_of_guests')
 
-        
+        time = None
+
+        if date and time_slot:
+            time = time_slot.time
+            reservation_datetime = datetime.combine(date, time)
+            now = datetime.now()
+
+            if reservation_datetime < now:
+                raise forms.ValidationError("Reservation cannot be in the past.")
+
+        return cleaned_data
+
         if date and time and number_of_guests:
             total_guests = Reservation.objects.filter(date=date, time=time, reservation_status=0 ).aggregate(total_guests=Sum('number_of_guests'))['total_guests'] or 0
             if total_guests + number_of_guests > 24:
