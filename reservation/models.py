@@ -5,7 +5,7 @@ from django.conf import settings
 from cloudinary.models import CloudinaryField
 
 
-STATUS = ((0, "confirmed"), (1, "cancelled"))
+STATUS = ((0, "confirmed"), (1, "cancelled"), (2, "expired"))
 
 # Create your models here.
 
@@ -26,6 +26,9 @@ class TimeSlot(models.Model):
 class Reservation(models.Model):
     reservation_number = models.IntegerField(unique=True, editable=False)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    first_name = models.CharField(User, max_length=30, default="bob")
+    last_name = models.CharField(User, max_length=30, default="smith")
+    email = models.EmailField(User, max_length=100, default='default@example.com')
     date = models.DateField()
     time = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
     number_of_guests = models.IntegerField()

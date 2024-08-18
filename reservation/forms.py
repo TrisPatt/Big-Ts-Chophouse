@@ -39,7 +39,7 @@ class ReservationForm(forms.ModelForm):
 
     class Meta:
         model = Reservation
-        fields = ['date', 'time', 'number_of_guests', 'allergies','special_requirements']
+        fields = ['date', 'time', 'number_of_guests', 'first_name', 'last_name', 'email', 'allergies','special_requirements']
 
 
     def clean_date(self):
