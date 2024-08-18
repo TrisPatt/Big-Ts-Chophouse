@@ -4,14 +4,59 @@
 
 {% block content %}
 
-<!-- Hero Section -->
-<section class="hero img-fluid">
-    
-    <div class="hero-text">
-        <h1>Welcome to Big T's Chophouse!</h1>
-        <p>Your go-to spot for the best steaks and burgers in town</p>   
+
+<!-- Carousel Hero Section -->
+<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+    <li data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></li>
+    <li data-bs-target="#heroCarousel" data-bs-slide-to="1"></li>
+    <li data-bs-target="#heroCarousel" data-bs-slide-to="2"></li>
+    </ol>
+
+    <!-- Carousel Inner (Slides) -->
+    <div class="carousel-inner">
+    <!-- Slide 1 -->
+    <div class="carousel-item active" style="background-image: url('/static/images/hero.webp');">
+        <div class="carousel-caption d-none d-md-block">
+        <h2 class="text-white">Welcome to Big T's Chophouse</h2>
+        <p class="text-white">your go to restaurant for steaks and burgers</p>
+        <a href="/menu" class="btn btn-lg btn-primary">Explore Menu</a>
+        </div>
     </div>
-</section>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item" style="background-image: url('/static/images/tbone steak.webp');">
+        <div class="carousel-caption d-none d-md-block">
+        <h2 class="text-white">Fresh Ingredients</h2>
+        <p class="text-white">Made from Scratch</p>
+        <a href="" class="btn btn-lg btn-primary">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item" style="background-image: url('/static/images/barn-background.webp');">
+        <div class="carousel-caption d-none d-md-block">
+        <h2 class="text-white">Book Your Table</h2>
+        <p class="text-white">Enjoy our special deals</p>
+        <a href="" class="btn btn-lg btn-primary">Reserve Now</a>
+        </div>
+    </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+    </a>
+</div>
+    
+    
+
 
 <!--About Section-->
 <section class="about">
