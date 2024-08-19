@@ -14,7 +14,7 @@ class ReservationForm(forms.ModelForm):
             'id': 'reservation-date',
             'data-provide': 'datepicker',  
             'data-date-format': 'yyyy-mm-dd',
-            'min': timezone.now().date().strftime('%y-%m-%d'),
+            'min': timezone.now().date().strftime('%Y-%m-%d'),
         })
     )
     time = forms.ModelChoiceField(
@@ -29,15 +29,6 @@ class ReservationForm(forms.ModelForm):
         self.fields['time'].queryset = TimeSlot.objects.all()
 
 
-    def available_time_slots(request):
-        selected_date = request.GET.get('date', date.today())
-        all_time_slots = TimeSlot.objects.all()
-        booked_slots = Booking.objects.filter(date=selected_date).values('time').annotate(total_guests=models.Sum('number_of_guests')).filter(total_guests__gte=24)
-        available_slots = all_time_slots.exclude(id__in=[slot['time'] for slot in booked_slots])
-
-        return render(request, 'available_time_slots.html', {'available_slots': available_slots})
-
-
     class Meta:
         model = Reservation
         fields = ['date', 'time', 'number_of_guests', 'first_name', 'last_name', 'email', 'allergies','special_requirements']
@@ -49,22 +40,36 @@ class ReservationForm(forms.ModelForm):
         time_slot = cleaned_data.get('time')
         number_of_guests = cleaned_data.get('number_of_guests')
 
-        time = None
+        if not date or not time_slot or not number_of_guests:
+            return cleaned_data  # Skip validation if required fields are missing
 
-        if date and time_slot:
-            time = time_slot.time
-            reservation_datetime = datetime.combine(date, time)
-            now = datetime.now()
+        # Get the time from the TimeSlot object
+        time = time_slot.time
+
+
+        reservation_datetime = datetime.combine(date, time)
+        now = datetime.now()
+        if reservation_datetime < now:
+            raise ValidationError("Reservation cannot be in the past.")
 
             if reservation_datetime < now:
                 raise forms.ValidationError("Reservation cannot be in the past.")
 
         return cleaned_data
 
-        if date and time and number_of_guests:
-            total_guests = Reservation.objects.filter(date=date, time=time, reservation_status=0 ).aggregate(total_guests=Sum('number_of_guests'))['total_guests'] or 0
-            if total_guests + number_of_guests > 24:
-                raise ValidationError('Unfortunately we are fully booked at this time.')
+        # Check if the total number of guests exceeds 24 for the selected time
+        total_guests = Reservation.objects.filter(
+            date=date,
+            time=time,
+            reservation_status=0  
+        ).aggregate(total_guests=Sum('number_of_guests'))['total_guests'] or 0
+
+        if total_guests + number_of_guests > 24:
+            remaining_capacity = 24 - total_guests
+            raise ValidationError(
+                f"Sorry, we cannot accommodate {number_of_guests} guests at the requested time. "
+                f"Only {remaining_capacity} guest slots are available."
+            )
 
         return cleaned_data
 

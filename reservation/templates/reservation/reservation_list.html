@@ -37,6 +37,7 @@
                             </td>
                             <td>
                                 {% if reservation.reservation_status != 1 %}
+                                    <a href="{% url 'update_reservation' reservation.reservation_number %}" class="btn btn-primary btn-sm">Update</a>
                                     <a href="{% url 'cancel_reservation' reservation.reservation_number %}" class="btn btn-danger btn-sm">Cancel</a>
                                 {% else %}
                                     N/A
