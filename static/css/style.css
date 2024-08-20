@@ -317,8 +317,6 @@ button:hover, .btn:hover {
     padding: 30px;
 }
 
-
-
 .button-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
