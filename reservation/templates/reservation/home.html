@@ -80,8 +80,32 @@
     <div class="book">
         <a href="{% url 'reservation_create' %}" class="btn btn-primary btn-lg">BOOK A TABLE</a>
     </div> 
-    
 </section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col opening">
+                <h2>Opening times</h2>
+                <p>Monday 18:00- 22:00</p>
+                <p>Tuesday 18:00- 22:00</p>
+                <p>Wednesday 18:00- 22:00</p>
+                <p>Thursday 18:00- 22:00</p>
+                <p>Friday 18:00- Late</p>
+                <p>Saturday 18:00- Late</p>
+                <p>Sunday 18:00- 22:00</p>
+                <p>The restaurant closes at 22:00 daily for dinner reservations. <br>On Fridays and Saturdays our bar is open till late</p>
+            </div>
+            
+            <div class="col d-flex justify-content-center align-items-center">
+                <div class="sign">
+                    <img src="/static/images/sign.webp" alt="open sign" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
 
 

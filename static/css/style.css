@@ -185,6 +185,19 @@ button:hover, .btn:hover {
     height: 60px;
 }
 
+.opening {
+    background-color: rgba(245, 240, 230, 0.9);
+    border-radius: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 15px;
+    text-align: center;
+}
+
+.sign {
+    font-size: 0.5rem;
+}
+
 /* Menu styles */
 .menu-section {
     margin-bottom: 2rem;
