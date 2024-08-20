@@ -6,7 +6,7 @@
 
 
 <!-- Carousel Hero Section -->
-<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="7000">
+<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
     <!-- Indicators -->
     <ol class="carousel-indicators">
     <li data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></li>
@@ -18,7 +18,7 @@
     <div class="carousel-inner">
     <!-- Slide 1 -->
     <div class="carousel-item active" style="background-image: url('/static/images/hero.webp');">
-        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center hero-text">
         <h1 class="text-white">Welcome to Big T's Chophouse</h1>
         <p class="text-white">your go to restaurant for steaks and burgers</p>
         <a href="menu" class="btn btn-lg btn-primary">Explore Menu</a>
@@ -26,8 +26,8 @@
     </div>
 
     <!-- Slide 2 -->
-    <div class="carousel-item" style="background-image: url('/static/images/tbone steak.webp');" loading="lazy">
-        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+    <div class="carousel-item" style="background-image: url('/static/images/tbone steak.webp');">
+        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center hero-text">
         <h1 class="text-white">Book Your Table</h1>
         <p class="text-white">Sign up now for 20% off your first reservation</p>
         <a href="{% url 'reservation_create' %}" class="btn btn-lg btn-primary">Book Now</a>
@@ -35,8 +35,8 @@
     </div>
 
     <!-- Slide 3 -->
-    <div class="carousel-item" style="background-image: url('/static/images/guitar.webp');" loading="lazy">
-        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+    <div class="carousel-item" style="background-image: url('/static/images/guitar.webp');">
+        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center hero-text">
         <h1 class="text-white">Live Music Events</h1>
         <p class="text-white">Check out our events</p>
         <a href="" class="btn btn-lg btn-primary">Events</a>
@@ -59,9 +59,9 @@
 <!--About Section-->
 <section class="about">
     <div class="logo">
-       
     </div>
-    <div>      
+    <div>
+        <h2 class="text-white">About Big T's</h2>     
         <p class="text-white">
             Welcome to Big T's Chophouse, where tradition, bold flavors, and great entertainment come together for 
             the ultimate dining experience! At the heart of our kitchen is Big T, a master chef renowned for his 
@@ -85,7 +85,7 @@
 <section>
     <div class="container">
         <div class="row">
-            <div class="col opening">
+            <div class="col opening text-center">
                 <h2>Opening times</h2>
                 <p>Monday 18:00- 22:00</p>
                 <p>Tuesday 18:00- 22:00</p>
@@ -97,7 +97,7 @@
                 <p>The restaurant closes at 22:00 daily for dinner reservations. <br>On Fridays and Saturdays our bar is open till late</p>
             </div>
             
-            <div class="col d-flex justify-content-center align-items-center">
+            <div class="col d-none d-md-flex justify-content-center align-items-center">
                 <div class="sign">
                     <img src="/static/images/sign.webp" alt="open sign" class="img-fluid">
                 </div>
