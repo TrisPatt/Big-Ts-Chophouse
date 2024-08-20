@@ -4,32 +4,16 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2 account-menu">
-            <h1>My Account</h1>
-            
-            <!-- Home Page Button -->
-            <div class="d-flex align-items-center mb-2">
-                <span class="me-2">Home page:</span>
-                <a class="btn btn-secondary" href="{% url 'home' %}">Back to home</a>
-            </div>
 
-            <!-- Update Profile Button -->
-            <div class="d-flex align-items-center mb-2">
-                <span class="me-2">Update your profile details or delete your account:</span>
+<div class="d-flex justify-content-center mt-5 rounded">
+    <div class="card p-4 account-menu" style="width: 100%; max-width: 500px;">
+        <h1 class="d-flex justify-content-center">My Account</h1>
+            <p>Go to the home page, update your profile information, read and update your reservations and reviews!</p>
+
+            <div class="button-grid account">
+                <a class="btn btn-secondary" href="{% url 'home' %}">Home Page</a>
                 <a class="btn btn-secondary" href="{% url 'profile_update' %}">Update my details</a>
-            </div>
-
-            <!-- Bookings Button -->
-            <div class="d-flex align-items-center mb-2">
-                <span class="me-2">View your recent active and cancelled bookings:</span>
                 <a class="btn btn-secondary" href="{% url 'reservation_list' %}">My bookings</a>
-            </div>
-
-            <!-- Reviews Button -->
-            <div class="d-flex align-items-center mb-2">
-                <span class="me-2">View all and edit your reviews:</span>
                 <a class="btn btn-secondary" href="{% url 'review_list' %}">My Reviews</a>
             </div>
         </div>

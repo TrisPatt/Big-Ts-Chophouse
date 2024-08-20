@@ -23,7 +23,7 @@ def reservation_confirmed(request, reservation_number):
 @login_required #Only allow logged in users to view reservation with their unique id
 def reservation_list(request):
     if request.user.is_authenticated:
-        reservations = Reservation.objects.filter(user_id=request.user.id)
+        reservations = Reservation.objects.filter(user_id=request.user.id).order_by('-date')
         return render(request, 'reservation/reservation_list.html', {'reservations': reservations})
     else:
         # Redirect to login page if the user is not authenticated

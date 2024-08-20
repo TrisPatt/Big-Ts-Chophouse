@@ -31,12 +31,14 @@
                             <td>
                                 {% if reservation.reservation_status == 1 %}
                                     <span style="color: red; text-align: center;">Cancelled</span>
+                                {% elif reservation.reservation_status == 2 %}
+                                    <span style="color: grey; text-align: center;">Expired</span>    
                                 {% else %}
                                     <span>Active</span>
                                 {% endif %}
                             </td>
                             <td>
-                                {% if reservation.reservation_status != 1 %}
+                                {% if reservation.reservation_status != 1 and reservation.reservation_status != 2%}
                                     <a href="{% url 'update_reservation' reservation.reservation_number %}" class="btn btn-primary btn-sm">Update</a>
                                     <a href="{% url 'cancel_reservation' reservation.reservation_number %}" class="btn btn-danger btn-sm">Cancel</a>
                                 {% else %}

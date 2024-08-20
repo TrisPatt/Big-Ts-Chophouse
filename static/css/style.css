@@ -310,7 +310,33 @@ button:hover, .btn:hover {
     padding-bottom: 50px;
     border:#000;
 }
+/* Account menu styles */
+.account-menu {
+    border: 2px solid black;
+    text-align: center;
+    padding: 30px;
+}
 
+
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px; 
+    justify-items: center; 
+    align-items: center; 
+}
+
+.button-grid .btn {
+    width: 100%; 
+    max-width: 200px; 
+    height: 50px; 
+    text-align: center; 
+    padding: 30px 0; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /* Footer Styles */
 footer {
     background-color: #654321; 
