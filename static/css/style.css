@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
 /* Base Styles */
 body {
     font-family: 'Roboto', Arial, sans-serif;
@@ -22,14 +25,12 @@ p, li {
 
 /* Nav Bar */
 nav {
-    background-color: #aa730b;
-    color: #FFF;
+    background-color: #d4af37;
     padding: 10px 20px;
     box-shadow: 0 3px 3px #333333;
 }
 
 nav a {
-    color: #FFF;
     text-decoration: none;
     padding: 10px 15px;
     display: inline-block;
@@ -37,7 +38,7 @@ nav a {
 
 /* Custom nav link hover effect */
 .navbar-dark .navbar-nav .nav-link {
-    color: #fff; 
+    color: black; 
     position: relative;
     padding-bottom: 5px;
     transition: color 0.3s ease;
@@ -62,8 +63,11 @@ nav a {
     width: 100%; 
 }
 
-.navbar-dark .navbar-nav .nav-link.active {
+.nav-link.active {
     color: #ccc; 
+}
+.navbar-toggler-icon .nav-item{
+    color: black;
 }
 
 /* Button Styles */
@@ -82,6 +86,17 @@ button:hover, .btn:hover {
 }
 
 /* Hero Carousel Section */
+
+/* images */
+.hero-slide-1 {
+    background-image: url('/static/images/hero.webp');
+}
+.hero-slide-2 {
+    background-image: url('/static/images/tbone steak.webp');
+}
+.hero-slide-3 {
+    background-image: url('/static/images/guitar.webp');
+}
 
 #heroCarousel .carousel-item {
     height: 80vh;
@@ -149,7 +164,8 @@ button:hover, .btn:hover {
     align-items: center;
     padding: 30px;
     grid-gap: 40px;
-    background-color: #aa730b;
+    background-color: #d4af37;
+    
 }
 
 .book {
@@ -195,7 +211,9 @@ button:hover, .btn:hover {
 }
 
 .sign {
-    font-size: 0.5rem;
+    
+    background: url('/static/images/sign.webp') no-repeat center center;
+    background-size: contain;
 }
 
 /* Menu styles */
@@ -238,12 +256,6 @@ button:hover, .btn:hover {
     color: #000;
 }
 
-.underline {
-    text-decoration: underline;
-    font-weight: bold;
-    font-size: 1.5rem;
-}
-
 .menu-items li {
     margin-bottom: 10px; 
 }
@@ -257,6 +269,22 @@ button:hover, .btn:hover {
     display: block;  
 }
 
+.menu-navigation {
+    background-color: transparent !important; 
+    box-shadow: none !important;
+}
+
+.menu-navigation .nav-link {
+    color: black !important; 
+    background-color: transparent !important; 
+    padding: 0.5rem 1rem; 
+}
+
+.menu-navigation .nav-link:hover,
+.menu-navigation .nav-link:focus {
+    color: black !important; 
+    text-decoration: underline; 
+}
 /* Reservation styles */
 
 .datepicker {
@@ -268,7 +296,7 @@ button:hover, .btn:hover {
     color: #ffffff; 
 }
 
-.reservation-list, .account-menu {
+.reservation-list, .account-menu, .logout {
     background-color: white;
     padding: 20px;
     margin-top: 20px;
@@ -281,14 +309,12 @@ button:hover, .btn:hover {
 }
 
 /* Review styles */
-.review-back, .review-submit {
-    background-color: #aa730b;
-    color:white;
+.review-back, .review-submit, .edit-review {
+    background-color:#d4af37 ;
     border-radius: 27px !important;
     padding: 20px; 
     border: 2px solid #070707 !important; 
     margin-bottom: 40px;
-
 }
 
 .review-box  {
@@ -324,7 +350,7 @@ button:hover, .btn:hover {
     border:#000;
 }
 /* Account menu styles */
-.account-menu {
+.account-menu, .logout {
     border: 2px solid black;
     text-align: center;
     padding: 30px;
@@ -350,7 +376,7 @@ button:hover, .btn:hover {
 }
 /* Footer Styles */
 footer {
-    background-color: #654321; 
+    background-color: #3e2813; 
     color: #FFF;
     padding: 20px;
     text-align: center;
@@ -420,16 +446,23 @@ footer a:hover {
         font-size: 1rem;
         padding: 10px 20px;
     }
+    #heroCarousel .carousel-item {
+        height: 40vh; 
+    }
+
     .carousel-caption h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
     }
 
     .carousel-caption p {
         font-size: 1rem;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
     }
 
     .carousel-caption .btn {
-        font-size: 1rem;
+        font-size: 0.8rem;
         padding: 8px 15px;
     }
 
