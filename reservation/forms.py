@@ -12,9 +12,7 @@ class ReservationForm(forms.ModelForm):
         widget=forms.DateInput(attrs={
             'class': 'form-control datetimepicker-input',
             'id': 'reservation-date',
-            'data-provide': 'datepicker',  
-            'data-date-format': 'yyyy-mm-dd',
-            'min': timezone.now().date().strftime('%Y-%m-%d'),
+            'type': 'text',           
         })
     )
     time = forms.ModelChoiceField(
