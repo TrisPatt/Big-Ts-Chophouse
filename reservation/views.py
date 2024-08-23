@@ -33,7 +33,7 @@ def reservation_list(request):
 @login_required #Only allow logged in users to create a reservation with their unique id
 def reservation_create(request):
     if request.method == 'POST':
-        form = ReservationForm(request.POST)
+        form = ReservationForm(request.POST, user=request.user)
         if form.is_valid():
             reservation = form.save(commit=False)
             reservation.user_id = request.user
@@ -77,7 +77,7 @@ def reservation_create(request):
                 messages.error(request, "Sorry, we can't accommodate your party size at the requested time.")
                 return redirect('reservation_create')
     else:
-        form = ReservationForm()
+        form = ReservationForm(user=request.user)
 
     return render(request, 'reservation/reservation_form.html', {'form': form})
 

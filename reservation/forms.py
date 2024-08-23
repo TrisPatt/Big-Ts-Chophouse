@@ -19,12 +19,21 @@ class ReservationForm(forms.ModelForm):
         queryset=TimeSlot.objects.none(), 
         widget=forms.Select(attrs={'class': 'form-control'})
     )
+    first_name = forms.CharField(max_length=30, required=True)
+    last_name = forms.CharField(max_length=30, required=True)
+    email = forms.EmailField(required=True)
 
     def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
 
         # Initialize the 'time' field's queryset
         self.fields['time'].queryset = TimeSlot.objects.all()
+
+        if user:
+            self.fields['first_name'].initial = user.first_name
+            self.fields['last_name'].initial = user.last_name
+            self.fields['email'].initial = user.email
 
 
     class Meta:
