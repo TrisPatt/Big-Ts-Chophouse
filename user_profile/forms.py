@@ -21,7 +21,7 @@ class CombinedUserProfileForm(forms.Form):
     
     # Fields from Profile model
     phone_number = forms.CharField(max_length=30, required=False)
-    date_of_birth = forms.DateField(required=False)
+    date_of_birth = forms.DateField(required=False, help_text='Format: yyyy/mm/dd')
     
     def __init__(self, *args, **kwargs):
         # Instance of the User and Profile objects
