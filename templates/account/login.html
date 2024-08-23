@@ -7,19 +7,17 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
+<div class="container d-flex align-items-center justify-content-center">
+    <div class="card p-4 logout" style="width: 100%; max-width: 500px;">
+        <div class="col-auto mt-3">
             <h3>{% trans "Sign In" %}</h3>
 
-            <p>{% blocktrans %}Welcome back to Big T's Chophouse. To lmake a reservation or leave a review, please log in. If
-                you
-                have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a>
+            <p>{% blocktrans %}Welcome back to Big T's Chophouse. To make a reservation or leave a review, please log in. <br>If
+                you have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a>
                 first.{% endblocktrans %}</p>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
+
+        <div class="col-auto mt-3">
             <form class="login" method="POST" action="{% url 'account_login' %}">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -27,9 +25,9 @@
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
                 <button class="btn btn-signup right" type="submit">{% trans "Sign In" %}</button>
-                <div></div>
             </form>
         </div>
     </div>
 </div>
+
 {% endblock %}

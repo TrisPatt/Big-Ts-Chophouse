@@ -11,9 +11,8 @@ class ReviewForm(forms.ModelForm):
         widgets = {
             'visit_date': forms.DateInput(attrs={
                 'class': 'form-control datepicker',
-                'id': 'reservation-date',
-                'data-provide': 'datepicker',
-                'data-date-format': 'yyyy-mm-dd',
+                'id': 'visit-date',
+
             })
         }
     def clean_visit_date(self):

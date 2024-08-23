@@ -72,17 +72,18 @@ nav a {
 
 /* Button Styles */
 button, .btn {
-    background-color: rgba(210, 17, 17, 0.2); 
-    color: #FFF;
+    background-color:  #7B2B30;
+    color: #fff;
     border: 1px solid black;
+    border-radius: 10px;
     padding: 10px 20px;
     text-transform: uppercase;
     cursor: pointer;
-    font-family: 'Bebas Neue', Impact, sans-serif;
 }
 
 button:hover, .btn:hover {
-    background-color: #A52A2A; 
+    background-color: rgba(210, 17, 17, 0.2);
+    color: #000;
 }
 
 /* Hero Carousel Section */
@@ -168,6 +169,7 @@ button:hover, .btn:hover {
     
 }
 
+/*book now button*/
 .book {
     text-align: center;
 }
@@ -178,7 +180,7 @@ button:hover, .btn:hover {
     padding: 15px 30px;
     font-size: 1.2rem;
     text-transform: uppercase;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 2px solid #000;
     transition: background-color 0.3s ease;
 }
@@ -213,6 +215,18 @@ button:hover, .btn:hover {
 .sign {
     
     background: url('/static/images/sign.webp') no-repeat center center;
+    background-size: contain;
+}
+
+/* events styles */
+#events {
+    background-color: #f5deb3;
+}
+
+.poster {
+    background: url('/static/images/live-poster.webp') no-repeat center center;
+    height: 500px;
+    width: 300px;
     background-size: contain;
 }
 
@@ -288,18 +302,13 @@ button:hover, .btn:hover {
 /* datepicker styles */
 
 .datepicker {
-    background-color: #d4af37; 
+    background-color: white; 
 }
 
 .datepicker-header {
     background-color: green; 
     color: #ffffff; 
     text-align: center;
-}
-
-.datepicker-days td,
-.datepicker-days th {
-    color: black; 
 }
 
 .datepicker-days td {
@@ -318,13 +327,7 @@ button:hover, .btn:hover {
     width: 100%; 
 }
 .datepicker-days .today {
-    background-color: #007bff; 
-    color: #fff;
-}
-
-/* Change the color of the disabled dates */
-.datepicker-days, .datepicker-day.disabled {
-    color: #6c757d; 
+    background-color: #d4af37; 
 }
 
 /* Reservation styles */
@@ -333,6 +336,7 @@ button:hover, .btn:hover {
     padding: 20px;
     margin-top: 20px;
     border-radius: 20px;
+    border: 2px solid black;
 }
 
 /* Review styles */
@@ -377,7 +381,7 @@ button:hover, .btn:hover {
     border:#000;
 }
 /* Account menu styles */
-.account-menu, .logout {
+.account-menu, .logout, .signup {
     border: 2px solid black;
     text-align: center;
     padding: 30px;
