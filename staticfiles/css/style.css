@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
 /* Base Styles */
 body {
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('static/images/barn-background.webp'); 
+    background-image: url('/static/images/barn-background.webp');
     background-size: cover; 
     background-position: center; 
-    background-repeat: no-repeat; 
 }
 
 /* Headers */
@@ -23,14 +25,12 @@ p, li {
 
 /* Nav Bar */
 nav {
-    background-color: rgb(166, 114, 49);
-    color: #FFF;
+    background-color: #d4af37;
     padding: 10px 20px;
     box-shadow: 0 3px 3px #333333;
 }
 
 nav a {
-    color: #FFF;
     text-decoration: none;
     padding: 10px 15px;
     display: inline-block;
@@ -38,7 +38,7 @@ nav a {
 
 /* Custom nav link hover effect */
 .navbar-dark .navbar-nav .nav-link {
-    color: #fff; 
+    color: black; 
     position: relative;
     padding-bottom: 5px;
     transition: color 0.3s ease;
@@ -63,71 +63,99 @@ nav a {
     width: 100%; 
 }
 
-.navbar-dark .navbar-nav .nav-link.active {
+.nav-link.active {
     color: #ccc; 
+}
+.navbar-toggler-icon .nav-item{
+    color: black;
 }
 
 /* Button Styles */
 button, .btn {
-    background-color: rgba(210, 17, 17, 0.2); 
-    color: #FFF;
+    background-color:  #7B2B30;
+    color: #fff;
     border: 1px solid black;
+    border-radius: 10px;
     padding: 10px 20px;
     text-transform: uppercase;
     cursor: pointer;
-    font-family: 'Bebas Neue', Impact, sans-serif;
 }
 
 button:hover, .btn:hover {
-    background-color: #A52A2A; 
+    background-color: rgba(210, 17, 17, 0.2);
+    color: #000;
 }
 
-/* Hero Section */
-.hero {
+/* Hero Carousel Section */
+
+/* images */
+.hero-slide-1 {
+    background-image: url('/static/images/hero.webp');
+}
+.hero-slide-2 {
+    background-image: url('/static/images/tbone steak.webp');
+}
+.hero-slide-3 {
+    background-image: url('/static/images/guitar.webp');
+}
+
+#heroCarousel .carousel-item {
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     position: relative;
-    background: url('/static/images/hero.webp') no-repeat center center;
-    background-size: cover; 
-    height: 80vh; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    z-index: 9;
 }
 
-.hero::before {
-    content: "";
+/* Add a dark overlay using ::before pseudo-element */
+#heroCarousel .carousel-item::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 1;
+    background: rgba(0, 0, 0, 0.6); 
+    z-index: 1; 
 }
 
-.hero-text {
-    position: relative;
-    z-index: 2;
+/* Carousel Caption Styling */
+.carousel-caption {
+    position: absolute;
+    z-index: 2; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
 }
 
-.hero-text h1 {
+.carousel-caption h1 {
+    font-family: 'Lora', serif;
+    font-weight: 200;
     font-size: 4rem;
-    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
     margin-bottom: 0.5rem;
     color: white;
 }
 
-.hero-text p {
+.carousel-caption p {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    color: white;
 }
 
-.hero-text .btn {
+.carousel-caption .btn {
     font-size: 1.25rem;
     padding: 0.75rem 1.5rem;
 }
+
 /* About styles */
 .about {
     display: grid;
@@ -137,8 +165,11 @@ button:hover, .btn:hover {
     align-items: center;
     padding: 30px;
     grid-gap: 40px;
+    background-color: #d4af37;
+    
 }
 
+/*book now button*/
 .book {
     text-align: center;
 }
@@ -149,7 +180,7 @@ button:hover, .btn:hover {
     padding: 15px 30px;
     font-size: 1.2rem;
     text-transform: uppercase;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 2px solid #000;
     transition: background-color 0.3s ease;
 }
@@ -172,9 +203,44 @@ button:hover, .btn:hover {
     height: 60px;
 }
 
+.opening {
+    background-color: rgba(245, 240, 230, 0.9);
+    border-radius: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 15px;
+    text-align: center;
+}
+
+.sign {
+    
+    background: url('/static/images/sign.webp') no-repeat center center;
+    background-size: contain;
+}
+
+/* events styles */
+#events {
+    background-color: #f5deb3;
+}
+
+.poster {
+    background: url('/static/images/live-poster.webp') no-repeat center center;
+    height: 500px;
+    width: 300px;
+    background-size: contain;
+}
+
 /* Menu styles */
 .menu-section {
     margin-bottom: 2rem;
+}
+
+.menu {
+    background-image: url('/static/images/paper-menu.webp');
+    border-radius: 25px; 
+    overflow: hidden; 
+    padding: 30px;
+    margin-bottom: 35px;
 }
 
 .menu-category {
@@ -204,12 +270,6 @@ button:hover, .btn:hover {
     color: #000;
 }
 
-.underline {
-    text-decoration: underline;
-    font-weight: bold;
-    font-size: 1.5rem;
-}
-
 .menu-items li {
     margin-bottom: 10px; 
 }
@@ -218,34 +278,83 @@ button:hover, .btn:hover {
     margin-bottom: 30px; 
 }
 
-.menu-item span.price {
+.menu-item, span.price {
     margin-top: 5px; 
     display: block;  
 }
 
-/* Reservation styles */
+.menu-navigation {
+    background-color: transparent !important; 
+    box-shadow: none !important;
+}
+
+.menu-navigation .nav-link {
+    color: black !important; 
+    background-color: transparent !important; 
+    padding: 0.5rem 1rem; 
+}
+
+.menu-navigation .nav-link:hover,
+.menu-navigation .nav-link:focus {
+    color: black !important; 
+    text-decoration: underline; 
+}
+/* datepicker styles */
 
 .datepicker {
-    background-color: #f8f9fa; 
+    background-color: white; 
 }
 
 .datepicker-header {
-    background-color: #007bff; 
+    background-color: green; 
     color: #ffffff; 
+    text-align: center;
 }
 
-/* Change the color of the disabled dates */
-.datepicker-days .datepicker-day.disabled {
-    color: #6c757d; 
+.datepicker-days td {
+    padding: 5px;
+    margin: 2px;
+    width: 25px;
+}
+
+.datepicker-days .old {
+    color: grey !important; 
+}
+
+.datepicker .form-control {
+    font-size: 1.2rem; 
+    padding: 12px; 
+    width: 100%; 
+}
+.datepicker-days .today {
+    background-color: #d4af37; 
+}
+
+/* Reservation styles */
+.reservation-list, .account-menu, .logout {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    border: 2px solid black;
 }
 
 /* Review styles */
-.review-box {
-    border: 1px solid #ccc; 
-    border-radius: 8px; 
+.review-back, .review-submit, .edit-review {
+    background-color:#d4af37 ;
+    border-radius: 27px !important;
+    padding: 20px; 
+    border: 2px solid #070707 !important; 
+    margin-bottom: 40px;
+}
+
+.review-box  {
+    border: 2px solid #070707 !important; 
+    color: black;
+    border-radius: 27px !important;
     padding: 20px; 
     margin-bottom: 20px; 
-    background-color: #f9f9f9; 
+    background-color: white; 
 }
 
 .review-box a {
@@ -258,12 +367,12 @@ button:hover, .btn:hover {
     list-style: none; 
 }
 
-.stars .review-box{
+.stars{
     display: inline-block;
     font-size: 15px;
-    color: #ffd700;  
+    color: gold;  
 }
-.star-empty .review-box{
+.star-empty {
     color: #ccc;  
 }
 
@@ -271,9 +380,34 @@ button:hover, .btn:hover {
     padding-bottom: 50px;
     border:#000;
 }
+/* Account menu styles */
+.account-menu, .logout, .signup {
+    border: 2px solid black;
+    text-align: center;
+    padding: 30px;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px; 
+    justify-items: center; 
+    align-items: center; 
+}
+
+.button-grid .btn {
+    width: 100%; 
+    max-width: 200px; 
+    height: 50px; 
+    text-align: center; 
+    padding: 30px 0; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /* Footer Styles */
 footer {
-    background-color: #654321; 
+    background-color: #3e2813; 
     color: #FFF;
     padding: 20px;
     text-align: center;
@@ -289,17 +423,21 @@ footer a:hover {
     text-decoration: underline;
 }
 
+/* Media queries */
 @media (max-width: 1200px) {
     .about {
         grid-template-columns: 1fr;
         text-align: center;
+        padding: 20px;
     }
     
     .logo {
         width: 200px;
         height: 200px;
     }
+}
 
+@media (max-width: 992px) {
     .about-text p {
         font-size: 1.1rem;
     }
@@ -315,24 +453,75 @@ footer a:hover {
 
 @media (max-width: 768px) {
     .hero-text h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
+        margin: 0 10px;
     }
 
     .hero-text p {
-        font-size: 1rem;
+        font-size: 0.5rem;
+        margin: 0 10px;
     }
 
     .about {
         grid-template-columns: 1fr;
+        justify-items: center;
     }
 
     .logo {
         width: 150px;
         height: 150px;
+        margin-bottom: 20px;
     }
 
     .book a {
         font-size: 1rem;
         padding: 10px 20px;
+    }
+    #heroCarousel .carousel-item {
+        height: 40vh; 
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .carousel-caption p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
+
+    .carousel-caption .btn {
+        font-size: 0.8rem;
+        padding: 8px 15px;
+    }
+
+    .logo {
+        display: grid;
+        grid-column: 1fr;
+        align-items: center;
+        text-align: center;
+    }
+    .opening {
+        margin: 20px 5px;
+    }
+
+    .sign {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav {
+        text-align: center; 
+    }
+
+    .footer {
+        font-size: 12px; 
+    }
+
+    .footer a {
+        font-size: 12px;
     }
 }
