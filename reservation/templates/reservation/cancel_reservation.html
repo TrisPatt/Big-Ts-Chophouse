@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="d-flex justify-content-center mt-5">
-  <div class="card p-4" style="width: 100%; max-width: 500px;">
+<div class="d-flex justify-content-center mt-5 rounded">
+  <div class="card p-4 account-menu" style="width: 100%; max-width: 500px;">
       <h1 class="d-flex justify-content-center">Cancel Reservation</h1>
       <p>Are you sure you want to cancel your reservation for {{ reservation.date }} at {{ reservation.time }}?</p>
       <form method="post" action="{% url 'cancel_reservation' reservation.reservation_number %}">
         {% csrf_token %}
         {{ form.as_p }}
-      <button class="btn btn-secondary"
-        type="submit">Submit</button>
+      <div class=" d-flex justify-content-center">  
+        <button class="btn btn-secondary justify-content-center"
+          type="submit">Submit</button>
+      </div>
       </form>
       <div class="text-center mt-3">
-          <a class="btn btn-secondary" href="{% url 'reservation_list' %}"><button>Back to booking list</button></a>
+          <a class="btn btn-secondary" href="{% url 'reservation_list' %}">Back to booking list</a>
       </div>
   </div>
   
