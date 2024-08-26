@@ -1,9 +1,17 @@
 # Big T's Chophouse
+Legendary super chef champion Big T is thrilled to unveil his latest culinary venture: Big T's Chophouse. This new dining destination is set to become a must-visit for meat lovers, with the award-winning 32oz Big T-bone steak taking center stage. But the delights don't stop there, Big T's Chophouse offers a mouthwatering selection of perfectly grilled steaks, tender ribs, juicy burgers, and hearty sides that cater to every carnivorous craving.
 
+Complementing the feast, the saloon bar boasts a curated collection of local craft beers, fine wines, and handcrafted cocktails, ensuring the perfect pairing for every dish. As you indulge in these culinary masterpieces, soak in the vibrant atmosphere with live music events that transform any night into a special occasion.
+
+Shhh... While Big T’s Chophouse is known for its legendary steaks and hearty meat dishes, we haven’t forgotten about our plant-loving friends. Our menu also features a delicious vegan burger that’s packed with flavor, ensuring there’s something for everyone to enjoy.
+
+Whether you're celebrating with friends, enjoying a romantic dinner, or just looking for the best steak in town, Big T's Chophouse promises an unforgettable experience. Come for the food, stay for the atmosphere. Big T's is where great food, good times, and memorable nights come together.
+
+Book your table today! 
 
 ![Home Screen]()
 
-[View Big T's Chophouse Retreat live website here]()
+[View Big T's Chophouse website here](https://big-ts-chophouse-8ec7ab8dc652.herokuapp.com/)
 - - -
 
 ## Table of Contents
@@ -45,13 +53,17 @@
 
 ## User Experience (UX)
 
+Immerse yourself in an effortlessly engaging user experience at Big T's Chophouse. Our website combines intuitive navigation with stunning visual design, bringing the essence of our restaurant to your screen. Whether you're browsing the mouthwatering hero section, making a reservation through our streamlined booking system, or leaving a review, every interaction is smooth and enjoyable. With comprehensive information readily available and responsive support at your fingertips, your needs are met with ease. Plus, our mobile-friendly design ensures that planning your next visit is a breeze, no matter what device you're using.
+
 
 ### Project Goals
+
+The primary goal of Big T's Chophouse is to deliver an exceptional customer experience on our website. This includes offering a seamless and intuitive booking system that allows users to easily create, review, edit, or cancel reservations. We also aim to provide a comprehensive and user-friendly menu display, enabling customers to explore our diverse offerings with ease. Additionally, our robust platform for managing reviews empowers customers to write, update, and delete their feedback effortlessly. Every element of the website is designed to ensure a smooth, satisfying, and engaging experience for all visitors.
 
 
 ### Agile Methodology
 
-Agile Methodology was used to help prioritize and organize tasks, writting the user stories and using Project Boards on Github. Template was created to help write User Stories and define Epics
+Agile Methodology was used to help prioritize and organize tasks, writting the user stories and using Project Boards on Github. Templates were created to help write User Stories and define Epics
 
 * Epics were written containing possible user stories and based on that the website was made.
 * User stories were created by looking at epics and through iterations the project was advancing.
@@ -117,15 +129,15 @@ Detailed look can be found in the [project board]()
 
 
 ### Color Scheme
-![Color Scheme]()
+![Color Scheme](documentation/readme-imgs/color-chart.png)
 
 ### Hero Images
 
-All images were taken from [pixabay]().
+All images were taken from [pixabay](www.pixabay.com).
 
 ### Logo
 
-Vista was used [Vista]().
+Vista was used [Vista](vistaprint.co.uk).
 
 ### Typography
 
@@ -137,7 +149,7 @@ Lora, Roboto
 <summary> Home Page
 </summary>
 
-![Home Page](G)
+![Home Page]()
 </details>
 
 <details>
@@ -171,7 +183,7 @@ Lora, Roboto
     * 
 ---
 2. Reservation Model
-    * 
+    *  
 ---
 3. Review Model
     * 
@@ -231,90 +243,94 @@ Entity Relationship Diagram (ERD)
 ### Existing Features
 
 * Home Page
-    * Displays a navigation bar with logo displaying links, main heading on Hero carousel, about section, opening times and footer with contact details and social links. These are intentionally not active at this time.
-
-![Home Page]()
-
-
-
-![Book Now]()
-
+    * Displays a navigation bar with logo which links to the home page and links to other sections of the site. The hero image carousel displays links to the menu, reservation page and events section. Other sections on this page are the about section, opening times, events and footer with contact details and social links, which are intentionally not active at this time.
+![Home Page](documentation/readme-imgs/homepage.png)
 
 * Logo
-    * Logo was created using [Vista]() 
+    * The logo was created using [Vista](www.vistaprint.co.uk). The colours and design are in line with the colur design of the website.
 
-![Logo]()
+![Logo](documentation/readme-imgs/logo.png)
 
 * Navigation Bar
     * It differs if its a user or just a visitor
-
     * Navigation bar for a visitor
 
-    ![Visitor]()
+    ![Visitor](documentation/readme-imgs/logged-out-navbar.png)
 
     * Navigation bar for a logged in user
-    ![User]()
+    ![User](documentation/readme-imgs/navbar.png)
 
 
 * Hero Carousel
-    * 
+    * The hero carousel features engaging images with direct links to the menu, reservations, and events sections of the website, offering an interactive and visually appealing way to explore key information.
 
-![Carousel]()
+![Carousel](documentation/readme-imgs/hero-section.png)
 
 * About Section
-    * It contains a short description of Woodland Whispers Retreat and a short lake tale
+    * This section describes what the restaurant is really about, as well as additional offerings and contains a call to action "book now" button!
 
-![About]()
+![About](documentation/readme-imgs/about.png)
+
+* Opening Times
+    * The opening times are displayed to the user!
+
+![Opening Times](documentation/readme-imgs/opening-times.png)
+
+* Events
+    * Upcoming events are displayed to the user
+
+![Events](documentation/readme-imgs/upcoming-events.png)
 
 * Footer
     * Contains copyright information, creator and social links which are all linked to the creator of the website
 
-![Footer](G)
+![Footer](documentation/readme-imgs/footer.png)
 
 * Sign up
     * User can create an account
 
-![Sign Up]()
+![Sign Up](documentation/readme-imgs/sign-up.png)
 
 * Login
     * User can login into an account, if they have created one
 
-![Login]()
-![Login Message]()
+![Login](documentation/readme-imgs/sign-in.png)
 
 * Logout
     * User can logout
 
-![Logout]()
+![Logout](documentation/readme-imgs/log-out.png)
 
+* Make a reservation
+    * Users are invited to make a reservation with the restaurant
 
-![Make a Reservation]()
+![Make a Reservation](documentation/readme-imgs/create-booking-form.png)
 
 * Booking Succesful
     * If booking is succesfull, user gets a notified message and an overview of the booking they just made.
 
-![Booking Succesful]()
+![Booking Succesful](documentation/readme-imgs/thanks-for-booking.png)
 
 * Reservation List
     * Includes all of the user bookings, which have buttons to edit or delete bookings.
 
-![Reservation Overview]()
+![Reservation Overview](documentation/readme-imgs/my-reservations.png)
 
 * Already booked dates
-    * User won't be able to make bookings if the restaurant is fully booked
+    * If the time is unavailabe the the user is notifies.
     * Dates in the past are unavailable.
 
-![Booked Dates]()
+![Edit booking](documentation/readme-imgs/update-reservation-prepopulated.png)
 
 * Edit Booking
     * User can change their booking and save changes
 
-![Edit Booking]()
+![Edit Booking](documentation/readme-imgs/update-reservation-prepopulated.png)
 
 * Delete Booking
     * User can delete their booking, before it is deleted it has to be confirmed.
 
-![Delete Booking]()
+![Delete Booking](documentation/readme-imgs/cancel-reservation.png)
 
 * Alert messages
     * For every action there is an alert message to notify user

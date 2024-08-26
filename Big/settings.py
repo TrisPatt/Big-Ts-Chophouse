@@ -30,8 +30,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-trispatt-bigtschophouse-k0g8fwcmfog.ws-eu115.gitpod.io','.herokuapp.com', '8000-trispatt-bigtschophouse-rklo99g5cz5.ws.codeinstitute-ide.net', 
-'https://ui.dev/amiresponsive'
+ALLOWED_HOSTS = ['8000-trispatt-bigtschophouse-k0g8fwcmfog.ws-eu115.gitpod.io','.herokuapp.com', '8000-trispatt-bigtschophouse-rklo99g5cz5.ws.codeinstitute-ide.net'
+
 ]
 
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -124,7 +125,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.codeanyapp.com",
     "https://*.herokuapp.com",
     "https://8000-trispatt-bigtschophouse-k0g8fwcmfog.ws-eu115.gitpod.io",
-    "https://ui.dev/amiresponsive"
     
 ]
 
@@ -170,12 +170,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
-
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
