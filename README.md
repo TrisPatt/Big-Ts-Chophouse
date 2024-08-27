@@ -96,10 +96,10 @@ Agile Methodology was used to help prioritize and organize tasks, writting the u
 
 #### Epics
 * Initial Deployment
-* Create a responsive UX/UI
 * User Registration
 * Implement Reservations
 * Implement Reviews
+* Create a responsive UI/UX
 
 #### User Stories
 1. Initial Deployment
@@ -126,6 +126,10 @@ Agile Methodology was used to help prioritize and organize tasks, writting the u
 *  Delete reviews
 *  Filter reviews
 *  Respond to customer reviews
+
+5. Create a responsive UI/UX
+*  Design a user friendly navigation system
+*  Responsive hero section
 
 Detailed look can be found in the [project board]()
 
@@ -195,57 +199,51 @@ Lora, Roboto
 ![Home Page- Mobile](documentation/readme-imgs/wireframe-home-mobile.png)
 </details>
 
-<details>
-<summary> Home Page when logged in
-</summary>
-
-![Home Page when logged in]()
-</details>
-
-![User Login Page]()
-</details>
-
-<details>
-<summary> User Logout Page
-</summary>
-
-![User Logout Page]()
-</details>
-
-<details>
-<summary> User Sign Up Page
-</summary>
-
-![User Sign Up Page]()
-</details>
-
 ### Data Models
 
 1. AllAuth User Model
-    * Django Allauth, the User model is the default user model provided by the Django authentication system
-    * 
+    * Django Allauth, the User model is the default user model provided by the Django authentication system.
+    * The user model has a one to one bi-directional relationship with the profile model so that each user has exactly one profile, and each profile is associated with one user.
 ---
 2. Reservation Model
-    *  
+    * Reservations can be made, viewed, edited and cancelled by their associated users or admins.
+    * The reservation model is linked to the user model by a many to one relationship. Each reservation is made by a single user, but a user can have multiple reservations.
+    * If a user is deleted either by opting to do so, or by an admin, then their reviews will also be deleted.
 ---
 3. Review Model
-    * 
+    * Reviews can be created, viewed, updated and deleted by their asociated users and admins.
+    * The review model is linked to the user model by a many to one relationship, foreign key. Each review is written by a single user, but a single user can write multiple reviews.
+    * If a user is deleted either by opting to do so, or by an admin, then their reviews will also be deleted.
 ---
 4. Profile Model
-
-    * 
-
-### User Journey 
-
-![User Journey]()
+    * The profile model allows the built-in django allauth user model to be extended so that users can add additional details. This is useful in the pre-population of form fields and saves on double keying as the only details that can entered in the allauth model are username and password, with e-mail being optional. 
+    * The profile model has a one to one bi-directional relationship with the user model.
+---
+5. Table Model
+    * The table model is linked to the reservation model through a many to many relationship. A single reservation can be associated with multiple tables, and a single table can be associated with multiple reservations. This is useful for scenarios where a large party might require more than one table, or where tables are reserved for different groups at different times.
+    * Tables can be managed by admins in the user panel should the restaurant expand or decrease the number of tables or associated seats.
+---
+6. Time slot model
+    * The Reservation model is linked to the TimeSlot model through a many-to-one relationship. Each reservation occurs at a specific time slot, but a single time slot can be associated with multiple reservations. This relationship is defined by the ForeignKey on the Reservation model.
+    * Time slots can be managed by the admin in the user panel should opening hours change.
+    * If a TimeSlot is deleted, all associated reservations will also be deleted.
 
 ### Database Scheme
 
 Entity Relationship Diagram (ERD)
 
-![DataSchema]()
+![DataSchema](documentation/readme-imgs/entity-relationship-diagram.png)
 
-* 
+* User: The central entity, connected to reservations, reviews, and profiles. Each user can have multiple reservations and reviews but only one profile.
+* Profile: Contains additional information about the user, linked one-to-one with the User model.
+* Reservation: Tied to users, tables, and time slots. A user can make multiple reservations, each linked to one or more tables and a single time slot.
+* Review: Tied to a single user, allowing users to provide feedback on their dining experiences.
+* Table: Can be reserved by multiple reservations, allowing flexible seating arrangements for different parties.
+
+
+### User Journey 
+
+![User Journey]()
 
 ## Security Features
 
