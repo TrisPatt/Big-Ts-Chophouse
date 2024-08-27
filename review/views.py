@@ -5,6 +5,7 @@ from .forms import ReviewForm
 from django.core.exceptions import PermissionDenied
 from django.contrib import messages
 
+
 @login_required
 def submit_review(request):
     if request.method == 'POST':
@@ -13,16 +14,23 @@ def submit_review(request):
             review = form.save(commit=False)
             review.user = request.user
             review.save()
-            messages.success(request, 'Thank you. Your review has been submitted')
-            return redirect('review_list')  
+            messages.success
+            (request, 'Thank you. Your review has been submitted')
+            return redirect('review_list')
     else:
         form = ReviewForm()
     return render(request, 'review/submit_review.html', {'form': form})
 
+
 def review_list(request):
     reviews = Review.objects.all().order_by('-created_on')
-    rating_range = range(1, 6)  
-    return render(request, 'review/review_list.html', {'reviews': reviews, 'rating_range': rating_range})
+    rating_range = range(1, 6)
+    return render(
+        request,
+        'review/review_list.html',
+        {'reviews': reviews, 'rating_range': rating_range}
+    )
+
 
 @login_required
 def edit_review(request, review_id):
@@ -36,11 +44,14 @@ def edit_review(request, review_id):
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Thank you. Your review has been updated') # Display confirmation message
-            return redirect('review_list')  # Redirect to the review list after editing
+            # Display confirmation message
+            messages.success(request,
+                             'Thank you. Your review has been updated')
+            # Redirect to the review list after editing
+            return redirect('review_list')
     else:
         form = ReviewForm(instance=review)
-    
+
     return render(request, 'review/edit_review.html', {'form': form})
 
 
@@ -54,7 +65,8 @@ def delete_review(request, review_id):
 
     if request.method == "POST":
         review.delete()
-        messages.success(request, 'Review deleted successfully.') 
-        return redirect('review_list')  # Redirect to the review list page 
+        messages.success(request, 'Review deleted successfully.')
+        return redirect('review_list')  # Redirect to the review list page
     else:
-        return render(request, 'review/confirm_delete.html', {'review': review})
+        return render(request, 'review/confirm_delete.html',
+                      {'review': review})

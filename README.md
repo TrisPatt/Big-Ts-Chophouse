@@ -75,7 +75,7 @@ Agile Methodology was used to help prioritize and organize tasks, writting the u
 <summary> User Stories Template
 </summary>
 
-![User Stories Template]()
+![User Stories Template](documentation/readme-imgs/user-story-template.png)
 </details>
 
 <details>
@@ -96,37 +96,73 @@ Agile Methodology was used to help prioritize and organize tasks, writting the u
 
 #### Epics
 * Initial Deployment
-* Home Page
+* Create a responsive UX/UI
 * User Registration
-* Website Admin and Bookings
-* Maintain consistent design with responsiveness in mind
+* Implement Reservations
+* Implement Reviews
 
 #### User Stories
 1. Initial Deployment
-* 
-2. Home Page
-* 
-3. User Registration
-* 
-4. 
-*
+*  Create new django project
+*  Create Heroku app
+*  Link github repository
+
+2. User Registration
+*  Create user account
+*  Update user records
+*  Delete user account
+*  Reset password if forgotten
+
+3. Implement an online reservation system
+*  Make an available reservation
+*  View reservations
+*  Update reservation details
+*  Cancel reservations
+*  Reservation reminder
+
+4. Reviews
+*  Leave a customer review
+*  Update review 
+*  Delete reviews
+*  Filter reviews
+*  Respond to customer reviews
 
 Detailed look can be found in the [project board]()
 
 ### Target Audience
 
-* 
+* The restaurant primarily targets meat lovers and food enthusiasts who appreciate high-quality cuts of meat and classic American cuisine.
+* Those who enjoy traditional and gourmet dining experiences, particularly with a focus on steaks.
+* Local residents who are looking for a reliable and enjoyable dining experience in their area.
+* Visitors or tourists who are seeking a recommended spot for a great meal.
+* Families, couples, and groups of friends looking for a comfortable and inviting place to dine.
+* People who are interested in combining dining with entertainment. This could appeal to those looking for a lively night out with food and music.
+* Adults ranging from young professionals to middle-aged individuals who enjoy live music and socializing.
+* The restaurant likely appeals to casual diners looking for a good meal as well as people celebrating special occasions, such as birthdays, anniversaries, or other gatherings.
+* While the focus is on hearty meals, including a vegan burger option suggests a secondary target audience of health-conscious or vegan diners who are looking for plant-based options within a traditional dining setting.
 
 ### First time user
 
-* 
+* Easy Registration process.
+* Simple and intuitive website navigation for easy exploration and discovery.
+* Informative content providing an overview of what is on offer from the restaurant including menu and event information.
+* User-friendly forms with clear validation messages to ensure accurate input.
+* Customer reviews to provide information of past experiences.
+
 
 ### Registered User
 
-* .
+* Seamless login process with a secure and personalized user account.
+* Ability to create a user profile
+* Make reservations and reviews
+* Access to a personalized dashboard displaying booking history and upcoming reservations.
+* Ability to easily modify or cancel existing bookings for flexibility and convenience.
+* Ability to edit or delete own reviews
 
 ## Design
 
+The overall mood created by the color scheme is warm and inviting, reminiscent of a cozy, classic chophouse where guests can relax and enjoy a hearty meal. The rustic tones contribute to a sense of authenticity and tradition, which is key to the restaurant's branding.
+This color scheme not only reflects the restaurant's identity but also enhances the user experience by making the website visually appealing and aligned with the brand's core values.
 
 ### Color Scheme
 ![Color Scheme](documentation/readme-imgs/color-chart.png)
@@ -137,7 +173,7 @@ All images were taken from [pixabay](www.pixabay.com).
 
 ### Logo
 
-Vista was used [Vista](vistaprint.co.uk).
+Vistaprint was used to create the logo design [Vista](vistaprint.co.uk).
 
 ### Typography
 
@@ -146,10 +182,17 @@ Lora, Roboto
 ### Wireframes
 
 <details>
-<summary> Home Page
+<summary> Home Page- Desktop
 </summary>
 
-![Home Page]()
+![Home Page- Desktop](documentation/readme-imgs/wireframe-home-desktop.png)
+</details>
+
+<details>
+<summary> Home Page- Mobile
+</summary>
+
+![Home Page- Mobile](documentation/readme-imgs/wireframe-home-mobile.png)
 </details>
 
 <details>
@@ -189,13 +232,14 @@ Lora, Roboto
     * 
 ---
 4. Profile Model
+
     * 
 
 ### User Journey 
 
 ![User Journey]()
 
-### Database Schema
+### Database Scheme
 
 Entity Relationship Diagram (ERD)
 
@@ -365,7 +409,8 @@ Entity Relationship Diagram (ERD)
 * [Gitpod](https://www.gitpod.io/) - To write the code.
 * [Heroku](https://www.heroku.com/) - Used as the cloud-based platform to deploy the site.
 * [Google Fonts](https://fonts.google.com/) - Import main font the website.
-* [Figma](https://www.figma.com/) - Used to create wireframes and schemes
+* [Figma](https://www.figma.com/) - Used to create wireframes
+* [DrawSQL](https://drawsql.app/diagrams) - Used to create Entity relationship diagram
 * [Am I Responsive](https://ui.dev/amiresponsive) - To show the website image on a range of devices.
 * [Git](https://git-scm.com/) - Version control
 * [Favicon Generator](https://realfavicongenerator.net/) - Used to create a favicon

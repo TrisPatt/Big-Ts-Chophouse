@@ -7,16 +7,18 @@ from datetime import date
 
 STATUS = ((0, "confirmed"), (1, "cancelled"), (2, "expired"))
 
+
 class Table(models.Model):
-    table_number = models.PositiveIntegerField(unique=True)  # Unique table identifier
-    seats = models.PositiveIntegerField(default=2)  # All tables have 2 seats by default
+    table_number = models.PositiveIntegerField(unique=True)
+    seats = models.PositiveIntegerField(default=2)
 
     def __str__(self):
         return f"Table {self.table_number} - {self.seats} seats"
 
+
 class TimeSlot(models.Model):
     time = models.TimeField()
-    
+
     def __str__(self):
         return self.time.strftime('%H:%M')
 
@@ -39,15 +41,15 @@ class Reservation(models.Model):
     def __str__(self):
         return f"{self.date} - {self.time}"
 
-
     def save(self, *args, **kwargs):
         # If the reservation date has past, set status to expired
         if self.date < date.today():
             self.reservation_status = 2
 
-        # Creates a unique reservation number automaticaaly for each booking new booking
-        if not self.pk:  
-            last_reservation = Reservation.objects.aggregate(Max('reservation_number'))
+        # Creates a unique number automaticaaly for each booking new booking
+        if not self.pk:
+            last_reservation = Reservation.objects.aggregate
+            (Max('reservation_number'))
             max_number = last_reservation['reservation_number__max'] or 0
             self.reservation_number = max_number + 1
 
@@ -56,13 +58,13 @@ class Reservation(models.Model):
                 self.reservation_status = 0
 
         # Ensure cancelled reservations cant be modified
-        if self.pk:  
+        if self.pk:
             existing_reservation = Reservation.objects.get(pk=self.pk)
-            if existing_reservation.reservation_status == 1 and self.reservation_status != 1:
+            if (existing_reservation.reservation_status == 1 and 
+                self.reservation_status != 1):
                 raise ValidationError("You cannot modify a canceled reservation.")
 
         super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Booking for {self.user_id} on {self.date} at {self.time}"
-
