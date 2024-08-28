@@ -30,10 +30,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-trispatt-bigtschophouse-k0g8fwcmfog.ws-eu115.gitpod.io','.herokuapp.com', '8000-trispatt-bigtschophouse-rklo99g5cz5.ws.codeinstitute-ide.net'
+ALLOWED_HOSTS = ['.herokuapp.com', '8000-trispatt-bigtschophouse-rklo99g5cz5.ws.codeinstitute-ide.net',
 
 ]
-
 
 # Application definition
 
@@ -124,7 +123,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
     "https://*.codeanyapp.com",
     "https://*.herokuapp.com",
-    "https://8000-trispatt-bigtschophouse-k0g8fwcmfog.ws-eu115.gitpod.io",
+    "https://8000-trispatt-bigtschophouse-rklo99g5cz5.ws.codeinstitute-ide.net/",
     
 ]
 

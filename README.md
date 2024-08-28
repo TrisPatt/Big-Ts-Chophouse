@@ -343,44 +343,96 @@ Entity Relationship Diagram (ERD)
 
 ![Logout](documentation/readme-imgs/log-out.png)
 
+* My Account
+    * Once logged in, a user can access their account menu, which appears in the top right
+    * Users can modify or add personal details in their profile
+    * Links to create a reservation or review as well as the home page can be found here
+
+![My Account](documentation/readme-imgs/my-account-menu.png)
+
+* Profile
+    * Once logged in, a user can update or add additional personal details in their profile
+    * This can be useful as forms will pre-populate fields from the profile
+
+![Update profile](documentation/readme-imgs/update-profile.png)
+
+* Profile Updated
+    * Users are notified once updates are submitted
+
+![Update profile](documentation/readme-imgs/profile-updated.png)
+
+* Menu
+    * A user, whether logged in or not can browse the menu
+    * There are links at the top to the various parts of the menu on the page to save scrolling
+
+![Menu](documentation/readme-imgs/menu.png)
+
 * Make a reservation
     * Users are invited to make a reservation with the restaurant
+    * If details have been added to the user profile some fields will be pre-populated
 
 ![Make a Reservation](documentation/readme-imgs/create-booking-form.png)
 
 * Booking Succesful
     * If booking is succesfull, user gets a notified message and an overview of the booking they just made.
 
-![Booking Succesful](documentation/readme-imgs/thanks-for-booking.png)
+![Reservation Succesful](documentation/readme-imgs/thanks-for-booking.png)
 
 * Reservation List
-    * Includes all of the user bookings, which have buttons to edit or delete bookings.
+    * Includes all of the user reservations, which have buttons to update or cancel.
+    * This list is filtered by most recent reservations first.
 
 ![Reservation Overview](documentation/readme-imgs/my-reservations.png)
 
 * Already booked dates
-    * If the time is unavailabe the the user is notifies.
-    * Dates in the past are unavailable.
+    * If the time is unavailabe, the user is notified.
+    * Dates in the past are unavailable. This is validated in the front end by not allowing users to pick dates from the past 
+    from the datepicker (javascript), and in the backend through python logic.
 
 ![Edit booking](documentation/readme-imgs/update-reservation-prepopulated.png)
 
 * Edit Booking
     * User can change their booking and save changes
+    * If the number of guests is increased, this is again validated to check if it available.
+    * Users are notified if the restaurant cannot accept their changes.
 
 ![Edit Booking](documentation/readme-imgs/update-reservation-prepopulated.png)
 
 * Delete Booking
     * User can delete their booking, before it is deleted it has to be confirmed.
+    * Once this is deleted, the available times will be recycled.
 
 ![Delete Booking](documentation/readme-imgs/cancel-reservation.png)
 
-* Alert messages
-    * For every action there is an alert message to notify user
-    * Here is one example
+* Write a Review
+    * User can write a review
+
+![Write a review](documentation/readme-imgs/reviews.png)
+
+* Write a review- Datepicker
+    * User can only enter past dates to write a review
+
+![Datepicker](documentation/readme-imgs/review-date-picker.png)
+
+* Modify a Review
+    * User can modify a review
+    * User has to be logged 
+
+![Modify a review](documentation/readme-imgs/edit-review.png)
+
+* Delete a Review
+    * User can only delete a review for which they have written and be logged in in order to do so
+
+![Delete a review]()
+
+* Write a review- Datepicker
+    * User can only enter past dates to write a review
+
 
 ### Features Left to Implement 
 
-* 
+* Responding to customer reviews as a superuser
+* Gallery page
 
 ## Technologies Used
 

@@ -6,7 +6,7 @@ body {
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('/static/images/barn-background.webp');
+    background-image: url('https://res.cloudinary.com/dgole5bfr/image/upload/v1724331886/barn-background_dct5lu.webp');
     background-size: cover; 
     background-position: center; 
 }
@@ -90,13 +90,13 @@ button:hover, .btn:hover {
 
 /* images */
 .hero-slide-1 {
-    background-image: url('/static/images/hero.webp');
+    background-image: url('https://res.cloudinary.com/dgole5bfr/image/upload/v1724331886/hero_svrd4o.webp');
 }
 .hero-slide-2 {
-    background-image: url('/static/images/tbone steak.webp');
+    background-image: url('https://res.cloudinary.com/dgole5bfr/image/upload/v1724332740/tbone_steak_mo10ms.webp');
 }
 .hero-slide-3 {
-    background-image: url('/static/images/guitar.webp');
+    background-image: url('https://res.cloudinary.com/dgole5bfr/image/upload/v1724331886/guitar_zqvpct.webp');
 }
 
 #heroCarousel .carousel-item {
@@ -190,14 +190,14 @@ button:hover, .btn:hover {
 }
 
 .logo {
-    background: url('/static/images/logo-transparent.webp') no-repeat center center;
+    background: url('https://res.cloudinary.com/dgole5bfr/image/upload/v1724332911/logo-transparent_yqgyfr.webp') no-repeat center center;
     background-size: contain;
     width: 260px;
     height: 260px;
 }
 
 #logo-nav {
-    background: url('/static/images/logo-transparent.webp') no-repeat center center;
+    background: url('https://res.cloudinary.com/dgole5bfr/image/upload/v1724332911/logo-transparent_yqgyfr.webp') no-repeat center center;
     background-size: contain;
     width: 60px;
     height: 60px;
@@ -214,7 +214,7 @@ button:hover, .btn:hover {
 
 .sign {
     
-    background: url('/static/images/sign.webp') no-repeat center center;
+    background: url('https://res.cloudinary.com/dgole5bfr/image/upload/v1724332740/sign_ltwc4g.webp') no-repeat center center;
     background-size: contain;
 }
 
@@ -224,7 +224,7 @@ button:hover, .btn:hover {
 }
 
 .poster {
-    background: url('/static/images/live-poster.webp') no-repeat center center;
+    background: url('https://res.cloudinary.com/dgole5bfr/image/upload/v1724646947/live-poster_tskms8.webpp') no-repeat center center;
     height: 500px;
     width: 300px;
     background-size: contain;
@@ -236,7 +236,7 @@ button:hover, .btn:hover {
 }
 
 .menu {
-    background-image: url('/static/images/paper-menu.webp');
+    background-image: url('https://res.cloudinary.com/dgole5bfr/image/upload/v1724647030/paper-753508_1920_ng1cao.jpg');
     border-radius: 25px; 
     overflow: hidden; 
     padding: 30px;
@@ -412,6 +412,10 @@ footer {
     padding: 20px;
     text-align: center;
     font-size: 14px;
+}
+
+.my_msg {
+    background-color: #d4af37;
 }
 
 footer a {
