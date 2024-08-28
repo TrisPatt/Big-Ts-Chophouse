@@ -28,9 +28,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['.herokuapp.com', '8000-trispatt-bigtschophouse-rklo99g5cz5.ws.codeinstitute-ide.net',
+ALLOWED_HOSTS = ['.herokuapp.com', '8000-trispatt-bigtschophouse-rklo99g5cz5.ws.codeinstitute-ide.net', 'https://ui.dev/amiresponsive',
 
 ]
 
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'django_cron',
+    'corsheaders',
 ]
 
 
@@ -72,6 +73,7 @@ CRON_CLASSES = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -124,6 +126,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.codeanyapp.com",
     "https://*.herokuapp.com",
     "https://8000-trispatt-bigtschophouse-rklo99g5cz5.ws.codeinstitute-ide.net/",
+    'https://res.cloudinary.com',
+    'https://ui.dev/amiresponsive',
     
 ]
 
@@ -173,3 +177,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOW_ALL_ORIGINS = True

@@ -241,10 +241,6 @@ Entity Relationship Diagram (ERD)
 * Table: Can be reserved by multiple reservations, allowing flexible seating arrangements for different parties.
 
 
-### User Journey 
-
-![User Journey]()
-
 ## Security Features
 
 ### User Authentication
@@ -262,11 +258,9 @@ Entity Relationship Diagram (ERD)
 
 ### Form Validation
 
-* 
-
-### Maximum number of guests per Reservation
-
-* 
+* The create reservation form is validated to accepy only dates in the future. The number of guests on a specific date and time
+is validated to check against restaurant capacity and messages are displayed to the user if the validation fails.
+* The create review form is validated to only accept dates from the past. 
 
 ### Custom error pages
 
@@ -425,8 +419,17 @@ Entity Relationship Diagram (ERD)
 
 ![Delete a review]()
 
-* Write a review- Datepicker
-    * User can only enter past dates to write a review
+### Admin tasks
+
+* Scheduled Tasks
+    * Admins can log into the admin panel to view and manage the cron jobs
+    * This task scheduler is set in the backend to check the date of reservations. If the date has passed
+    then the status of the reservation will be set to expired.
+![Cron job](documentation/readme-imgs/cron-job.png)
+
+* Cron jobs log
+    * The log shows all the tasks that have been completed or failed
+![Cron job log](documentation/readme-imgs/cron-job-logs.png)
 
 
 ### Features Left to Implement 
@@ -500,6 +503,11 @@ Live deployment can be found on this [View Big T's Chophouse live website here](
 6. Once created, click on the new database name, where you can view the database URL and Password.
 
 ### Cloudinary
+[Big T's Chophouse]() is using [Cloudinary](https://cloudinary.com/)
+1. For Primary interest, you can choose Programmable Media for image and video API.
+2. Optional: edit your assigned cloud name to something more memorable.
+3. On your Cloudinary Dashboard, you can copy your API Environment Variable.
+4. Be sure to remove the CLOUDINARY_URL= as part of the API value; this is the key.
 
 ### Heroku Deployment
 * Log into [Heroku](https://www.heroku.com/) account or create an account.

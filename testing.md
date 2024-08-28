@@ -80,7 +80,7 @@ The project was tested on multiple web browsers to check for compatibility issue
 </details>
 
 <details>
-<summary> Samsung Internet (Mobile)
+<summary> iphone (Mobile)
 </summary>
 
 ![Samsung Internet Mobile]()
@@ -260,7 +260,7 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 ![urls.py]()
 </details>
 
-#### woodland_retreat app
+#### Big app
 
 <details>
 <summary> settings.py
