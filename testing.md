@@ -318,6 +318,43 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 ![urls.py](documentation/pep8-validation/review-urls-py.png)
 </details>
 
+####  User_profile app
+
+<details>
+<summary> admin.py
+</summary>
+
+![admin.py](documentation/pep8-validation/user-profile-admin-py.png)
+</details>
+
+<details>
+<summary> forms.py
+</summary>
+
+![forms.py](documentation/pep8-validation/user-profile-forms-py.png)
+</details>
+
+<details>
+<summary> models.py
+</summary>
+
+![models.py](documentation/pep8-validation/user-profile-models-py.png)
+</details>
+
+<details>
+<summary> views.py
+</summary>
+
+![views.py](documentation/pep8-validation/user-profile-views-py.png)
+</details>
+
+<details>
+<summary> urls.py
+</summary>
+
+![urls.py](documentation/pep8-validation/user-profile-urls-py.png)
+</details>
+
 
 #### Big app
 
