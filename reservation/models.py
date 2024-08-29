@@ -24,7 +24,7 @@ class Table(models.Model):
 
 class TimeSlot(models.Model):
     """
-    Model to handle the available time slots per date. 
+    Model to handle the available time slots per date.
 
     These can be adjusted if necessary in the admin panel.
     """
@@ -38,21 +38,29 @@ class Reservation(models.Model):
     """
     Model representing a reservation in the restaurant.
 
-    The reservation number is a unique identifier for the reservation and is automatically assigned through custom logic.
-    The user ID is a foreign key linking to the user model, representing the user who made the reservation.
-    The time is a foreign key linking to the TimeSlot model, representing the time of the reservation.
-    The reservation status is represented as an integer as stated above for either confirmed (0),
+    The reservation number is a unique identifier for the reservation and is
+    automatically assigned through custom logic.
+    The user ID is a foreign key linking to the user model, representing the
+    user who made the reservation.
+    The time is a foreign key linking to the TimeSlot model, representing the
+    time of the reservation.
+    The reservation status is represented as an integer as stated above for
+    either confirmed (0),
     cancelled(1) or expired(2).
     Created on is an automatic timestamp when the reservation was made.
-    Tables is a many to many relationship with the Table model, representing the tables reserved.
+    Tables is a many to many relationship with the Table model, representing
+    the tables reserved.
 
     - Automatically generates a unique reservation number for new reservations.
-    - Sets the reservation status to 'expired' if the reservation date is in the past.
-        (This is to validate dates from the past, which should not be possible from the 
-        front end and is additional validation)
-    - Ensures that the status is automatically set to 'confirmed' if not already set.
+    - Sets the reservation status to 'expired' if the reservation date is in
+    the past.
+        (This is to validate dates from the past, which should not be possible
+        from the front end and is additional validation)
+    - Ensures that the status is automatically set to 'confirmed' if not
+    already set.
     - Prevents modifications to reservations that have been cancelled.
-        (This should not be possible from the front end and is additional validation)
+        (This should not be possible from the front end and is additional
+        validation)
     - Ensure that cancelled reservations cannot be modified.
 
     """
@@ -85,15 +93,18 @@ class Reservation(models.Model):
             if self.pk:
                 self.reservation_status = 2
             else:
-                raise ValidationError("Cannot create a reservation for a past date.")
+                raise ValidationError("""Cannot create a reservation for a past
+                                        date.""")
 
         if self.reservation_status is None:
             self.reservation_status = 0
 
         if self.pk:
             existing_reservation = Reservation.objects.get(pk=self.pk)
-            if (existing_reservation.reservation_status == 1 and 
-                self.reservation_status != 1):
-                raise ValidationError("You cannot modify a canceled reservation.")
+            if (existing_reservation.reservation_status == 1 and
+                    self.reservation_status != 1):
+                raise ValidationError(
+                    "You cannot modify a cancelled reservation."
+                    )
 
         super().save(*args, **kwargs)

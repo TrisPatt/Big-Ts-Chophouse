@@ -10,9 +10,9 @@ from datetime import datetime
 class ReservationForm(forms.ModelForm):
     """
     Form for creating or updating a reservation.
-    
-    Displays relevant input fields, including the date as a date-picker and sets 
-    the time slot query set.
+
+    Displays relevant input fields, including the date as a date-picker and
+    sets the time slot query set.
 
     Validates form data.
 
@@ -34,7 +34,7 @@ class ReservationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        Initializes the form, setting the time slot queryset and populating 
+        Initializes the form, setting the time slot queryset and populating
         fields with user data if provided.
         """
         user = kwargs.pop('user', None)
@@ -57,8 +57,8 @@ class ReservationForm(forms.ModelForm):
         Validates the form data:
         - Ensures the reservation date and time are not in the past.
         - Gets the time from the TimeSlot object.
-        - Checks that the total number of guests for the selected time slot does 
-        not exceed 24.
+        - Checks that the total number of guests for the selected time slot
+        does not exceed 24.
         """
         cleaned_data = super().clean()
         date = cleaned_data.get('date')
@@ -66,7 +66,7 @@ class ReservationForm(forms.ModelForm):
         number_of_guests = cleaned_data.get('number_of_guests')
 
         if not date or not time_slot or not number_of_guests:
-            return cleaned_data  
+            return cleaned_data
 
         time = time_slot.time
 
@@ -83,10 +83,9 @@ class ReservationForm(forms.ModelForm):
 
         if total_guests + number_of_guests > 24:
             remaining_capacity = 24 - total_guests
-            raise ValidationError(
-            f"Sorry, we cannot accommodate {number_of_guests} guests at the requested time. "
-            f"Only {remaining_capacity} guest slots are available."
-        )
+            raise ValidationError(f"""Sorry, we cannot accommodate
+            {number_of_guests} guests at the
+            requested time.""" f"""Only {remaining_capacity} guest slots are
+            available.""")
 
         return cleaned_data
-
