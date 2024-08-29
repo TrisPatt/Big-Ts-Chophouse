@@ -17,7 +17,6 @@ def home(request):
     return render(request, 'reservation/home.html')
 
 
-# Confirmed reservation
 def reservation_confirmed(request, reservation_number):
     """
     Render the reservation confirmation page.
@@ -47,7 +46,8 @@ def reservation_list(request):
     Returns a rendered HTML page with a list of reservations.
     """
     if request.user.is_authenticated:
-        reservations = Reservation.objects.filter(user_id=request.user.id).order_by('-date')
+        reservations = Reservation.objects.filter(
+            user_id=request.user.id).order_by('-date')
         return render(request, 'reservation/reservation_list.html',
                       {'reservations': reservations})
     else:
@@ -63,8 +63,8 @@ def reservation_create(request):
     and sends a confirmation email to the user. If the reservation cannot
     be accommodated, an error message is shown.
 
-    Returns a rendered HTML page with the reservation creation form or a redirect
-    to the confirmation page upon successful creation.
+    Returns a rendered HTML page with the reservation creation form or a
+    redirect to the confirmation page upon successful creation.
     """
     if request.method == 'POST':
         form = ReservationForm(request.POST, user=request.user)
@@ -98,20 +98,21 @@ def reservation_create(request):
                 reservation.save()
 
                 send_mail(
-                'Reservation Confirmed!',
-                f"""Your reservation on {reservation.date} at {reservation.time} 
-                has been successfully booked.""",
-                settings.DEFAULT_FROM_EMAIL,
-                [request.user.email],
-                fail_silently=False,
-                )
+                    'Reservation Confirmed!',
+                    f"""Your reservation on {reservation.date} at
+                    {reservation.time}
+                    has been successfully booked.""",
+                    settings.DEFAULT_FROM_EMAIL,
+                    [request.user.email],
+                    fail_silently=False,
+                    )
 
                 return redirect('reservation_confirmed',
                                 reservation_number=reservation.pk)
 
             else:
-                messages.error(request, """Sorry, we can't accommodate your party
-                               size at the requested time.""")
+                messages.error(request, """Sorry, we can't accommodate your
+                                 party size at the requested time.""")
                 return redirect('reservation_create')
     else:
         form = ReservationForm(user=request.user)
@@ -132,12 +133,12 @@ def available_time_slots(request):
     all_time_slots = TimeSlot.objects.all()
 
     booked_slots = (
-    Reservation.objects
-    .filter(date=selected_date, reservation_status=0)
-    .values('time')
-    .annotate(total_guests=Sum('number_of_guests'))
-    .filter(total_guests__gte=24)
-)
+        Reservation.objects
+        .filter(date=selected_date, reservation_status=0)
+        .values('time')
+        .annotate(total_guests=Sum('number_of_guests'))
+        .filter(total_guests__gte=24)
+    )
     available_slots = all_time_slots.exclude(id__in=[slot['time']
                                                      for slot in booked_slots])
 
@@ -158,14 +159,15 @@ def cancel_reservation(request, reservation_number):
         reservation_number: The unique identifier for the reservation.
 
     Returns a rendered HTML page to confirm cancellation and a redirect to
-    the reservation list page upon successful cancellation or cancelled cancellation.
+    the reservation list page upon successful cancellation or cancelled
+    cancellation.
     """
     reservation = get_object_or_404(
-        Reservation, reservation_number=reservation_number, user_id=request.user
+      Reservation, reservation_number=reservation_number, user_id=request.user
     )
 
-    if request.method == 'POST':       
-        reservation.reservation_status = 1  
+    if request.method == 'POST':
+        reservation.reservation_status = 1
         reservation.save()
         send_mail(
             'Reservation Cancelled',
@@ -182,7 +184,7 @@ def cancel_reservation(request, reservation_number):
         return redirect('reservation_list')
 
     return render(request, 'reservation/cancel_reservation.html',
-                    {'reservation': reservation})
+                  {'reservation': reservation})
 
 
 @login_required
@@ -202,16 +204,14 @@ def update_reservation(request, reservation_number):
     to the confirmation page upon successful update.
     """
     try:
-        reservation = Reservation.objects.get(reservation_number=reservation_number)
-        print(f"Logged-in user: {request.user}")
-        print(f"Reservation user: {reservation.user_id}")
-    except Reservation.DoesNotExist:
-        print("Reservation does not exist")
-        raise
+        reservation = Reservation.objects.get(
+            reservation_number=reservation_number)
 
-    if reservation.user_id != request.user:
-        print("Reservation does not belong to the logged-in user.")
-        return redirect('reservation_list')
+    except Reservation.DoesNotExist:
+
+        if reservation.user_id != request.user:
+
+            return redirect('reservation_list')
 
     if request.method == 'POST':
         form = ReservationForm(request.POST, instance=reservation)
@@ -220,14 +220,14 @@ def update_reservation(request, reservation_number):
             updated_reservation.user_id = request.user
 
             num_guests = updated_reservation.number_of_guests
-            tables_needed = (num_guests + 1) // 2  
+            tables_needed = (num_guests + 1) // 2
 
             total_guests_at_time = Reservation.objects.filter(
-            date=updated_reservation.date,
-            time=updated_reservation.time,
-            reservation_status=0
+                date=updated_reservation.date,
+                time=updated_reservation.time,
+                reservation_status=0
             ).exclude(pk=updated_reservation.pk).aggregate(
-            total_guests=models.Sum('number_of_guests')
+                total_guests=models.Sum('number_of_guests')
             )['total_guests'] or 0
 
             if total_guests_at_time + num_guests > 24:
@@ -262,7 +262,8 @@ def update_reservation(request, reservation_number):
                 send_mail(
                     'Reservation Updated!',
                     f"""Your reservation has been updated to
-                    {updated_reservation.date} at {updated_reservation.time}.""",
+                    {updated_reservation.date} at
+                    {updated_reservation.time}.""",
                     settings.DEFAULT_FROM_EMAIL,
                     [request.user.email],
                     fail_silently=False,
