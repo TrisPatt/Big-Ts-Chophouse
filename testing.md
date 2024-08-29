@@ -83,7 +83,7 @@ The project was tested on multiple web browsers to check for compatibility issue
 <summary> iphone (Mobile)
 </summary>
 
-![Samsung Internet Mobile]()
+![iphone Mobile]()
 </details>
 
 ## Device Testing
@@ -195,7 +195,7 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 <summary> Custom CSS (style.css)
 </summary>
 
-![Custom CSS (style.css)](G)
+![Custom CSS (style.css)]()
 </details>
 
 ### JavaScript Validation
@@ -282,85 +282,79 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 <summary> Home Page
 </summary>
 
-![Home Page]()
-</details>
-
-<details>
-<summary> Home Page Logged in
-</summary>
-
-![Home Page Logged in]()
-</details>
-
-<details>
-<summary> Contact Page
-</summary>
-
-![Contact Page]()
+![Home Page](documentation/readme-imgs/lighthouse-reports/lighthouse-home-desktop.png)
 </details>
 
 <details>
 <summary> Sign Up Page
 </summary>
 
-![Sign Up Page]()
+![Sign Up Page](documentation/readme-imgs/lighthouse-reports/lighthouse-signup-desktop.png)
 </details>
 
 <details>
 <summary> Login Page
 </summary>
 
-![Login Page]()
+![Login Page](documentation/readme-imgs/lighthouse-reports/lighthouse-login-desktop.png)
 </details>
 
 <details>
 <summary> Logout Page
 </summary>
 
-![Logout Page](G)
+![Logout Page](documentation/readme-imgs/lighthouse-reports/lighthouse-logout-desktop.png)
 </details>
 
 <details>
-<summary> Browse Cabins Page
+<summary> My account Page
 </summary>
 
-![Browse Cabins Page]()
+![My account Page](documentation/readme-imgs/lighthouse-reports/lighthouse-myaccount-desktop.png)
 </details>
 
 <details>
-<summary> Make a Booking Page
+<summary> Create Booking
 </summary>
 
-![Make a Booking Page](G)
+![Create booking](documentation/readme-imgs/lighthouse-reports/lighthouse-createbooking-desktop.png)
 </details>
 
 <details>
 <summary> Booking Success Page
 </summary>
 
-![Booking Success Page]()
+![Booking Success Page](documentation/readme-imgs/lighthouse-reports/lighthouse-bookingconfirmation-desktop.png)
 </details>
 
 <details>
-<summary> Booking Overview Page
+<summary> My Reservations
 </summary>
 
-![Booking Overview Page]()
+![My reservations Page](documentation/readme-imgs/lighthouse-reports/lighthouse-myreservations-desktop.png)
 </details>
 
 <details>
-<summary> Edit Booking Page
+<summary> Cancel booking
 </summary>
 
-![Edit Booking Page](G)
+![Cancel Booking Page](documentation/readme-imgs/lighthouse-reports/lighthouse-cancelconfirmation-desktop.png)
 </details>
 
 <details>
-<summary> Delete Booking Page
+<summary> Reviews Page
 </summary>
 
-![Delete Booking Page]()
+![Reviews Page](documentation/readme-imgs/lighthouse-reports/lighthouse-readreviews-desktop.png)
 </details>
+
+<details>
+<summary> Delete Review
+</summary>
+
+![Delete Review](documentation/readme-imgs/lighthouse-reports/lighthouse-confirm-delete-review-desktop.png)
+</details>
+
 
 ## Bugs
 

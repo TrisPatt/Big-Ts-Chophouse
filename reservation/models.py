@@ -48,8 +48,9 @@ class Reservation(models.Model):
 
         # Creates a unique number automaticaaly for each booking new booking
         if not self.pk:
-            last_reservation = Reservation.objects.aggregate
-            (Max('reservation_number'))
+            last_reservation = Reservation.objects.aggregate(
+                Max('reservation_number')
+            )
             max_number = last_reservation['reservation_number__max'] or 0
             self.reservation_number = max_number + 1
 

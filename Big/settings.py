@@ -28,9 +28,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', '8000-trispatt-bigtschophouse-rklo99g5cz5.ws.codeinstitute-ide.net', 'https://ui.dev/amiresponsive',
+ALLOWED_HOSTS = ['.herokuapp.com', '8000-trispatt-bigtschophouse-rklo99g5cz5.ws.codeinstitute-ide.net', 
 
 ]
 
@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'django_cron',
-    'corsheaders',
 ]
 
 
@@ -73,7 +72,6 @@ CRON_CLASSES = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -178,4 +176,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True

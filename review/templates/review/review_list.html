@@ -5,12 +5,16 @@
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2 review-back">
             <h1 class="text-center">Customer Reviews</h1>
-            <a class="btn btn-secondary mb-3" href="{% url 'submit_review' %}">Write a review</a>
+
+            <div class="d-flex justify-content-center">
+            <a class="btn btn-secondary mb-3 " href="{% url 'submit_review' %}">Write a review</a>
+            </div>
+
             <div class="review-list">
                 <ul class="list-unstyled">
                     {% for review in reviews %}
-                        <div class="review-box border rounded p-3 mb-4 bg-light">
-                            <li>
+                        <li class="border rounded p-3 mb-4 bg-light review-box"> 
+                            <div class=>
                                 <strong>Title:</strong> {{ review.title }}<br>
                                 <strong>Visit Date:</strong> {{ review.visit_date }}<br>
                                 
@@ -70,11 +74,11 @@
                                 <span>Created by {{ review.user.username }} on {{ review.created_on }}</span><br>
                                 
                                 {% if review.user == request.user %}
-                                    <a href="{% url 'edit_review' review.id %}">Edit</a>
-                                    <a href="{% url 'delete_review' review.id %}">Delete</a>
+                                    <a href="{% url 'edit_review' review.id %}" class="btn btn-secondary btn-xs text-white">Edit</a>
+                                    <a href="{% url 'delete_review' review.id %}" class="btn btn-secondary btn-xs text-white">Delete</a>
                                 {% endif %}
-                            </li>
-                        </div>
+                            </div> 
+                        </li>
                     {% empty %}
                         <li>No reviews yet</li>
                     {% endfor %}

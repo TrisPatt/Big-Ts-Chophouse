@@ -12,13 +12,12 @@ body {
 }
 
 /* Headers */
-h1, h2, h3, h4 {
-    font-family: 'Lora', serif;
+h1, h2 {
+    font-family: 'Lora', Arial, serif;
     font-weight: 700; 
 }
 
 p, li {
-    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     line-height: 1.5; 
 }
@@ -189,6 +188,8 @@ button:hover, .btn:hover {
     background-color: #444;
 }
 
+/* logo styles */
+
 .logo {
     background: url('https://res.cloudinary.com/bigts/image/upload/v1724332911/logo-transparent_yqgyfr.webp') no-repeat center center;
     background-size: contain;
@@ -203,6 +204,7 @@ button:hover, .btn:hover {
     height: 60px;
 }
 
+/*opening */
 .opening {
     background-color: rgba(245, 240, 230, 0.9);
     border-radius: 20px;
@@ -236,7 +238,7 @@ button:hover, .btn:hover {
 }
 
 .menu {
-    background-image: url('https://res.cloudinary.com/bigts/image/upload/v1724647030/paper-753508_1920_ng1cao.jpg');
+    background-image: url('https://res.cloudinary.com/bigts/image/upload/v1724886615/paper_szn2hj.webp');
     border-radius: 25px; 
     overflow: hidden; 
     padding: 30px;
@@ -341,7 +343,7 @@ button:hover, .btn:hover {
 
 /* Review styles */
 .review-back, .review-submit, .edit-review {
-    background-color:#d4af37 ;
+    background-color: white;
     border-radius: 27px !important;
     padding: 20px; 
     border: 2px solid #070707 !important; 
@@ -472,12 +474,6 @@ footer a:hover {
         justify-items: center;
     }
 
-    .logo {
-        width: 150px;
-        height: 150px;
-        margin-bottom: 20px;
-    }
-
     .book a {
         font-size: 1rem;
         padding: 10px 20px;
@@ -504,7 +500,6 @@ footer a:hover {
         padding: 8px 15px;
     }
 
-
     .logo {
         display: grid;
         grid-column: 1fr;
@@ -517,6 +512,24 @@ footer a:hover {
 
     .sign {
         max-width: 100%;
+    }
+    .table {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    th, td {
+        font-size: 0.8rem; 
+    }
+
+    .status-text {
+        font-size: 0.7rem; 
+    }
+
+    .reservation-list {
+        background-color: white;
+        border-radius: 20px;
+        border: 2px solid black;
     }
 }
 
@@ -531,5 +544,11 @@ footer a:hover {
 
     .footer a {
         font-size: 12px;
+    }
+
+    .reservation-list {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 }
