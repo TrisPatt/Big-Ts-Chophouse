@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db import models
 from .models import Reservation, Table, TimeSlot
-from .forms import ReservationForm, CancelReservationForm
+from .forms import ReservationForm
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
@@ -112,36 +112,31 @@ def available_time_slots(request):
                   {'available_slots': available_slots})
 
 
-@login_required  # Cancel reservations once logged in
+@login_required
 def cancel_reservation(request, reservation_number):
     reservation = get_object_or_404(
         Reservation, reservation_number=reservation_number, user_id=request.user
     )
 
-    if request.method == 'POST':
-        form = CancelReservationForm(request.POST, instance=reservation)
-        if form.is_valid():
-            reservation.reservation_status = 1  # update status to cancelled
-            form.save()
-            messages.success
-            (request, 'Your reservation has been successfully cancelled.')
+    if request.method == 'POST':       
+        reservation.reservation_status = 1  
+        reservation.save()
+        send_mail(
+            'Reservation Cancelled',
+            f"""Your reservation on {reservation.date} at {reservation.time}
+            has been successfully cancelled.""",
+            settings.DEFAULT_FROM_EMAIL,
+            [request.user.email],
+            fail_silently=False,
+        )
 
-            # sends email to user- set as backend
-            send_mail(
-                'Reservation Cancelled',
-                f"""Your reservation on {reservation.date} at {reservation.time}
-                has been successfully cancelled.""",
-                settings.DEFAULT_FROM_EMAIL,
-                [request.user.email],
-                fail_silently=False,
-            )
-
-            return redirect('reservation_list')
-    else:
-        form = CancelReservationForm(instance=reservation)
+        messages.success(
+            request, 'Your reservation has been successfully cancelled.'
+        )
+        return redirect('reservation_list')
 
     return render(request, 'reservation/cancel_reservation.html',
-                  {'form': form, 'reservation': reservation})
+                    {'reservation': reservation})
 
 
 @login_required

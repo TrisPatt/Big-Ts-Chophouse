@@ -223,7 +223,7 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 
 ### Python
 
-#### cabin_bookings app
+####  app
 
 <details>
 <summary> admin.py

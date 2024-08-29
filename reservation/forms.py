@@ -7,7 +7,17 @@ from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
 
 
+
 class ReservationForm(forms.ModelForm):
+    """
+    Form for creating or updating a reservation.
+    
+    Displays relevant input fields, including the date as a date-picker and sets 
+    the time slot query set.
+
+    Validates form data.
+
+    """
     date = forms.DateField(
         widget=forms.DateInput(attrs={
             'class': 'form-control datetimepicker-input',
@@ -24,10 +34,13 @@ class ReservationForm(forms.ModelForm):
     email = forms.EmailField(required=True)
 
     def __init__(self, *args, **kwargs):
+        """
+        Initializes the form, setting the time slot queryset and populating 
+        fields with user data if provided.
+        """
         user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
 
-        # Initialize the 'time' field's queryset
         self.fields['time'].queryset = TimeSlot.objects.all()
 
         if user:
@@ -41,15 +54,21 @@ class ReservationForm(forms.ModelForm):
                   'last_name', 'email', 'allergies', 'special_requirements']
 
     def clean(self):
+        """
+        Validates the form data:
+        - Ensures the reservation date and time are not in the past.
+        - Gets the time from the TimeSlot object.
+        - Checks that the total number of guests for the selected time slot does 
+        not exceed 24.
+        """
         cleaned_data = super().clean()
         date = cleaned_data.get('date')
         time_slot = cleaned_data.get('time')
         number_of_guests = cleaned_data.get('number_of_guests')
 
         if not date or not time_slot or not number_of_guests:
-            return cleaned_data  # Skip validation, required fields are missing
+            return cleaned_data  
 
-        # Get the time from the TimeSlot object
         time = time_slot.time
 
         reservation_datetime = datetime.combine(date, time)
@@ -57,13 +76,6 @@ class ReservationForm(forms.ModelForm):
         if reservation_datetime < now:
             raise ValidationError("Reservation cannot be in the past.")
 
-            if reservation_datetime < now:
-                raise forms.ValidationError
-                ("Reservation cannot be in the past.")
-
-        return cleaned_data
-
-        # Check if the total number of guests exceeds 24 for the selected time
         total_guests = Reservation.objects.filter(
             date=date,
             time=time,
@@ -79,14 +91,3 @@ class ReservationForm(forms.ModelForm):
 
         return cleaned_data
 
-
-# cancel reervation
-class CancelReservationForm(forms.ModelForm):
-    class Meta:
-        model = Reservation
-        fields = ['reservation_status']
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['reservation_status'].initial = 1
-        self.fields['reservation_status'].widget = forms.HiddenInput()
