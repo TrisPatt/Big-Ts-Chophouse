@@ -10,7 +10,8 @@ class ReviewAdmin(SummernoteModelAdmin):
 
     This class customizes the Django admin interface for the Review model
     by using the Summernote WYSIWYG editor for rich text fields.
-    
+
     """
 
     list_display = ('user', 'overall_rating', 'comment', 'created_on')
+
