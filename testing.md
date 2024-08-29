@@ -231,10 +231,6 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 ![Custom JS (script.js)]()
 </details>
 
-<details>
-<summary> Edit Booking Inline Script
-</summary>
-
 ### Python
 
 ####  Reservation app

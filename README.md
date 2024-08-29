@@ -551,7 +551,7 @@ Live deployment can be found on this [View Big T's Chophouse live website here]h
 Site is now live
 
 ## Testing
-Please see  [TESTING.md](TESTING.md) for all the detailed testing performed.
+Please see  [TESTING.md](testing.md) for all the detailed testing performed.
 
 ## References
 ### Docs
