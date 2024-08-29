@@ -185,8 +185,6 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 ![My Reservations page](documentation/validation/my-reservations-html.png)
 </details>
 
-
-
 <details>
 <summary> Review List
 </summary>
@@ -237,19 +235,9 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 <summary> Edit Booking Inline Script
 </summary>
 
-![Edit Booking Inline Script]()
-</details>
-
-<details>
-<summary> Make a Booking Inline Script
-</summary>
-
-![Make a Booking Inline Script]()
-</details>
-
 ### Python
 
-####  app
+####  Reservation app
 
 <details>
 <summary> admin.py
@@ -392,15 +380,19 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 
 ## Features Testing
  
-| Page          | User Action   | Expected Result  | Notes            |
+| Page          | User Action   | Expected Result  | Actual Result    |
 |---------------|---------------|------------------|------------------|
 | Home Page     |               |                  |                  |
 |               | Click on Logo | Redirect to Home Page | PASS        |
-|               | Click on Sign Up button | Redirect to Sign Up page | PASS |
-|               | Click on Sign Up button (Navigation bar) | Redirect to Sign Up page | PASS |
-|               | Click on About (Navigation bar) | Move to about section | PASS |
-|               | Click on carousel | Redirect to sign up page | PASS |
 |               | Click on carousel control | Move left, move right | PASS |
+|               | Click on "explore menu" button from the carousel| redirect to menu page | PASS |
+|               | Click on "Book now" button from the carousel| redirect to create reservation page | PASS |
+|               | Click on "Events" button from the carousel | Jump to Events section on home page | PASS |
+|               | Click on "book a table" button from about section | redirect to create reservation page  | PASS |
+|               | Click on Menu link (Navigation bar) | Move to menu section | PASS |
+|               | Click on links at the top of menu for the various menu sections | move to each section | PASS |
+
+|               | Click on Register link (Navigation bar) | Redirect to Sign Up page | PASS |
 |               | Click on social links in footer | Open new tab with appropriate link | PASS |
 |               | Click on Contact (Navigation bar) | Redirect to Contact page | PASS |
 |               | Click on Login (Navigation bar) | Redirect to Login page | PASS |
