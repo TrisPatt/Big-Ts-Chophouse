@@ -98,95 +98,121 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 <summary> Home Page
 </summary>
 
-![Home Page]()
+![Home Page](documentation/validation/homepage-html.png)
 </details>
 
 <details>
-<summary> Contact Page
+<summary> Menu Page
 </summary>
 
-![Contact Page]()
+![Menu Page](documentation/validation/menu-html.png)
 </details>
 
 <details>
-<summary> Sign Up Page
+<summary> Register Page
 </summary>
 
-![Sign Up Page]()
+![Register Page](documentation/validation/register-html.png)
 </details>
 
 <details>
 <summary> Login Page
 </summary>
 
-![Login Page]()
+![Login Page](documentation/validation/login-html.png)
 </details>
 
 <details>
 <summary> Logout Page
 </summary>
 
-![Logout Page]()
+![Logout Page](documentation/validation/logout-html.png)
 </details>
 
 <details>
-<summary> Browse menu Page
+<summary> My Account Page
 </summary>
 
-![Browse menu Page]()
+![My Account Page](documentation/validation/my-account-html.png)
 </details>
 
 <details>
-<summary> Make a Booking Page
+<summary> Update Profile page
 </summary>
 
-![Make a Booking Page]()
+![Update Profile Page](documentation/validation/update-profile-html.png)
 </details>
 
 <details>
-<summary> Booking Success Page
+<summary> Profile updated confirmation page
 </summary>
 
-![Booking Success Page]()
-</details>
-
-
-![Booking Success Page]()
+![Profile updated Page](documentation/validation/profile-updated-confirmation-html.png)
 </details>
 
 <details>
-<summary> Booking Overview Page
+<summary> Create Reservation Page
 </summary>
 
-![Booking Overview Page]()
+![Create Reservation Page](documentation/validation/create-booking-html.png)
 </details>
 
 <details>
-<summary> Edit Booking Page
+<summary> Update Reservation Page
 </summary>
 
-![Edit Booking Page]()
+![Update Reservation Page](documentation/validation/update-reservation-html.png)
 </details>
 
 <details>
-<summary> Delete Booking Page
+<summary> Cancel Reservation Page
 </summary>
 
-![Delete Booking Page]()
+![Cancel Reservation Page](documentation/validation/cancel-reservation-html.png)
 </details>
 
 <details>
-<summary> 404 Error Page
+<summary> Reservation Confirmed
 </summary>
 
-![404 Error Page]()
+![Reservation confirmed Page](documentation/validation/reservation-confirmed-html.png)
 </details>
 
 <details>
-<summary> 500 Error Page
+<summary> My Reservations
 </summary>
 
-![500 Error Page](G)
+![My Reservations page](documentation/validation/my-reservations-html.png)
+</details>
+
+
+
+<details>
+<summary> Review List
+</summary>
+
+![Review list Page](documentation/validation/review-list-html.png)
+</details>
+
+<details>
+<summary> Write a review
+</summary>
+
+![Write a review page](documentation/validation/submit-review-html.png)
+</details>
+
+<details>
+<summary> Edit Review
+</summary>
+
+![Review list Page](documentation/validation/edit-reviews-html.png)
+</details>
+
+<details>
+<summary> Delete Review
+</summary>
+
+![Write a review page](documentation/validation/delete-review-html.png)
 </details>
 
 ### CSS Validation
@@ -195,7 +221,7 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 <summary> Custom CSS (style.css)
 </summary>
 
-![Custom CSS (style.css)]()
+![Custom CSS (style.css)](documentation/validation/style-css-validation.png)
 </details>
 
 ### JavaScript Validation

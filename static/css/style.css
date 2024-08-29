@@ -302,25 +302,10 @@ button:hover, .btn:hover {
     text-decoration: underline; 
 }
 /* datepicker styles */
-
-.datepicker {
-    background-color: white; 
-}
-
-.datepicker-header {
-    background-color: green; 
-    color: #ffffff; 
-    text-align: center;
-}
-
 .datepicker-days td {
     padding: 5px;
     margin: 2px;
     width: 25px;
-}
-
-.datepicker-days .old {
-    color: grey !important; 
 }
 
 .datepicker .form-control {
@@ -330,6 +315,12 @@ button:hover, .btn:hover {
 }
 .datepicker-days .today {
     background-color: #d4af37; 
+}
+
+.disabled-date .ui-state-disabled {
+    background-color: #d3d3d3 !important; 
+    color: #a0a0a0 !important; 
+    cursor: not-allowed; 
 }
 
 /* Reservation styles */

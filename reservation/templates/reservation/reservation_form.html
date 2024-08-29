@@ -10,13 +10,10 @@
         <form method="post" autocomplete="off">
             {{ form | crispy }}
             {% csrf_token %}
-            <div class="form-group">
-                
+            <div class="form-group">                
             </div>
             <button class="btn btn-secondary" type="submit">Submit</button>
         </form>
     </div>    
 </div>
-
-
 {% endblock %}

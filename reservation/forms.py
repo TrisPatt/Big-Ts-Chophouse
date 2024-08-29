@@ -19,7 +19,7 @@ class ReservationForm(forms.ModelForm):
     """
     date = forms.DateField(
         widget=forms.DateInput(attrs={
-            'class': 'form-control datetimepicker-input',
+            'class': 'form-control datepicker',
             'id': 'reservation-date',
             'type': 'text',
         })
