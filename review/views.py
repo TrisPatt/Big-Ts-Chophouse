@@ -50,7 +50,8 @@ def edit_review(request, review_id):
     Handle the editing of an existing review by its owner.
 
     GET: Render the review editing form if the user is the owner.
-    POST: Validate and save the updated review, then redirect to the review list.
+    POST: Validate and save the updated review, then redirect to the review
+    list.
     """
     review = get_object_or_404(Review, id=review_id)
 
@@ -91,3 +92,4 @@ def delete_review(request, review_id):
     else:
         return render(request, 'review/confirm_delete.html',
                       {'review': review})
+

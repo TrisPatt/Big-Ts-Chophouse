@@ -243,36 +243,81 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 <summary> admin.py
 </summary>
 
-![admin.py]()
+![admin.py](documentation/pep8-validation/reservation-admin-py.png)
 </details>
 
 <details>
 <summary> forms.py
 </summary>
 
-![forms.py]()
+![forms.py](documentation/pep8-validation/reservation-forms-py.png)
 </details>
 
 <details>
 <summary> models.py
 </summary>
 
-![models.py]()
+![models.py](documentation/pep8-validation/reservation-models-py.png)
 </details>
 
 <details>
 <summary> views.py
 </summary>
 
-![views.py]()
+![views.py](documentation/pep8-validation/reservation-views-py.png)
 </details>
 
 <details>
 <summary> urls.py
 </summary>
 
-![urls.py]()
+![urls.py](documentation/pep8-validation/reservation-urls-py.png)
 </details>
+
+<details>
+<summary> cron.py
+</summary>
+
+![urls.py](documentation/pep8-validation/reservations-cron-job-py.png)
+</details>
+
+####  Review app
+
+<details>
+<summary> admin.py
+</summary>
+
+![admin.py](documentation/pep8-validation/review-admin-py.png)
+</details>
+
+<details>
+<summary> forms.py
+</summary>
+
+![forms.py](documentation/pep8-validation/review-forms-py.png)
+</details>
+
+<details>
+<summary> models.py
+</summary>
+
+![models.py](documentation/pep8-validation/review-models-py.png)
+</details>
+
+<details>
+<summary> views.py
+</summary>
+
+![views.py](documentation/pep8-validation/review-views-py.png)
+</details>
+
+<details>
+<summary> urls.py
+</summary>
+
+![urls.py](documentation/pep8-validation/review-urls-py.png)
+</details>
+
 
 #### Big app
 
