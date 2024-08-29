@@ -7,7 +7,6 @@ from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
 
 
-
 class ReservationForm(forms.ModelForm):
     """
     Form for creating or updating a reservation.
