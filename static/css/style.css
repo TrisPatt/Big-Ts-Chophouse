@@ -501,8 +501,6 @@ footer a:hover {
     }
 
     .logo {
-        display: grid;
-        grid-column: 1fr;
         align-items: center;
         text-align: center;
     }

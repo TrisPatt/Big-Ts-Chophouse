@@ -24,7 +24,7 @@ Comprehensive testing has been performed to ensure the website's seamless and op
 
 The deployed website underwent rigorous testing on multiple devices and screen sizes to ensure its responsiveness and adaptability. Developer Tools were utilized to simulate various screen sizes, enabling thorough examination of how the website behaves across different devices. Bootstrap classes and media queries were implemented to achieve the desired design, ensuring that the website maintains its visual and functional integrity on all platforms, enhancing the user experience.
 
-![Am I Responsive]()
+![Am I Responsive](documentation/readme-imgs/responsive.png)
 
 <details>
 <summary> Desktop PC

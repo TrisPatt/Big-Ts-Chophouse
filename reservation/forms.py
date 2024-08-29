@@ -77,7 +77,7 @@ class ReservationForm(forms.ModelForm):
 
         total_guests = Reservation.objects.filter(
             date=date,
-            time=time,
+            time=time_slot,
             reservation_status=0
         ).aggregate(total_guests=Sum('number_of_guests'))['total_guests'] or 0
 
