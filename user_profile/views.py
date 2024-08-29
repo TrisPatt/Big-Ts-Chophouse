@@ -5,39 +5,57 @@ from .forms import CombinedUserProfileForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 
-# Update profile information
+
 def profile_update(request):
-    # Get or create a user profile for the logged-in user
+    """
+    Handles the update of user profile information.
+
+    Retrieves the user's profile, initializes the form with existing data,
+    and saves the changes if the form is submitted and valid.
+
+    """
     user = request.user
     profile, created = Profile.objects.get_or_create(user=request.user)
-    
-    # If form data is submitted, process the form
+
     if request.method == 'POST':
-        form = CombinedUserProfileForm(request.POST, user=user, profile=profile)
+        form = CombinedUserProfileForm(
+                request.POST, user=user, profile=profile)
         if form.is_valid():
             form.save()
-            # Redirect to a success page 
-            return redirect ('profile_confirmed')
+            return redirect('profile_confirmed')
     else:
-        # If the request is GET, render the form with existing profile data
         form = CombinedUserProfileForm(user=user, profile=profile)
-    
-    return render (request, 'user_profile/profile_update.html', {'form': form})
 
-# Confirm updates
+    return render(request, 'user_profile/profile_update.html', {'form': form})
+
+
 def profile_update_confirmation(request):
+    """
+    Renders a confirmation page after successful profile update.
+
+    """
     return render(request, 'user_profile/profile_confirmation.html')
 
-# My account page
+
 def my_account(request):
+    """
+    Renders the user's account page.
+    """
     return render(request, 'user_profile/account.html')
 
-# Delete user account
+
 @login_required
 def delete_account(request):
+    """
+    Handles the deletion of a user account.
+
+    The user's account is deleted. A success message
+    is shown, and the user is redirected to the home page.
+    """
     if request.method == 'POST':
         user = request.user
         user.delete()
         messages.success(request, "Your account has been deleted.")
-        return redirect('home')  
+        return redirect('home')
     return render(request, 'user_profile/delete_account.html')
+    
