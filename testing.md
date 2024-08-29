@@ -362,14 +362,14 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 <summary> settings.py
 </summary>
 
-![settings.py]()
+![settings.py](documentation/pep8-validation/big-settings-py.png)
 </details>
 
 <details>
 <summary> urls.py
 </summary>
 
-![urls.py]()
+![urls.py](documentation/pep8-validation/big-urls-py.png)
 </details>
 
 ## Lighthouse Report
