@@ -237,7 +237,39 @@ def update_reservation(request, reservation_number):
     return render(request, 'reservation/reservation_form.html',
                   {'form': form, 'reservation': reservation})
 
-def cancel_reservation(request):
-    return render(request, 'reservation/cancel_reservation.html')
+@login_required
+def cancel_reservation(request, reservation_number):
+    """
+    Handle the cancellation of an existing reservation.
+    Fetches the reservation based on the reservation number, updates its
+    status to 'cancelled', and sends a cancellation confirmation email to
+    the user. Redirects to the reservation list page upon success.
+    Args:
+        reservation_number: The unique identifier for the reservation.
+    Returns a rendered HTML page to confirm cancellation and a redirect to
+    the reservation list page upon successful cancellation or cancelled cancellation.
+    the reservation list page upon successful cancellation or cancelled
+    cancellation.
+    """
+    reservation = get_object_or_404(
+        Reservation, reservation_number=reservation_number, user_id=request.user
+    )
+  
+    if request.method == 'POST':
+        reservation.reservation_status = 1
+        reservation.save()
+        send_mail(
+            'Reservation Cancelled',
+            f"""Your reservation on {reservation.date} at {reservation.time}
+            has been successfully cancelled.""",
+            settings.DEFAULT_FROM_EMAIL,
+            [request.user.email],
+            fail_silently=False,
+        )
+        messages.success(
+            request, 'Your reservation has been successfully cancelled.'
+        )
+        return redirect('reservation_list')
 
-    
+    return render(request, 'reservation/cancel_reservation.html', 
+                    {'reservation': reservation})

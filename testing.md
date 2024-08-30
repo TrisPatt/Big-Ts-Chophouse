@@ -456,7 +456,7 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 
 ### Unresolved Bugs
 
-## Features Testing
+## Manual user testing script
  
 | Page          | User Action   | Expected Result  | Actual Result    |
 |---------------|---------------|------------------|------------------|
@@ -473,12 +473,13 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 |               | Click on link for Mains at the top of menu for the Mains menu section | move to Mains menu section | PASS |
 |               | Click on link for sides at the top of menu for the sides menu sections | move to sides menu section | PASS |
 |               | Click on link for drinks at the top of menu for the drinks menu sections | move to drinks menu section | PASS |
+|               | Click on link for events in the navigation bar | move to events section on the home page| PASS |
 |               | Click on Register link (Navigation bar) | Redirect to Sign Up page | PASS |
 |               | Fill out required fields (username and password) and signup | Redirect to home page with a success message "Successfully signed in as ..."| PASS |
 | Home Page (Logged In - User)  |   
 |               | After Login | Users name is displayed in top right of navigation bar | PASS |              |          |  |
 |               | After Login | Sign Up link now displays as "logout" and "My Account" | PASS |
-|               | Click on reservations link in navigation bar | Displays create reservation form | PASS |
+| Reservation   | Click on reservations link in navigation bar | Displays create reservation form | PASS |
 |               | Complete reservation form with valid date and time (in the future), number of guests below 24 and other required information and click submit button | Displays confirmation message containing your entered date and time and number of guests. (if access to the terminal, this will display an email confirmation message) | PASS |
 |               | click on back to Home button| Redirects to homepage | PASS |
 |               | Click on Reservations link in navigation bar | redirects to create reservation form | PASS |
@@ -488,89 +489,39 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 |               | Complete reservation form with valid date and time, names and valid email address. Enter nummber of guests as 0 | Displays error message with you must select at least 1 guests | FAIL |
 |               | Complete reservation form with valid date and time (in the future), number of guests below 24 and other required information and click submit button | Displays confirmation message containing your entered date and time and number of guests. (if access to the terminal, this will display an email confirmation message) | PASS |
 |               | click on view my reservations button| Redirects to reservations list| PASS |
-
-|               | Click on Make a Booking in dropdown | Redirect to browse cabins | PASS |
-|               | Click on Logout | Redirect to Logout Page | PASS |
-| Home Page (Logged In - Admin)    |               |                  |                  |
-|               | Click on admin name | Open dropdown menu | PASS |
-|               | Click on My Booking in dropdown | Redirect to Booking Overview page | PASS |
-|               | Click on Admin Panel | Redirect to Django Admin Panel | PASS |
-| Contact Page     |               |                  |                  |
-|               | Click on social links | Open new tab with appropriate link | PASS |
-| Sign Up Page  |                  |                  |                  |
-|               | Enter invalid email | Field will only accept email address format | PASS |
-|               | Enter valid email | No error | PASS |
-|               | Email field left empty | Email is optional | PASS |
-|               | Type invalid password | Must contain atleast 8 char | PASS |
-|               | Type valid password | No error | PASS |
-|               | Type password again (different) | Password must be the same | PASS |
-|               | Click Sign Up with empty form | Fill in the form fields | PASS |
-|               | Click Sign In if you have an account | Redirect to Login page | PASS |
-|               | Fill all the form fields | Account created, alert message that you Signed in | PASS |
+|               | click on update button next to your reservation | Redirects to create reservation with fields prepoulated| PASS |
+|               | change the number of guests but so that the number is less than the maximum 24 but different to what is there already| Displays a confirmation box with your reservation was successfully updated in the top left | PASS |
+|               | click on view my reservations button. Should show the update of guests | Redirects to reservations list.| PASS |
+|               | click on cancel button next to your reservation| Displays confirm cancellation screen | PASS |
+|               | click on submit| Redirects to my reservations, displays cancel confirmtion in top left and changes the status of the reservation to cancelled in red | PASS |
+|               | click on cancel button next to your reservation| Displays confirm cancellation screen | PASS |
+|    Reviews    | Click on Reviews link in navigation menu | Redirect to display reviews | PASS |
+|               | Click on Reviews write review button| Redirect to submit a review form | PASS |
+|               | Click submit with a blank form | does not allow mandatory fields to be left blank | PASS |
+|               | Complete all fields including a invalid date (a date in the future Try with the datepicker or by typing directly (format is yyyy/mm/dd))| Does not allow a date from the future to be added | PASS |
+|               | Try again with a valid date and click submit| confirmation message appears in top left, thanking user and displays review at top of the page. The logged in user can now see the edit and delete buttons next to their review only | PASS |
+|               | Click on edit button next to your review| Displays a pre-populated review form with details previously entered| PASS |
+|               | Edit some or all fields and save changes| redirects to review list displaying the changes made. Displays a message in the top left confirming the chages | PASS |
+|               | Click on delete button next to your review| Redirects to confirm delete page | PASS |
+|               | Click on confirm buttonn| Redirects to review page, the deleted review has been deleted, a confirmation message is displayed in top left| PASS |
+|   My Account  | Click on My Account link on top right of navigation bar| Redirects to My account page | PASS |
+|               | Click on Home page button| Redirect to homepage | PASS |
+|               | Go back to My Account screen and click update my details button| Redirect to update profile form | PASS |
+|               | Complete all fields including the validated email field and date of birth and click update| redirects to Profile updated | PASS |
+|               | Click back to home button| redirects to home page| PASS |
+|               | Go back to My Account section, click My Reservations button| redirects to my reservation list| PASS |
+|               | Go back to My Account section, click My Reviews button| redirects to reviews list| PASS |
+|               | Click on Logout | Redirect to Logout confirmation Page | PASS |
+|               | Click on signout | Redirect to home Page, displays confirmation of user logged out in top left and how user not logged in top right | PASS |
 | Login Page  |                  |                  |                  |
-|               | Click on Sign Up, if you don't have an account | Redirect to Sign Up page | PASS |
+|               | Click on login in navigation bar | Redirect to Sign in page | PASS |
 |               | Try invalid username | Username is not correct | PASS |
 |               | Try invalid password | Password is not correct | PASS |
-|               | Valid password and username | Logs in, message that you signed in | PASS |
-|               | Click Sign In with empty form | Fill in the form fields | PASS |
-| Logout Page  |                  |                  |                  |
-|               | Click on Sign Out button | Sign user out, message that user signed out | PASS |
-| Browse Cabins Page  |                  |                  |                  |
-|               | Click on Book Now on any Cabin | Redirects to selected cabin booking form | PASS |
-|               | Click on Next button | Moves to another page, displays different cabins | PASS |
-|               | Click on Previous button | Goes back to previous page | PASS |
-| Make a Booking Page  |                  |                  |                  |
-|               | Click on Book Now button while form is empty | Fill in the form fields, alert message | PASS |
-|               | Try to select dates in the past | They are disabled | PASS |
-|               | Try to select already booked dates | They are disabled, unavailable until dates become available is someone deletes their booking         | PASS |
-|               | Try to overlap your booking around the already booked dates | Cabins already booked for those dates, alert message | PASS |
-|               | Input more guests than maximum guests | Can't exceed maximum guests, alert message | PASS |
-|               | Input 0 or less than 0 guests | Guests can't be less than 0, alert message | PASS |
-|               | Input more tickets than number of guests | Can't buy more tickets than number of guests | PASS |
-|               | Input less than 0 tickets | Can't select less than 0 tickets, alert message | PASS |
-|               | Input less than 0 kayaks | Can't select less than 0 kayaks, alert message | PASS |
-|               | Input 0 kayaks | kayaks are optional, no error | PASS |
-|               | Input 0 tickets | tickets are optional, no error | PASS |
-|               | maximum kayak rental is 10 | Anything over 10 throws an error, alert message | PASS |
-|               | Try to make check out date be before check in date | Check out can't be before check in, alert message | PASS |
-|               | Enter valid form data | Booking Succesful, alert message and a total price is calculated based on the booking | PASS |
-|               | User fills in only check in, check out and num of guests | Booking Succesful, amenities are optional | PASS |
-| Booking Succesful Page |  |    |    |
-|               | Read the booking details | Details are as expected, match users booking | PASS |
-|               | Total price check | Total price is calculated correctly | PASS |
-|               | Click on Contact Us button | Redirect to Contact page | PASS |
-|               | Click on My Booking button | Redirects to Booking Overview page | PASS |
-| Booking Overview Page |  |    |    |
-|               | Read the bookings | Results match users bookings and details of bookings | PASS |
-|               | Click on Edit button | Redirect to Edit Booking page | PASS |
-|               | Click on Delete button | Redirect to Delete Booking page | PASS |
-| Edit Booking Page |  |    |    |
-|               | Try to select dates in the past | They are disabled | PASS |
-|               | Try to select already booked dates | They are disabled, unavailable until dates become available is someone deletes their booking         | PASS |
-|               | Try to overlap your booking around the already booked dates | Cabins already booked for those dates, alert message | PASS |
-|               | Input more guests than maximum guests | Can't exceed maximum guests, alert message | PASS |
-|               | Input 0 or less than 0 guests | Guests can't be less than 0, alert message | PASS |
-|               | Input more tickets than number of guests | Can't buy more tickets than number of guests | PASS |
-|               | Input less than 0 tickets | Can't select less than 0 tickets, alert message | PASS |
-|               | Input less than 0 kayaks | Can't select less than 0 kayaks, alert message | PASS |
-|               | Input 0 kayaks | kayaks are optional, no error | PASS |
-|               | Input 0 tickets | tickets are optional, no error | PASS |
-|               | maximum kayak rental is 10 | Anything over 10 throws an error, alert message | PASS |
-|               | Try to make check out date be before check in date | Check out can't be before check in, alert message | PASS |
-|               | Click on Save Changes button | Booking updated succesfully | PASS |
-|               | Enter valid form data | Booking succesfully updated, alert message and a total price is calculated based on the booking | PASS |
-|               | User fills in only check in, check out and num of guests | Booking succesfully updated, amenities are optional | PASS |
-| Delete Booking Page |  |    |    |
-|               | Read the booking ID number | It displays correct Id number of chosen cabin user wants to delete | PASS |
-|               | Click on Confirm Delete button | Booking is deleted, alert message | PASS |
-|               | Click on Cancel button | Redirect back to Booking Overview page | PASS |
-| 404 Error Page |  |    |    |
-|               | Type in URL that does not exists | Custom 404 Error page is displayed | PASS |
-|               | Click on Take Me Home button | Redirect to Home page | PASS |
-| 500 Error Page |  |    |    |
-|               | Admin raise exception in views.py | Custom 500 Error page is displayed, local development testing | PASS |
-|               | Click on Go to Homepage button | Redirect to Home page | PASS |
-| Admin Panel |  |    |    |
-|               | CRUD functionality | Working as expected | PASS |
+|               | sign in with correct login details| Logs in, confirmation message displayed in top left | PASS |
+|   My Account  | Click on My Account link on top right of navigation bar| Redirects to My account page | PASS |
+|               | Click on update my details button and then delete my account| redirects to confirm deletion page and warns user this cannot be undone | PASS |
+|   My Account  | Confirm deletion| Redirects tohome page, displays confirmation of deletion in top left | PASS |
+|               | Click on Reviews link on top right of navigation bar| Redirects to Reviews page | PASS |
+|               | Check to see if any of your reviews are there| Once user deletes account, reviews are automatically deleted | PASS |
 
 Return to [README](README.md)
