@@ -67,6 +67,20 @@ class ReservationForm(forms.ModelForm):
         fields = ['date', 'time', 'number_of_guests', 'first_name',
                   'last_name', 'email', 'allergies', 'special_requirements']
 
+    def clean_number_of_guests(self):
+        """
+        Validates that the number of guests is greater than 0.
+
+        This method ensures that the 'number_of_guests' field is not zero,
+        raising a ValidationError if it is.
+        """
+        number_of_guests = self.cleaned_data.get('number_of_guests')
+
+        if number_of_guests <= 0:
+            raise ValidationError("You must enter at least one guest.")
+
+        return number_of_guests
+
     def clean(self):
         """
         Validates the form data:

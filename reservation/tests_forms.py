@@ -6,8 +6,21 @@ from .models import Reservation, TimeSlot
 
 
 class TestReservationForm(TestCase):
+    """
+    Test cases for the ReservationForm.
+
+    This class contains tests that verify the correct behavior of 
+    the ReservationForm, including form initialization, validation 
+    of dates, guest capacity, and required fields.
+    """
     
     def test_form_initialization_with_date(self):
+        """
+        Test that the form is correctly initialized with a date.
+
+        This test ensures that when the form is initialized with a date, the
+        queryset for the 'time' field is populated with TimeSlot objects.
+        """
         timeslot = TimeSlot.objects.create(time="12:00:00")
         data = {'date': '2024-12-01'}
         form = ReservationForm(data=data)
@@ -19,6 +32,13 @@ class TestReservationForm(TestCase):
         )
 
     def test_form_initialization_with_user(self):
+        """
+        Test that the form is correctly initialized with a user.
+
+        This test ensures that when the form is initialized with a user, the
+        'first_name', 'last_name', and 'email' fields are pre-filled with the
+        user's corresponding information.
+        """
         user = User.objects.create_user(
             username='testuser', 
             first_name='John', 
@@ -41,6 +61,12 @@ class TestReservationForm(TestCase):
         )
 
     def test_reservation_in_past(self):
+        """
+        Test that the form is invalid if the reservation date is in the past.
+
+        This test ensures that the form cannot be submitted with a reservation
+        date that is in the past, and that the appropriate error message is displayed.
+        """
         timeslot = TimeSlot.objects.create(time="12:00:00")
         past_date = (datetime.now() - timedelta(days=1)).date()
         form_data = {
@@ -64,6 +90,12 @@ class TestReservationForm(TestCase):
         )
 
     def test_guest_capacity_exceeded(self):
+        """
+        Test that the form is invalid if the guest capacity is exceeded.
+
+        This test ensures that the form cannot be submitted if the number of
+        guests exceeds the available guest slots for the selected time slot.
+        """
         timeslot = TimeSlot.objects.create(time="12:00:00")
         date = datetime.now().date()
 
@@ -93,6 +125,13 @@ class TestReservationForm(TestCase):
         )
 
     def test_clean_method(self):
+        """
+        Test the clean method of the form with valid data.
+
+        This test ensures that the form is valid when all required fields are
+        filled with valid data, including a future reservation date and 
+        available guest slots.
+        """
         timeslot = TimeSlot.objects.create(time="12:00:00")
         date = (datetime.now() + timedelta(days=1)).date()  
 
@@ -140,6 +179,12 @@ class TestReservationForm(TestCase):
         )
 
     def test_maximum_guest_capacity(self):
+        """
+        Test that the form is invalid when required fields are missing.
+
+        This test ensures that the form is not valid if 'date', 'time', or
+        'number_of_guests' fields are missing, and that appropriate error messages are displayed.
+        """
         timeslot = TimeSlot.objects.create(time="12:00:00")
         date = datetime.now().date()
 
