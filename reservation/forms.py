@@ -40,6 +40,21 @@ class ReservationForm(forms.ModelForm):
         user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
 
+        selected_date = self.data.get('date') or self.initial.get('date')
+        
+        if selected_date:
+            fully_booked_timeslots = (
+                Reservation.objects
+                .filter(date=selected_date, reservation_status=0)
+                .values('time')
+                .annotate(total_guests=Sum('number_of_guests'))
+                .filter(total_guests__gte=24)  
+            )
+
+            self.fields['time'].queryset = TimeSlot.objects.exclude(
+                id__in=[slot['time'] for slot in fully_booked_timeslots]
+            )
+
         self.fields['time'].queryset = TimeSlot.objects.all()
 
         if user:
@@ -85,7 +100,7 @@ class ReservationForm(forms.ModelForm):
             remaining_capacity = 24 - total_guests
             raise ValidationError(f"""Sorry, we cannot accommodate
             {number_of_guests} guests at the
-            requested time.""" f"""Only {remaining_capacity} guest slots are
+            requested time. """ f"""Only {remaining_capacity} guest slots are
             available.""")
 
         return cleaned_data

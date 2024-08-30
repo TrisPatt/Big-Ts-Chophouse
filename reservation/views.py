@@ -53,7 +53,6 @@ def reservation_list(request):
     else:
         return redirect('templates/account/login.html')
 
-
 @login_required
 def reservation_create(request):
     """
@@ -65,14 +64,16 @@ def reservation_create(request):
 
     Returns a rendered HTML page with the reservation creation form or a
     redirect to the confirmation page upon successful creation.
+
+    Sends an e-mail to the user- This is currently set to backend and will
+    print in the console.
     """
     if request.method == 'POST':
         form = ReservationForm(request.POST, user=request.user)
         if form.is_valid():
             reservation = form.save(commit=False)
             reservation.user_id = request.user
-            reservation.save()
-
+            
             num_guests = reservation.number_of_guests
             tables_needed = (num_guests + 1) // 2
 
@@ -86,50 +87,41 @@ def reservation_create(request):
 
             if tables_needed <= available_tables:
                 tables = Table.objects.annotate(
-                    reserved_count=models.Count
-                    ('reservations', filter=models.Q(
-                        reservations__date=reservation.date,
-                        reservations__time=reservation.time,
-                        reservations__reservation_status=0
-                    ))
+                    reserved_count=models.Count(
+                        'reservations', filter=models.Q(
+                            reservations__date=reservation.date,
+                            reservations__time=reservation.time,
+                            reservations__reservation_status=0
+                        )
+                    )
                 ).filter(reserved_count=0)[:tables_needed]
 
+                reservation.save()  
                 reservation.tables.add(*tables)
                 reservation.save()
 
                 send_mail(
                     'Reservation Confirmed!',
-                    f"""Your reservation on {reservation.date} at
-                    {reservation.time}
+                    f"""Your reservation on {reservation.date} at {reservation.time}
                     has been successfully booked.""",
                     settings.DEFAULT_FROM_EMAIL,
                     [request.user.email],
                     fail_silently=False,
-                    )
+                )
 
-                return redirect('reservation_confirmed',
-                                reservation_number=reservation.pk)
+                return redirect('reservation_confirmed', reservation_number=reservation.pk)
 
             else:
-                messages.error(request, """Sorry, we can't accommodate your
-                                 party size at the requested time.""")
-                return redirect('reservation_create')
+                messages.error(request, "Sorry, we can't accommodate your party size at the requested time.")
+        else:
+            messages.error(request, "There was an error with your reservation.")
     else:
         form = ReservationForm(user=request.user)
 
     return render(request, 'reservation/reservation_form.html', {'form': form})
 
-
 def available_time_slots(request):
-    """
-    Display available time slots based on the selected date.
-
-    Retrieves the available time slots for reservations on the selected
-    date, excluding fully booked slots.
-
-    Returns a rendered HTML page with available time slots.
-    """
-    selected_date = request.GET.get('date', date.today())
+    selected_date = request.GET.get('date')
     all_time_slots = TimeSlot.objects.all()
 
     booked_slots = (
@@ -139,52 +131,13 @@ def available_time_slots(request):
         .annotate(total_guests=Sum('number_of_guests'))
         .filter(total_guests__gte=24)
     )
-    available_slots = all_time_slots.exclude(id__in=[slot['time']
-                                                     for slot in booked_slots])
 
-    return render(request, 'available_time_slots.html',
-                  {'available_slots': available_slots})
+    available_slots = all_time_slots.exclude(
+        id__in=[slot['time'] for slot in booked_slots])
 
-
-@login_required
-def cancel_reservation(request, reservation_number):
-    """
-    Handle the cancellation of an existing reservation.
-
-    Fetches the reservation based on the reservation number, updates its
-    status to 'cancelled', and sends a cancellation confirmation email to
-    the user. Redirects to the reservation list page upon success.
-
-    Args:
-        reservation_number: The unique identifier for the reservation.
-
-    Returns a rendered HTML page to confirm cancellation and a redirect to
-    the reservation list page upon successful cancellation or cancelled
-    cancellation.
-    """
-    reservation = get_object_or_404(
-      Reservation, reservation_number=reservation_number, user_id=request.user
-    )
-
-    if request.method == 'POST':
-        reservation.reservation_status = 1
-        reservation.save()
-        send_mail(
-            'Reservation Cancelled',
-            f"""Your reservation on {reservation.date} at {reservation.time}
-            has been successfully cancelled.""",
-            settings.DEFAULT_FROM_EMAIL,
-            [request.user.email],
-            fail_silently=False,
-        )
-
-        messages.success(
-            request, 'Your reservation has been successfully cancelled.'
-        )
-        return redirect('reservation_list')
-
-    return render(request, 'reservation/cancel_reservation.html',
-                  {'reservation': reservation})
+    data = {'available_slots': [{
+        'id': slot.id, 'time': slot.time.strftime('%H:%M')} for slot in available_slots]}
+    return JsonResponse(data)
 
 
 @login_required
@@ -283,5 +236,8 @@ def update_reservation(request, reservation_number):
 
     return render(request, 'reservation/reservation_form.html',
                   {'form': form, 'reservation': reservation})
+
+def cancel_reservation(request):
+    return render(request, 'reservation/cancel_reservation.html')
 
     

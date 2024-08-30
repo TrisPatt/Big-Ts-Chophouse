@@ -468,19 +468,25 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 |               | Click on "Events" button from the carousel | Jump to Events section on home page | PASS |
 |               | Click on "book a table" button from about section | redirect to create reservation page  | PASS |
 |               | Click on Menu link (Navigation bar) | Move to menu section | PASS |
-|               | Click on links at the top of menu for the various menu sections | move to each section | PASS |
-
+|               | Click on link for starters at the top of menu for the starter menu sections | move to starter section | PASS |
+|               | Click on link for signature steaks at the top of menu for the steak menu section | move to signature steak section | PASS |
+|               | Click on link for Mains at the top of menu for the Mains menu section | move to Mains menu section | PASS |
+|               | Click on link for sides at the top of menu for the sides menu sections | move to sides menu section | PASS |
+|               | Click on link for drinks at the top of menu for the drinks menu sections | move to drinks menu section | PASS |
 |               | Click on Register link (Navigation bar) | Redirect to Sign Up page | PASS |
-|               | Click on social links in footer | Open new tab with appropriate link | PASS |
-|               | Click on Contact (Navigation bar) | Redirect to Contact page | PASS |
-|               | Click on Login (Navigation bar) | Redirect to Login page | PASS |
-| Home Page (Logged In - User)  |                 |          |  |
-|               | After Login | Sign Up button is now Book Now button | PASS |
-|               | Click on Book Now | Redirect to browse cabins | PASS |
-|               | Click on carousel | Redirects to browse cabins | PASS |
-|               | After Login | Users name is displayed in navigation bar | PASS |
-|               | Click on users name | Open dropdown menu | PASS |
-|               | Click on My Booking in dropdown | Redirect to Booking Overview page | PASS |
+|               | Fill out required fields (username and password) and signup | Redirect to home page with a success message "Successfully signed in as ..."| PASS |
+| Home Page (Logged In - User)  |   
+|               | After Login | Users name is displayed in top right of navigation bar | PASS |              |          |  |
+|               | After Login | Sign Up link now displays as "logout" and "My Account" | PASS |
+|               | Click on reservations link in navigation bar | Displays create reservation form | PASS |
+|               | Complete reservation form with valid date and time (in the future), number of guests below 24 and other required information and click submit button | Displays confirmation message containing your entered date and time and number of guests. (if access to the terminal, this will display an email confirmation message) | PASS |
+|               | click on back to Home button| Redirects to hamepage | PASS |
+|               | Click on Reservations link in navigation bar | redirects to create reservation form | PASS |
+|               | Complete reservation form with an invalid date (in the past) | Datepicker will only allow for the current date or dates in the future to be selected | PASS |
+|               | Complete reservation form with valid date and time and name but enter an invalid email address (eg, a single letter, number without the "@" and ".") | Will not allow user to proceed without a valid email address | PASS |
+|               | Complete reservation form with valid date and time, names and valid email address. Enter nummber of guests with a number over 24 | Displays error message with the number of available seats at that time. Displays error message in top left under navigation bar | PASS |
+|               | Complete reservation form with valid date and time (in the future), number of guests below 24 and other required information and click submit button | Displays confirmation message containing your entered date and time and number of guests. (if access to the terminal, this will display an email confirmation message) | PASS |
+|               | click on view my reservations button| Redirects to reservations list| PASS |
 |               | Click on Make a Booking in dropdown | Redirect to browse cabins | PASS |
 |               | Click on Logout | Redirect to Logout Page | PASS |
 | Home Page (Logged In - Admin)    |               |                  |                  |

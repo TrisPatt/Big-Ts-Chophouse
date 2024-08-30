@@ -435,6 +435,7 @@ is validated to check against restaurant capacity and messages are displayed to 
 
 * Responding to customer reviews as a superuser
 * Gallery page
+* Setup of SMTP to send emails to user
 
 ## Technologies Used
 
