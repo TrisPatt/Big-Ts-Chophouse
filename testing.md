@@ -452,9 +452,18 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 
 ### Resolved Bugs
 
+| Page          | User Action   | Expected Result  | Actual Result    |       Fix        |
+|---------------|---------------|------------------|------------------|------------------|
+| Create Reservation | Enter "0" for number of guests | Displays error message "at least one guest must be entered | redirects to booking confirmation page showing 0 guests booked | change to logic etc....   |
+|               |               |                   |                 |                  |
+|               |               |                   |                 |                  |
+|               |               |                   |                 |                  |
+|               |               |                   |                 |                  |
 
 
 ### Unresolved Bugs
+
+* No known bugs
 
 ## Manual user testing script
  

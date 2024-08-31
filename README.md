@@ -81,14 +81,14 @@ Agile Methodology was used to help prioritize and organize tasks, writting the u
 <summary> User Stories, Issues
 </summary>
 
-![User Stories, Issues]()
+![User Stories, Issues](documentation/readme-imgs/issues.png)
 </details>
 
 <details>
 <summary> Project Board
 </summary>
 
-![Project Board]()
+![Project Board](documentation/readme-imgs/user_stories.png)
 </details>
 
 ### User Stories
@@ -261,11 +261,6 @@ Entity Relationship Diagram (ERD)
 is validated to check against restaurant capacity and messages are displayed to the user if the validation fails.
 * The create review form is validated to only accept dates from the past. 
 
-### Custom error pages
-
-* 404 Error Page, provides user with a button the redirect to home page.
-* 500 Error Page, provides user with a button the redirect to home page.
-
 ## Features
 
 * Home page showcases a rotating carousel that contains information and links to menu, book a table and events.
@@ -293,7 +288,7 @@ is validated to check against restaurant capacity and messages are displayed to 
     ![Visitor](documentation/readme-imgs/logged-out-navbar.png)
 
     * Navigation bar for a logged in user
-    ![User](documentation/readme-imgs/navbar.png)
+    ![User](documentation/readme-imgs/logged-in.png)
 
 
 * Hero Carousel
@@ -416,14 +411,13 @@ is validated to check against restaurant capacity and messages are displayed to 
 * Delete a Review
     * User can only delete a review for which they have written and be logged in in order to do so
 
-![Delete a review]()
+![Delete a review](documentation/readme-imgs/delete-review.png)
 
 ### Admin tasks
 
 * Scheduled Tasks
-    * Admins can log into the admin panel to view and manage the cron jobs
-    * This task scheduler is set in the backend to check the date of reservations. If the date has passed
-    then the status of the reservation will be set to expired.
+    * Admins can log into the Django admin panel to view and manage the cron jobs
+    * This task scheduler is set in the backend to check the date of reservations. If the date has past then the status of the reservation will be set to expired.
 ![Cron job](documentation/readme-imgs/cron-job.png)
 
 * Cron jobs log
@@ -436,6 +430,9 @@ is validated to check against restaurant capacity and messages are displayed to 
 * Responding to customer reviews as a superuser
 * Gallery page
 * Setup of SMTP to send emails to user
+* Sending a reservation reminder e-mail to customers
+* Searchable filtering of reviews by rating
+* Allowing users to rest password if forgotten
 
 ## Technologies Used
 
@@ -559,8 +556,8 @@ Please see  [TESTING.md](testing.md) for all the detailed testing performed.
 
 * [Stack Overflow](https://stackoverflow.com/)
 * [Code Institute](https://learn.codeinstitute.net/dashboard)
-* [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
-* [Django docs](https://docs.djangoproject.com/en/4.2/releases/3.2/)
+* [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+* [Django docs](https://docs.djangoproject.com/en/5.1/)
 * [Django Allauth](https://django-allauth.readthedocs.io/en/latest/)
 * [Django and Static Assets](https://devcenter.heroku.com/articles/django-assets)
 * [Cloudinary](https://cloudinary.com/documentation/diagnosing_error_codes_tutorial)
