@@ -154,3 +154,37 @@ class TestReservationForm(TestCase):
             equals the maximum capacity."""
         )
 
+    def test_zero_no_number_of_guests(self):
+        """Test that form is invalid if 0 guests are entered"""
+        form_data = self.form_data.copy()
+        form_data['number_of_guests'] = 0
+        form = ReservationForm(data=form_data)
+
+        self.assertFalse(
+            form.is_valid(),
+            """Form should be invalid if 0 guests are entered"""
+        )
+        self.assertIn('number_of_guests', form.errors)
+
+def test_exceeding_guest_limit(self):
+    """Test that form is invalid if guest capacity exceeds 24"""
+    Reservation.objects.create(
+        date=self.date_tomorrow,
+        time=self.time_slot, 
+        number_of_guests=20,
+        reservation_status=0
+    )
+
+    form_data = {
+        'date': self.date_tomorrow,
+        'time': self.time_slot.id, 
+        'number_of_guests': 10,
+    }
+
+    form = ReservationForm(data=form_data)
+    self.assertFalse(
+        form.is_valid(), 
+        """Form should be invalid if guest capacity exceeds 24"""
+    )
+    with self.assertRaises(ValidationError):
+        form.clean()

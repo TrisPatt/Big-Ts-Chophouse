@@ -37,7 +37,7 @@ The deployed website underwent rigorous testing on multiple devices and screen s
 <summary> Laptop
 </summary>
 
-![Laptop]()
+![Laptop](documentation/readme-imgs/chrome.png)
 </details>
 
 <details>
@@ -51,7 +51,7 @@ The deployed website underwent rigorous testing on multiple devices and screen s
 <summary> Mobile
 </summary>
 
-![Mobile]()
+![Mobile](documentation/readme-imgs/iphone-test.png)
 </details>
 
 ## Browser Compatibility Testing
@@ -59,36 +59,37 @@ The deployed website underwent rigorous testing on multiple devices and screen s
 The project was tested on multiple web browsers to check for compatibility issues and ensure it functions as expected across all of them. This testing process guarantees a smooth and consistent user experience, regardless of the browser used.
 
 <details>
-<summary> Chrome
+<summary> Chrome- PC
 </summary>
 
-![Chrome]()
+![Chrome](documentation/readme-imgs/chrome.png)
 </details>
 
 <details>
-<summary> Microsoft Edge
+<summary> Microsoft Edge- PC
 </summary>
 
-![Microsoft Edge]()
+![Microsoft Edge](documentation/readme-imgs/edge.png)
 </details>
 
 <details>
-<summary> Opera
+<summary> Opera- PC
 </summary>
 
-![Opera]()
+![Opera](documentation/readme-imgs/opera.png)
 </details>
 
 <details>
-<summary> iphone (Mobile)
+<summary> Firefox- Mac
 </summary>
 
-![Firefox- Mac]()
+![Firefox- Mac](documentation/readme-imgs/firefox.png)
 </details>
 
 ## Device Testing
 
-Device testing was conducted on a variety of phone models, including Samsung Galaxy A52, Honor magic 6 pro, iPhone X, iphone 13, Huawei. The assistance of family members and friends was sought to perform the testing. This comprehensive approach ensured that the website was thoroughly evaluated on different devices and platforms, contributing to a more robust and user-friendly final product.
+Device testing was conducted on a variety of phone models, including Samsung Galaxy A52, Honor magic 6 pro, iPhone X, iphone 13 and Huawei. 
+Both a Microsoft surface laptop 4 running Windows 11 23H2 and Macbook pro running MacOs13 Ventura laptops were used for testing. The assistance of family members and friends were sought to perform the testing. This comprehensive approach ensured that the website was thoroughly evaluated on different devices and platforms, contributing to a more robust and user-friendly final product.
 
 ## Code Validation
 
@@ -454,12 +455,10 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 
 | Page          | User Action   | Expected Result  | Actual Result    |       Fix        |
 |---------------|---------------|------------------|------------------|------------------|
-| Create Reservation | Enter "0" for number of guests | Displays error message "at least one guest must be entered | redirects to booking confirmation page showing 0 guests booked | clean_number_of_guests method added to ReservationForm in forms.py to validate that "0" cannot be entered.   |
-| Create Reservation | Enter "24" for number of guests where "0" guests are already booked | Displays confirmation message with date, time and number of guests booked |Error message displays saying 0 guest slost available | Even though the correct logic was applied in Python, only 10 tables were selected in the admin panel from the tables model, giving a maximum of 20. 2 extra tables added in table model |
-       |               |                   |                 |
-|               |               |                   |                 |                  |
-|               |               |                   |                 |                  |
-|               |               |                   |                 |                  |
+| Create Reservation | Enter "0" for number of guests | Displays error message "at least one guest must be entered | redirects to booking confirmation page showing date, time and "0" guests booked | clean_number_of_guests method added to ReservationForm in forms.py to validate that "0" cannot be entered".   |
+| Create Reservation | Enter "24" for number of guests where "0" guests are already booked | Displays confirmation message with date, time and number of guests booked | Error message displays saying 0 guest slots available | Even though the correct logic was applied in Python, only 10 tables were created in the admin panel from the tables model, giving a maximum of 20 instead of 24. 2 extra tables were therefore added in table model |
+| Update Profile | Enter date of birth | Date of birth entered and submit form | unknown date of birth format | Added help text to date_of_birth field to display the correct user format required   |
+| create Reservation | Enter date using datepicker | Date picker displays, highlighting todays date and greyed out unavailable dates  | date picker is unformatted even though javascript and css are written to render otherwise| Missing links in header of base.html for bootstrap datepicker and incorrect order of script files at bottom of base.html corrected   |
 
 
 ### Unresolved Bugs
