@@ -37,7 +37,7 @@ The deployed website underwent rigorous testing on multiple devices and screen s
 <summary> Tablet
 </summary>
 
-![Tablet]()
+![Tablet](documentation/readme-imgs/amazon-fire-tablet.png)
 </details>
 
 <details>
@@ -81,7 +81,7 @@ The project was tested on multiple web browsers to check for compatibility issue
 
 ## Device Testing
 
-Device testing was conducted on a variety of phone models, including Samsung Galaxy A52, Honor magic 6 pro, iPhone X, iphone 13 and Huawei. 
+Device testing was conducted on a variety of phone models, including Samsung Galaxy A52, Honor magic 6 pro, iPhone X, iphone 13 and Honor 70. 
 Testing was conducted on an ipad ... and amazon ...
 Both a Microsoft surface laptop 4 running Windows 11 23H2 and Macbook pro running MacOs13 Ventura laptops were used for testing. The assistance of family members and friends were sought to perform the testing. This comprehensive approach ensured that the website was thoroughly evaluated on different devices and platforms, contributing to a more robust and user-friendly final product.
 
