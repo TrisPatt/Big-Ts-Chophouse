@@ -227,10 +227,14 @@ button:hover, .btn:hover {
 
 .poster {
     background: url('https://res.cloudinary.com/bigts/image/upload/v1724646947/live-poster_tskms8.webp') no-repeat center center;
-    height: 500px;
-    width: 300px;
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
+    width: 100%; 
+    height: 200px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
 }
+
 
 /* Menu styles */
 .menu-section {
@@ -428,13 +432,9 @@ footer a:hover {
         padding: 20px;
     }
     
-    .logo {
-        width: 200px;
-        height: 200px;
-    }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .about-text p {
         font-size: 1.1rem;
     }
@@ -446,6 +446,25 @@ footer a:hover {
     .hero-text p {
         font-size: 1.25rem;
     }
+
+    .detail {
+        margin-left: 15px;
+        margin-top: 15px;
+    }
+
+    #events .poster {
+        margin-top: 50px;
+        height: 300px;
+        margin-left: 250x;
+        margin-bottom: 50px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+
 }
 
 @media (max-width: 768px) {
@@ -492,9 +511,11 @@ footer a:hover {
     }
 
     .logo {
+        justify-content: center;
         align-items: center;
         text-align: center;
     }
+
     .opening {
         margin: 20px 5px;
     }
@@ -519,6 +540,10 @@ footer a:hover {
         background-color: white;
         border-radius: 20px;
         border: 2px solid black;
+    }
+    
+    #events .poster {
+        height: 150px;   
     }
 }
 

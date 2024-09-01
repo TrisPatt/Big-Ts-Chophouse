@@ -467,6 +467,7 @@ Both a Microsoft surface laptop 4 running Windows 11 23H2 and Macbook pro runnin
 | Create Reservation | Enter "24" for number of guests where "0" guests are already booked | Displays confirmation message with date, time and number of guests booked | Error message displays saying 0 guest slots available | Even though the correct logic was applied in Python, only 10 tables were created in the admin panel from the tables model, giving a maximum of 20 instead of 24. 2 extra tables were therefore added in table model |
 | Update Profile | Enter date of birth | Date of birth entered and submit form | unknown date of birth format | Added help text to date_of_birth field to display the correct user format required   |
 | create Reservation | Enter date using datepicker | Date picker displays, highlighting todays date and greyed out unavailable dates  | date picker is unformatted even though javascript and css are written to render otherwise| Missing links in header of base.html for bootstrap datepicker and incorrect order of script files at bottom of base.html corrected   |
+| Hom page | browse events section on tablet | should look good and show responsive design  | poster image and event information overlaying | CSS was fixed to display the items in the grid  |
 
 
 ### Unresolved Bugs

@@ -1,5 +1,5 @@
 # Big T's Chophouse
-Legendary super chef champion Big T is thrilled to unveil his latest culinary venture: Big T's Chophouse. This new dining destination is set to become a must-visit for meat lovers, with the award-winning 32oz Big T-bone steak taking center stage. But the delights don't stop there, Big T's Chophouse offers a mouthwatering selection of perfectly grilled steaks, tender ribs, juicy burgers, and hearty sides that cater to every carnivorous craving.
+Legendary super chef champion Big T is thrilled to unveil his latest culinary venture: Big T's Chophouse. This new dining destination is set to become a must-visit for meat lovers, with the award-winning 32oz Big T-bone steak taking center stage. But the delights don't stop there, Big T's Chophouse offers a mouthwatering selection of perfectly grilled steaks, tender ribs, juicy burgers, and hearty sides that cater to every carnivorous craving. And to add to that, thers live music events throughout the month.
 
 Whether you're celebrating with friends, enjoying a romantic dinner, or just looking for the best steak in town, Big T's Chophouse promises an unforgettable experience. Come for the food, stay for the atmosphere. Big T's is where great food, good times, and memorable nights come together.
 
@@ -161,15 +161,17 @@ Detailed look can be found in the [project board](https://github.com/users/TrisP
 
 ## Design
 
-The overall mood created by the color scheme is warm and inviting, reminiscent of a cozy, classic chophouse where guests can relax and enjoy a hearty meal. The rustic tones contribute to a sense of authenticity and tradition, which is key to the restaurant's branding.
+The overall mood created by the colour scheme is warm and inviting, reminiscent of a cozy, classic chophouse where guests can relax and enjoy a hearty meal. The rustic tones contribute to a sense of authenticity and tradition, which is key to the restaurant's branding.
 This color scheme not only reflects the restaurant's identity but also enhances the user experience by making the website visually appealing and aligned with the brand's core values.
 
-### Color Scheme
+### Colour Scheme
 ![Color Scheme](documentation/readme-imgs/color-chart.png)
 
 ### Background
 
-![]()
+The background design of the website was imagined to look like a barn. This background is consistent throughout all pages of the webite ad is supposed to be in-design with the theme and colour scheme of the restaurant.
+
+![Background design](documentation/readme-imgs/barn-background.jpg)
 
 ### Hero Images
 
@@ -573,9 +575,8 @@ Site is now live
 
 ### Content
 
-* 
+*  Logo, events poster image and all other content unless stated otherwise and credited in this document, was created by me. 
 
 ### Acknowledgments
 
 * I would like to thank my mentor for support and feedback throughout this project, Mitko Bachvarov.
-* 
