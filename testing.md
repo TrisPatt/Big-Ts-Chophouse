@@ -259,6 +259,20 @@ Both a Microsoft surface laptop 4 running Windows 11 23H2 and Macbook pro runnin
 </details>
 
 <details>
+<summary> tests_forms.py
+</summary>
+
+![tests_forms.py](documentation/pep8-validation/reservation-tests-forms-py.png)
+</details>
+
+<details>
+<summary> tests_views.py
+</summary>
+
+![tests_views.py](documentation/pep8-validation/reservations-tests-views-py.png)
+</details>
+
+<details>
 <summary> urls.py
 </summary>
 
