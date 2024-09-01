@@ -8,7 +8,8 @@ $(document).ready(function(){
       startDate: new Date(),
       beforeShowDay: function(date) {
         var today = new Date();
-        return [date >= today, date < today ? 'disabled-date' : '']; 
+        var isDisabled = date >= today;
+        return [true, isDisabled ? 'disabled-date' : ''];
     },
       templates: {
         leftArrow: '<i class="fas fa-chevron-left"></i>',
@@ -22,10 +23,15 @@ $(document).ready(function(){
     format: 'yyyy-mm-dd',
     autoclose: true,
     todayHighlight: true,
+    endDate: new Date(),
+    beforeShowDay: function(date) {
+      var today = new Date();
+      var isDisabled = date < today;
+      return [true, isDisabled ? 'disabled-date' : ''];
+    },
     templates: {
       leftArrow: '<i class="fas fa-chevron-left"></i>',
       rightArrow: '<i class="fas fa-chevron-right"></i>',
     },
-    endDate: new Date(),
   });
 });

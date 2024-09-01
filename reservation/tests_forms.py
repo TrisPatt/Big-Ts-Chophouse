@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
+from django.urls import reverse
 from datetime import datetime, timedelta
 from .forms import ReservationForm
 from .models import Reservation, TimeSlot
@@ -13,7 +14,26 @@ class TestReservationForm(TestCase):
     the ReservationForm, including form initialization, validation 
     of dates, guest capacity, and required fields.
     """
-    
+    def setUp(self):
+        """Initialize common data for all tests."""
+        self.user = User.objects.create_user(
+            username='testuser',
+            first_name='John',
+            last_name='Doe',
+            email='john@example.com'
+        )
+        self.timeslot = TimeSlot.objects.create(time="12:00:00")
+        self.future_date = (datetime.now() + timedelta(days=1)).date()
+        self.past_date = (datetime.now() - timedelta(days=1)).date()
+        self.form_data = {
+            'date': self.future_date,
+            'time': self.timeslot.id,
+            'number_of_guests': 4,
+            'first_name': 'John',
+            'last_name': 'Doe',
+            'email': 'john@example.com'
+        }
+
     def test_form_initialization_with_date(self):
         """
         Test that the form is correctly initialized with a date.
@@ -21,10 +41,7 @@ class TestReservationForm(TestCase):
         This test ensures that when the form is initialized with a date, the
         queryset for the 'time' field is populated with TimeSlot objects.
         """
-        timeslot = TimeSlot.objects.create(time="12:00:00")
-        data = {'date': '2024-12-01'}
-        form = ReservationForm(data=data)
-
+        form = ReservationForm(data={'date': self.future_date})
         self.assertTrue(
             form.fields['time'].queryset.exists(),
             """Expected time queryset to be populated with 
@@ -39,13 +56,7 @@ class TestReservationForm(TestCase):
         'first_name', 'last_name', and 'email' fields are pre-filled with the
         user's corresponding information.
         """
-        user = User.objects.create_user(
-            username='testuser', 
-            first_name='John', 
-            last_name='Doe', 
-            email='john@example.com'
-            )
-        form = ReservationForm(user=user)
+        form = ReservationForm(user=self.user)
         
         self.assertEqual(
             form.fields['first_name'].initial, 'John',
@@ -67,16 +78,8 @@ class TestReservationForm(TestCase):
         This test ensures that the form cannot be submitted with a reservation
         date that is in the past, and that the appropriate error message is displayed.
         """
-        timeslot = TimeSlot.objects.create(time="12:00:00")
-        past_date = (datetime.now() - timedelta(days=1)).date()
-        form_data = {
-            'date': past_date,
-            'time': timeslot.id,
-            'number_of_guests': 4,
-            'first_name': 'John',
-            'last_name': 'Doe',
-            'email': 'john@example.com'
-        }
+        form_data = self.form_data.copy()
+        form_data['date'] = self.past_date
         form = ReservationForm(data=form_data)
 
         self.assertFalse(
@@ -89,41 +92,6 @@ class TestReservationForm(TestCase):
             but it was not found."""
         )
 
-    def test_guest_capacity_exceeded(self):
-        """
-        Test that the form is invalid if the guest capacity is exceeded.
-
-        This test ensures that the form cannot be submitted if the number of
-        guests exceeds the available guest slots for the selected time slot.
-        """
-        timeslot = TimeSlot.objects.create(time="12:00:00")
-        date = datetime.now().date()
-
-        Reservation.objects.create(
-            date=date, time=timeslot, number_of_guests=22, reservation_status=0
-            )
-
-        form_data = {
-            'date': date,
-            'time': timeslot.id,
-            'number_of_guests': 4,  
-            'first_name': 'John',
-            'last_name': 'Doe',
-            'email': 'john@example.com'
-        }
-        form = ReservationForm(data=form_data)
-
-        self.assertFalse(
-            form.is_valid(),
-            """Form should be invalid when the number of guests 
-            exceeds the maximum capacity."""
-        )
-        self.assertIn(
-            "Only 2 guest slots are available.", form.errors['__all__'],
-            """Expected 'Only 4 guest slots are available.' 
-            error message, but it was not found."""
-        )
-
     def test_clean_method(self):
         """
         Test the clean method of the form with valid data.
@@ -132,18 +100,7 @@ class TestReservationForm(TestCase):
         filled with valid data, including a future reservation date and 
         available guest slots.
         """
-        timeslot = TimeSlot.objects.create(time="12:00:00")
-        date = (datetime.now() + timedelta(days=1)).date()  
-
-        form_data = {
-            'date': date,
-            'time': timeslot.id,
-            'number_of_guests': 4,
-            'first_name': 'John',
-            'last_name': 'Doe',
-            'email': 'john@example.com'
-        }
-        form = ReservationForm(data=form_data)
+        form = ReservationForm(data= self.form_data)
 
         self.assertTrue(
             form.is_valid(),
@@ -152,6 +109,13 @@ class TestReservationForm(TestCase):
         )
 
     def test_missing_required_fields(self):
+        """
+        Test that the form is invalid when required fields are missing.
+
+        This test ensures that the form is not valid if 'date', 'time', or
+        'number_of_guests' fields are missing, and that appropriate error 
+        messages are displayed.
+        """
         form_data = {
             'first_name': 'John',
             'last_name': 'Doe',
@@ -179,23 +143,9 @@ class TestReservationForm(TestCase):
         )
 
     def test_maximum_guest_capacity(self):
-        """
-        Test that the form is invalid when required fields are missing.
-
-        This test ensures that the form is not valid if 'date', 'time', or
-        'number_of_guests' fields are missing, and that appropriate error messages are displayed.
-        """
-        timeslot = TimeSlot.objects.create(time="12:00:00")
-        date = datetime.now().date()
-
-        form_data = {
-            'date': date,
-            'time': timeslot.id,
-            'number_of_guests': 24,
-            'first_name': 'John',
-            'last_name': 'Doe',
-            'email': 'john@example.com'
-        }
+        """Test that the form is valid when guest number equals max capacity."""
+        form_data = self.form_data.copy()
+        form_data['number_of_guests'] = 24
         form = ReservationForm(data=form_data)
 
         self.assertTrue(

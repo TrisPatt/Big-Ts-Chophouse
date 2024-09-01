@@ -79,7 +79,7 @@ class Reservation(models.Model):
     tables = models.ManyToManyField(Table, related_name='reservations')
 
     def __str__(self):
-        return f"Booking for {self.user_id} on {self.date} at {self.time}"
+        return f'Reservation at {self.time.time.strftime('%H:%M')}' 
 
     def save(self, *args, **kwargs):
         if not self.pk:

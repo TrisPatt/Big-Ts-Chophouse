@@ -83,12 +83,12 @@ The project was tested on multiple web browsers to check for compatibility issue
 <summary> iphone (Mobile)
 </summary>
 
-![iphone Mobile]()
+![Firefox- Mac]()
 </details>
 
 ## Device Testing
 
-Device testing was conducted on a variety of phone models, including Samsung Galaxy A52, Oppo, iPhone 12, Huawei. The assistance of family members and friends was sought to perform the testing. This comprehensive approach ensured that the website was thoroughly evaluated on different devices and platforms, contributing to a more robust and user-friendly final product.
+Device testing was conducted on a variety of phone models, including Samsung Galaxy A52, Honor magic 6 pro, iPhone X, iphone 13, Huawei. The assistance of family members and friends was sought to perform the testing. This comprehensive approach ensured that the website was thoroughly evaluated on different devices and platforms, contributing to a more robust and user-friendly final product.
 
 ## Code Validation
 
@@ -228,7 +228,7 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 <summary> Custom JS (script.js)
 </summary>
 
-![Custom JS (script.js)]()
+![Custom JS (script.js)](documentation/validation/jshint.png)
 </details>
 
 ### Python
@@ -454,8 +454,9 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 
 | Page          | User Action   | Expected Result  | Actual Result    |       Fix        |
 |---------------|---------------|------------------|------------------|------------------|
-| Create Reservation | Enter "0" for number of guests | Displays error message "at least one guest must be entered | redirects to booking confirmation page showing 0 guests booked | change to logic etc....   |
-|               |               |                   |                 |                  |
+| Create Reservation | Enter "0" for number of guests | Displays error message "at least one guest must be entered | redirects to booking confirmation page showing 0 guests booked | clean_number_of_guests method added to ReservationForm in forms.py to validate that "0" cannot be entered.   |
+| Create Reservation | Enter "24" for number of guests where "0" guests are already booked | Displays confirmation message with date, time and number of guests booked |Error message displays saying 0 guest slost available | Even though the correct logic was applied in Python, only 10 tables were selected in the admin panel from the tables model, giving a maximum of 20. 2 extra tables added in table model |
+       |               |                   |                 |
 |               |               |                   |                 |                  |
 |               |               |                   |                 |                  |
 |               |               |                   |                 |                  |
@@ -495,7 +496,7 @@ Device testing was conducted on a variety of phone models, including Samsung Gal
 |               | Complete reservation form with an invalid date (in the past) | Datepicker will only allow for the current date or dates in the future to be selected | PASS |
 |               | Complete reservation form with valid date and time and name but enter an invalid email address (eg, a single letter, number without the "@" and ".") | Will not allow user to proceed without a valid email address | PASS |
 |               | Complete reservation form with valid date and time, names and valid email address. Enter nummber of guests with a number over 24 | Displays error message with the number of available seats at that time. Displays error message in top left under navigation bar | PASS |
-|               | Complete reservation form with valid date and time, names and valid email address. Enter nummber of guests as 0 | Displays error message with you must select at least 1 guests | FAIL |
+|               | Complete reservation form with valid date and time, names and valid email address. Enter nummber of guests as 0 | Displays error message with you must select at least 1 guests | PASS |
 |               | Complete reservation form with valid date and time (in the future), number of guests below 24 and other required information and click submit button | Displays confirmation message containing your entered date and time and number of guests. (if access to the terminal, this will display an email confirmation message) | PASS |
 |               | click on view my reservations button| Redirects to reservations list| PASS |
 |               | click on update button next to your reservation | Redirects to create reservation with fields prepoulated| PASS |

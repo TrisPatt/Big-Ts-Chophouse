@@ -1,10 +1,6 @@
 # Big T's Chophouse
 Legendary super chef champion Big T is thrilled to unveil his latest culinary venture: Big T's Chophouse. This new dining destination is set to become a must-visit for meat lovers, with the award-winning 32oz Big T-bone steak taking center stage. But the delights don't stop there, Big T's Chophouse offers a mouthwatering selection of perfectly grilled steaks, tender ribs, juicy burgers, and hearty sides that cater to every carnivorous craving.
 
-Complementing the feast, the saloon bar boasts a curated collection of local craft beers, fine wines, and handcrafted cocktails, ensuring the perfect pairing for every dish. As you indulge in these culinary masterpieces, soak in the vibrant atmosphere with live music events that transform any night into a special occasion.
-
-Shhh... While Big T’s Chophouse is known for its legendary steaks and hearty meat dishes, we haven’t forgotten about our plant-loving friends. Our menu also features a delicious vegan burger that’s packed with flavor, ensuring there’s something for everyone to enjoy.
-
 Whether you're celebrating with friends, enjoying a romantic dinner, or just looking for the best steak in town, Big T's Chophouse promises an unforgettable experience. Come for the food, stay for the atmosphere. Big T's is where great food, good times, and memorable nights come together.
 
 Book your table today! 
@@ -57,18 +53,19 @@ Immerse yourself in an effortlessly engaging user experience at Big T's Chophous
 
 ### Project Goals
 
-The primary goal of Big T's Chophouse is to deliver an exceptional customer experience on our website. This includes offering a seamless and intuitive booking system that allows users to easily create, review, edit, or cancel reservations. We also aim to provide a comprehensive and user-friendly menu display, enabling customers to explore our diverse offerings with ease. Additionally, our robust platform for managing reviews empowers customers to write, update, and delete their feedback effortlessly. Every element of the website is designed to ensure a smooth, satisfying, and engaging experience for all visitors.
+The primary goal of Big T's Chophouse is to deliver an exceptional customer experience on our website. This includes offering a seamless and intuitive booking system that allows users to easily create, review, edit, or cancel reservations. We also aim to provide a comprehensive and user-friendly menu display, enabling customers to explore our diverse offerings with ease. Additionally, our robust platform for managing reviews empowers customers to write, read, update, and delete their feedback effortlessly. Every element of the website is designed to ensure a smooth, satisfying, and engaging experience for all visitors.
 
 
 ### Agile Methodology
 
-Agile Methodology was used to help prioritize and organize tasks, writting the user stories and using Project Boards on Github. Templates were created to help write User Stories and define Epics
+Agile Methodology was used to help prioritise and organise tasks, writing the user stories and using Project Boards on Github. Templates were created to help write User Stories and define Epics.
 
-* Epics were written containing possible user stories and based on that the website was made.
+* Epics were written containing possible user stories and based on that, the website was made.
 * User stories were created by looking at epics and through iterations the project was advancing.
 * Project Board is set to public.
 * Project Board was used to track progression of the task through the Todo, In progress and Done columns
-* Labels were added to sort the issues based on the importance.
+* Labels were added to sort the issues based on their importance using the MoSCoW principle; Must have, Should have, Could have and Wont have.
+* Some Could have user stories were moved to Wont haves in order to be implemented in a further iteration. 
 
 <details>
 <summary> User Stories Template
@@ -93,6 +90,8 @@ Agile Methodology was used to help prioritize and organize tasks, writting the u
 
 ### User Stories
 
+User stories marked (WH) are wont haves in this iteration, however they are features left to implement in the next iteration of the design.
+
 #### Epics
 * Initial Deployment
 * User Registration
@@ -110,39 +109,37 @@ Agile Methodology was used to help prioritize and organize tasks, writting the u
 *  Create user account
 *  Update user records
 *  Delete user account
-*  Reset password if forgotten
+*  Reset password if forgotten (WH)
 
 3. Implement an online reservation system
 *  Make an available reservation
 *  View reservations
 *  Update reservation details
 *  Cancel reservations
-*  Reservation reminder
+*  Reservation reminder (WH)
 
 4. Reviews
 *  Leave a customer review
 *  Update review 
 *  Delete reviews
-*  Filter reviews
-*  Respond to customer reviews
+*  Filter reviews (WH)
+*  Respond to customer reviews (WH)
 
 5. Create a responsive UI/UX
 *  Design a user friendly navigation system
 *  Responsive hero section
 
-Detailed look can be found in the [project board]()
+Detailed look can be found in the [project board](https://github.com/users/TrisPatt/projects/2)
 
 ### Target Audience
 
-* The restaurant primarily targets meat lovers and food enthusiasts who appreciate high-quality cuts of meat and classic American cuisine.
+* The restaurant primarily targets meat lovers and food enthusiasts who appreciate high-quality ingredients and classic American cuisine.
 * Those who enjoy traditional and gourmet dining experiences, particularly with a focus on steaks.
 * Local residents who are looking for a reliable and enjoyable dining experience in their area.
 * Visitors or tourists who are seeking a recommended spot for a great meal.
-* Families, couples, and groups of friends looking for a comfortable and inviting place to dine.
-* People who are interested in combining dining with entertainment. This could appeal to those looking for a lively night out with food and music.
-* Adults ranging from young professionals to middle-aged individuals who enjoy live music and socializing.
-* The restaurant likely appeals to casual diners looking for a good meal as well as people celebrating special occasions, such as birthdays, anniversaries, or other gatherings.
-* While the focus is on hearty meals, including a vegan burger option suggests a secondary target audience of health-conscious or vegan diners who are looking for plant-based options within a traditional dining setting.
+* Families looking for a comfortable and inviting place to dine.
+* Couples, and groups of friends who are interested in combining dining with entertainment. This would appeal to those looking for a lively night out with food and music.
+* Casual diners looking for a good meal as well as people celebrating special occasions, such as birthdays, anniversaries, or other gatherings.
 
 ### First time user
 
@@ -155,7 +152,7 @@ Detailed look can be found in the [project board]()
 
 ### Registered User
 
-* Seamless login process with a secure and personalized user account.
+* Seamless login process with a secure and personalised user account.
 * Ability to create a user profile
 * Make reservations and reviews
 * Access to a personalized dashboard displaying booking history and upcoming reservations.
@@ -170,19 +167,26 @@ This color scheme not only reflects the restaurant's identity but also enhances 
 ### Color Scheme
 ![Color Scheme](documentation/readme-imgs/color-chart.png)
 
+### Background
+
+![]()
+
 ### Hero Images
 
-All images were taken from [pixabay](www.pixabay.com).
+All images were sourced from [Pixabay](https://pixabay.com/images/search/free%20images/) and were carefully chosen to showcase the exceptional quality of the food and entertainment available.
 
 ### Logo
 
-Vistaprint was used to create the logo design [Vista](vistaprint.co.uk).
+The logo design was created using [Vistaprint](https://www.vistaprint.co.uk/design), ensuring it aligns with the brand's colors and theme to effectively convey the brand identity to first-time users.
 
 ### Typography
 
-Lora, Roboto
+The website utilizes two primary fonts imported from [Google Fonts](https://fonts.google.com/). 
+The base font for the body text is 'Roboto', a versatile sans-serif typeface known for its modern and clean appearance. For headers (h1 and h2), the font 'Lora' is employed. This serif typeface adds a touch of elegance and sophistication to the heading. These fonts were chosen with the brand and ethos in mind.
 
 ### Wireframes
+
+I used [Figma](https://www.figma.com/) to create wireframes for both the desktop and mobile versions of the homepage. This tool allowed me to visually plan and structure the layout, ensuring a user-friendly design that adapts seamlessly across different screen sizes. By prototyping the key elements and interactions in Figma, I was able to refine the user experience before moving on to full development. 
 
 <details>
 <summary> Home Page- Desktop
@@ -210,7 +214,7 @@ Lora, Roboto
     * If a user is deleted either by opting to do so, or by an admin, then their reviews will also be deleted.
 ---
 3. Review Model
-    * Reviews can be created, viewed, updated and deleted by their asociated users and admins.
+    * Reviews can be created, viewed, updated and deleted by their associated users and admins.
     * The review model is linked to the user model by a many to one relationship, foreign key. Each review is written by a single user, but a single user can write multiple reviews.
     * If a user is deleted either by opting to do so, or by an admin, then their reviews will also be deleted.
 ---
@@ -227,7 +231,7 @@ Lora, Roboto
     * Time slots can be managed by the admin in the user panel should opening hours change.
     * If a TimeSlot is deleted, all associated reservations will also be deleted.
 
-### Database Scheme
+### Database Schema
 
 Entity Relationship Diagram (ERD)
 
@@ -248,7 +252,7 @@ Entity Relationship Diagram (ERD)
 
 ### Login Decorator
 
-* create_reservation etc....: These views involve operations related to user bookings and require authentication with the login_required decorator.
+* The @login_required decorator is used in views relating to reservations and writing, editing and deleting reviews which require authentication.
 * This ensures that only authenticated users can access these views.
 
 ### CSRF Protection
@@ -257,17 +261,16 @@ Entity Relationship Diagram (ERD)
 
 ### Form Validation
 
-* The create reservation form is validated to accepy only dates in the future. The number of guests on a specific date and time
-is validated to check against restaurant capacity and messages are displayed to the user if the validation fails.
+* The create reservation form is validated to only accept dates in the future. The number of guests on a specific date and time is validated to check against restaurant capacity. Messages are displayed to the user if the validation fails. Number of guests can also not be "0".
 * The create review form is validated to only accept dates from the past. 
 
 ## Features
 
 * Home page showcases a rotating carousel that contains information and links to menu, book a table and events.
-* The homepage navigation bar displaying the logo also provides links to Home, Menus, book a table and reviews.
-* User can make an account and login from the right of the navigation bar.
-* When logged in, users get access to create a booking or review and update their profile
-* Users can edit and delete their bookings and reservations
+* The navigation bar displays the logo and also provides links to Home, Menu, reservations, reviews and events.
+* Users can make an account and login from the right of the navigation bar.
+* When logged in, users get access to create a reservation or review and update their profile.
+* Users can edit and delete their reviews and reservations.
 * Every user action is accompanied by a corresponding message to ensure that users are promptly notified of any changes, updates or cancellations.
 
 ### Existing Features
@@ -277,14 +280,13 @@ is validated to check against restaurant capacity and messages are displayed to 
 ![Home Page](documentation/readme-imgs/homepage.png)
 
 * Logo
-    * The logo was created using [Vista](www.vistaprint.co.uk). The colours and design are in line with the colur design of the website.
 
 ![Logo](documentation/readme-imgs/logo.png)
 
 * Navigation Bar
-    * It differs if its a user or just a visitor
-    * Navigation bar for a visitor
+    * It differs if its a logged-in user or just a visitor
 
+    * Navigation bar for a visitor
     ![Visitor](documentation/readme-imgs/logged-out-navbar.png)
 
     * Navigation bar for a logged in user
@@ -312,7 +314,7 @@ is validated to check against restaurant capacity and messages are displayed to 
 ![Events](documentation/readme-imgs/upcoming-events.png)
 
 * Footer
-    * Contains copyright information, creator and social links which are all linked to the creator of the website
+    * Contains contact information and social links.
 
 ![Footer](documentation/readme-imgs/footer.png)
 
@@ -322,7 +324,7 @@ is validated to check against restaurant capacity and messages are displayed to 
 ![Sign Up](documentation/readme-imgs/sign-up.png)
 
 * Login
-    * User can login into an account, if they have created one
+    * User can login to an account, if they have created one
 
 ![Login](documentation/readme-imgs/sign-in.png)
 
@@ -339,7 +341,7 @@ is validated to check against restaurant capacity and messages are displayed to 
 ![My Account](documentation/readme-imgs/my-account-menu.png)
 
 * Profile
-    * Once logged in, a user can update or add additional personal details in their profile
+    * Once logged in, users can update or add additional personal details in their profile
     * This can be useful as forms will pre-populate fields from the profile
 
 ![Update profile](documentation/readme-imgs/update-profile.png)
@@ -347,66 +349,72 @@ is validated to check against restaurant capacity and messages are displayed to 
 * Profile Updated
     * Users are notified once updates are submitted
 
-![Update profile](documentation/readme-imgs/profile-updated.png)
+![Updated profile](documentation/readme-imgs/profile-updated.png)
 
 * Menu
-    * A user, whether logged in or not can browse the menu
-    * There are links at the top to the various parts of the menu on the page to save scrolling
+    * Users, regardless of whether they are logged in, can easily browse the menu.
+    * Navigation links are provided at the top of the page, allowing users to jump directly to different sections of the menu without needing to scroll.
+    * The design of the menu is intentionally crafted to resemble a physical menu, with key sections highlighted in bold and a clear, well-structured layout that enhances readability and user experience.
 
 ![Menu](documentation/readme-imgs/menu.png)
 
 * Make a reservation
-    * Users are invited to make a reservation with the restaurant
-    * If details have been added to the user profile some fields will be pre-populated
+    * Users are invited to make a reservation with the restaurant.
+    * If details have been added to the user profile some fields will be pre-populated to save double-keying.
 
 ![Make a Reservation](documentation/readme-imgs/create-booking-form.png)
 
+* Make a reservation- datepicker
+    * Users can only enter future dates to make a reservation. This is displayed in the datepicker. Un-selectable dates are shown in grey.
+
+![Make a reservation- datepicker](documentation/readme-imgs/reservation-datepicker.png)
+
 * Booking Succesful
-    * If booking is succesfull, user gets a notified message and an overview of the booking they just made.
+    * If booking is succesfull, user gets a notified message and an overview of the reservation they have made.
 
 ![Reservation Succesful](documentation/readme-imgs/thanks-for-booking.png)
 
+* Unavailable Times
+    * If the date/time is unavailabe, the user is notified.
+    * Tables are multiples of two with a maximum number of guests currently set to 24 in the admin panel. This can be changed with expansion of the restaurant.
+    * Dates in the past are unavailable. This is validated in the front end by not allowing users to pick dates from the past either via the datepicker (javascript), or by keying directly. Logic validates this in the backend.
+
+![Unavailable times](documentation/readme-imgs/maximum-guests.png)
+
 * Reservation List
-    * Includes all of the user reservations, which have buttons to update or cancel.
+    * Includes all of the users reservations, which have buttons to update or cancel.
     * This list is filtered by most recent reservations first.
 
 ![Reservation Overview](documentation/readme-imgs/my-reservations.png)
 
-* Already booked dates
-    * If the time is unavailabe, the user is notified.
-    * Dates in the past are unavailable. This is validated in the front end by not allowing users to pick dates from the past 
-    from the datepicker (javascript), and in the backend through python logic.
-
-![Edit booking](documentation/readme-imgs/update-reservation-prepopulated.png)
-
-* Edit Booking
-    * User can change their booking and save changes
-    * If the number of guests is increased, this is again validated to check if it available.
+* Edit Reservation
+    * Users can change their booking and save changes.
+    * If the number of guests is increased, this is again validated to check if it's available.
     * Users are notified if the restaurant cannot accept their changes.
 
 ![Edit Booking](documentation/readme-imgs/update-reservation-prepopulated.png)
 
-* Delete Booking
-    * User can delete their booking, before it is deleted it has to be confirmed.
-    * Once this is deleted, the available times will be recycled.
+* Cancel reservation
+    * Usesr can cancel their reservation. A message is displayed asking for confirmation.
+    * Once this is cancelled, the available times will be recycled.
 
-![Delete Booking](documentation/readme-imgs/cancel-reservation.png)
+![Cancel reservation](documentation/readme-imgs/cancel-reservation.png)
 
 * Write a Review
-    * User can write a review
+    * Users can write a review.
 
 ![Write a review](documentation/readme-imgs/reviews.png)
 
 * Write a review- Datepicker
-    * User can only enter past dates to write a review
+    * Users can only enter past dates to write a review. This is displayed in the datepicker. Un-selectable dates are shown in grey.
 
 ![Datepicker](documentation/readme-imgs/review-date-picker.png)
 
-* Modify a Review
-    * User can modify a review
-    * User has to be logged 
+* Edit a Review
+    * Users can modify a review they have written.
+    * Users have to be logged-in.
 
-![Modify a review](documentation/readme-imgs/edit-review.png)
+![Edit a review](documentation/readme-imgs/edit-review.png)
 
 * Delete a Review
     * User can only delete a review for which they have written and be logged in in order to do so
@@ -469,9 +477,12 @@ is validated to check against restaurant capacity and messages are displayed to 
 * [CSS Validation Service](https://jigsaw.w3.org/css-validator/) - Used to validate CSS
 * [CI Python Linter](https://pep8ci.herokuapp.com/#) - Used to validate Python
 
+## Testing
+Please see  [TESTING.md](testing.md) for all the detailed testing performed.
+
 ## Deployment and Local Developement
 
-Live deployment can be found on this [View Big T's Chophouse live website here]https://big-ts-chophouse-8ec7ab8dc652.herokuapp.com/()
+Live deployment can be found on this [View Big T's Chophouse live website here](https://big-ts-chophouse-8ec7ab8dc652.herokuapp.com/)
 
 ### Local Developement
 
@@ -547,9 +558,6 @@ Live deployment can be found on this [View Big T's Chophouse live website here]h
 4. Click 'Open App' to view the deployed live site.
 
 Site is now live
-
-## Testing
-Please see  [TESTING.md](testing.md) for all the detailed testing performed.
 
 ## References
 ### Docs
