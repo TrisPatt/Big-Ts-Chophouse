@@ -22,7 +22,7 @@ class TestReservationForm(TestCase):
             last_name='Doe',
             email='john@example.com'
         )
-        self.timeslot = TimeSlot.objects.create(time="12:00:00")
+        self.timeslot = TimeSlot.objects.create(time="18:00:00")
         self.future_date = (datetime.now() + timedelta(days=1)).date()
         self.past_date = (datetime.now() - timedelta(days=1)).date()
         self.form_data = {
@@ -166,25 +166,26 @@ class TestReservationForm(TestCase):
         )
         self.assertIn('number_of_guests', form.errors)
 
-def test_exceeding_guest_limit(self):
-    """Test that form is invalid if guest capacity exceeds 24"""
-    Reservation.objects.create(
-        date=self.date_tomorrow,
-        time=self.time_slot, 
-        number_of_guests=20,
-        reservation_status=0
-    )
+    def test_exceeding_guest_limit(self):
+        """Test that form is invalid if maximum number of guests exceeds 24 """
+        Reservation.objects.create(
+            user_id=self.user,
+            first_name='John',
+            last_name='Doe',
+            email='john@example.com',
+            date=self.future_date,
+            time=self.timeslot,
+            number_of_guests=20,
+            reservation_status=0  
+        )
 
-    form_data = {
-        'date': self.date_tomorrow,
-        'time': self.time_slot.id, 
-        'number_of_guests': 10,
-    }
+        form_data = self.form_data.copy()
+        form_data['number_of_guests'] = 8
 
-    form = ReservationForm(data=form_data)
-    self.assertFalse(
-        form.is_valid(), 
-        """Form should be invalid if guest capacity exceeds 24"""
-    )
-    with self.assertRaises(ValidationError):
-        form.clean()
+        form = ReservationForm(data=form_data)
+        self.assertFalse(
+            form.is_valid(),
+            """Sorry, we cannot accommodate 8 guests at the requested time. 
+            Only 4 guest slots are available."""
+        )
+        

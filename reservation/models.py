@@ -31,7 +31,7 @@ class TimeSlot(models.Model):
     time = models.TimeField()
 
     def __str__(self):
-        return self.time.strftime('%H:%M')
+        return f'Reservation at {self.time.strftime("%H:%M")}'
 
 
 class Reservation(models.Model):
