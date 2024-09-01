@@ -10,8 +10,8 @@ class TestReservationForm(TestCase):
     """
     Test cases for the ReservationForm.
 
-    This class contains tests that verify the correct behavior of 
-    the ReservationForm, including form initialization, validation 
+    This class contains tests that verify the correct behavior of
+    the ReservationForm, including form initialization, validation
     of dates, guest capacity, and required fields.
     """
     def setUp(self):
@@ -44,7 +44,7 @@ class TestReservationForm(TestCase):
         form = ReservationForm(data={'date': self.future_date})
         self.assertTrue(
             form.fields['time'].queryset.exists(),
-            """Expected time queryset to be populated with 
+            """Expected time queryset to be populated with
             TimeSlot objects, but it was empty."""
         )
 
@@ -57,7 +57,7 @@ class TestReservationForm(TestCase):
         user's corresponding information.
         """
         form = ReservationForm(user=self.user)
-        
+
         self.assertEqual(
             form.fields['first_name'].initial, 'John',
             "Expected first name to be 'John' but got something else."
@@ -76,7 +76,8 @@ class TestReservationForm(TestCase):
         Test that the form is invalid if the reservation date is in the past.
 
         This test ensures that the form cannot be submitted with a reservation
-        date that is in the past, and that the appropriate error message is displayed.
+        date that is in the past, and that the appropriate error message is
+        displayed.
         """
         form_data = self.form_data.copy()
         form_data['date'] = self.past_date
@@ -88,7 +89,7 @@ class TestReservationForm(TestCase):
         )
         self.assertIn(
             "Reservation cannot be in the past.", form.errors['__all__'],
-            """Expected 'Reservation cannot be in the past.' error message, 
+            """Expected 'Reservation cannot be in the past.' error message,
             but it was not found."""
         )
 
@@ -97,14 +98,14 @@ class TestReservationForm(TestCase):
         Test the clean method of the form with valid data.
 
         This test ensures that the form is valid when all required fields are
-        filled with valid data, including a future reservation date and 
+        filled with valid data, including a future reservation date and
         available guest slots.
         """
-        form = ReservationForm(data= self.form_data)
+        form = ReservationForm(data=self.form_data)
 
         self.assertTrue(
             form.is_valid(),
-            """Form should be valid with future date, 
+            """Form should be valid with future date,
             available time slot, and valid guest number."""
         )
 
@@ -113,7 +114,7 @@ class TestReservationForm(TestCase):
         Test that the form is invalid when required fields are missing.
 
         This test ensures that the form is not valid if 'date', 'time', or
-        'number_of_guests' fields are missing, and that appropriate error 
+        'number_of_guests' fields are missing, and that appropriate error
         messages are displayed.
         """
         form_data = {
@@ -125,7 +126,7 @@ class TestReservationForm(TestCase):
 
         self.assertFalse(
             form.is_valid(),
-            """Form should be invalid when required fields like 'date', 
+            """Form should be invalid when required fields like 'date',
             'time', or 'number_of_guests' are missing."""
         )
         self.assertIn(
@@ -138,19 +139,20 @@ class TestReservationForm(TestCase):
         )
         self.assertIn(
             'number_of_guests', form.errors,
-            """Expected 'number_of_guests' field to have an error, 
+            """Expected 'number_of_guests' field to have an error,
             but it was not found."""
         )
 
     def test_maximum_guest_capacity(self):
-        """Test that the form is valid when guest number equals max capacity."""
+        """Test that the form is valid when guest number equals max
+        capacity."""
         form_data = self.form_data.copy()
         form_data['number_of_guests'] = 24
         form = ReservationForm(data=form_data)
 
         self.assertTrue(
             form.is_valid(),
-            """Form should be valid when the number of guests 
+            """Form should be valid when the number of guests
             equals the maximum capacity."""
         )
 
@@ -166,7 +168,7 @@ class TestReservationForm(TestCase):
         )
         self.assertIn('number_of_guests', form.errors)
 
-    def test_exceeding_guest_limit(self):
+    def test_exceeding_number_of_guests(self):
         """Test that form is invalid if maximum number of guests exceeds 24 """
         Reservation.objects.create(
             user_id=self.user,
@@ -176,7 +178,7 @@ class TestReservationForm(TestCase):
             date=self.future_date,
             time=self.timeslot,
             number_of_guests=20,
-            reservation_status=0  
+            reservation_status=0
         )
 
         form_data = self.form_data.copy()
@@ -185,7 +187,6 @@ class TestReservationForm(TestCase):
         form = ReservationForm(data=form_data)
         self.assertFalse(
             form.is_valid(),
-            """Sorry, we cannot accommodate 8 guests at the requested time. 
+            """Sorry, we cannot accommodate 8 guests at the requested time.
             Only 4 guest slots are available."""
         )
-        

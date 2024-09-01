@@ -8,10 +8,11 @@ from datetime import datetime, timedelta
 class TestReservationCreateView(TestCase):
     """
     Test cases for the reservation creation, update, and confirmation views.
-    
-    This class contains tests for both GET and POST requests to the reservation 
-    creation and update views. It also tests the reservation list and confirmation 
-    views, ensuring correct handling of authenticated and unauthenticated users.
+
+    This class contains tests for both GET and POST requests to the reservation
+    creation and update views. It also tests the reservation list and
+    confirmation views, ensuring correct handling of authenticated and
+    unauthenticated users.
 
     """
     def setUp(self):
@@ -35,8 +36,8 @@ class TestReservationCreateView(TestCase):
     def test_get_reservation_create(self):
         """
         Test the GET request to the reservation creation view.
-        
-        This test checks that the reservation form is rendered correctly with 
+
+        This test checks that the reservation form is rendered correctly with
         a status code of 200 and the correct template is used.
         """
         response = self.client.get(reverse('reservation_create'))
@@ -45,12 +46,11 @@ class TestReservationCreateView(TestCase):
             response, 'reservation/reservation_form.html'
             )
 
-
     def test_post_reservation_create_invalid(self):
         """
         Test an invalid POST request to the reservation creation view.
-        
-        This test submits an invalid reservation form and checks that the form 
+
+        This test submits an invalid reservation form and checks that the form
         reloads with errors and does not create a reservation.
         """
         form_data = {
@@ -58,29 +58,43 @@ class TestReservationCreateView(TestCase):
             'time': '',
             'number_of_guests': ''
         }
-        response = self.client.post(reverse('reservation_create'), data=form_data)
+        response = self.client.post(reverse(
+            'reservation_create'), data=form_data
+            )
         self.assertEqual(response.status_code, 200)
-        self.assertFormError(response, 'form', 'date', 'This field is required.')
-        self.assertFormError(response, 'form', 'time', 'This field is required.')
+        self.assertFormError(
+            response, 'form', 'date', 'This field is required.'
+            )
+        self.assertFormError(
+            response, 'form', 'time', 'This field is required.'
+            )
 
     def test_post_update_reservation_invalid(self):
         """
         Test an invalid POST request to the reservation update view.
-        
-        This test submits an invalid update to an existing reservation and checks 
-        that the form reloads with errors and does not update the reservation.
+
+        This test submits an invalid update to an existing reservation and
+        checks that the form reloads with errors and does not update the
+        reservation.
         """
-        form_data = {'date': '', 'time': '', 'number_of_guests': ''}  
-        response = self.client.post(reverse('update_reservation', args=[self.reservation.reservation_number]))
+        form_data = {'date': '', 'time': '', 'number_of_guests': ''}
+        response = self.client.post(reverse(
+            'update_reservation', args=[self.reservation.reservation_number])
+            )
         self.assertEqual(response.status_code, 200)
-        self.assertFormError(response, 'form', 'date', 'This field is required.')
-        self.assertFormError(response, 'form', 'time', 'This field is required.')
+        self.assertFormError(
+            response, 'form', 'date', 'This field is required.'
+            )
+        self.assertFormError(
+            response, 'form', 'time', 'This field is required.'
+            )
 
     def test_get_reservation_list_authenticated(self):
         """
-        Test the GET request to the reservation list view for an authenticated user.
-        
-        This test checks that the reservation list is rendered correctly with a 
+        Test the GET request to the reservation list view for an authenticated
+        user.
+
+        This test checks that the reservation list is rendered correctly with a
         status code of 200 and the correct template is used.
         """
         response = self.client.get(reverse('reservation_list'))
@@ -89,9 +103,11 @@ class TestReservationCreateView(TestCase):
 
     def test_get_reservation_list_unauthenticated(self):
         """
-        Test the GET request to the reservation list view for an unauthenticated user.
-        
-        This test checks that an unauthenticated user is redirected to the login page.
+        Test the GET request to the reservation list view for an
+        unauthenticated user.
+
+        This test checks that an unauthenticated user is redirected to the
+        login page.
         """
         self.client.logout()
         response = self.client.get(reverse('reservation_list'))

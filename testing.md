@@ -27,13 +27,6 @@ The deployed website underwent rigorous testing on multiple devices and screen s
 ![Am I Responsive](documentation/readme-imgs/responsive.png)
 
 <details>
-<summary> Desktop PC
-</summary>
-
-![Desktop PC]()
-</details>
-
-<details>
 <summary> Laptop
 </summary>
 
@@ -89,6 +82,7 @@ The project was tested on multiple web browsers to check for compatibility issue
 ## Device Testing
 
 Device testing was conducted on a variety of phone models, including Samsung Galaxy A52, Honor magic 6 pro, iPhone X, iphone 13 and Huawei. 
+Testing was conducted on an ipad ... and amazon ...
 Both a Microsoft surface laptop 4 running Windows 11 23H2 and Macbook pro running MacOs13 Ventura laptops were used for testing. The assistance of family members and friends were sought to perform the testing. This comprehensive approach ensured that the website was thoroughly evaluated on different devices and platforms, contributing to a more robust and user-friendly final product.
 
 ## Code Validation
@@ -464,6 +458,37 @@ Both a Microsoft surface laptop 4 running Windows 11 23H2 and Macbook pro runnin
 ### Unresolved Bugs
 
 * No known bugs
+
+## Automated Testing
+
+13 automated tests were created to test the reservations app specifically. These are implemented in tests_forms.py and tests_views.py. 
+
+<details>
+<summary> Terminal results
+</summary>
+
+![Terminal results](documentation/validation/automated-tests.png)
+</details>
+
+### Tests created
+
+Test Reservation form
+* Initialization with date
+* initialization with user
+* Test reservation in the past
+* Test clean method
+* Test missing required fields
+* Test maximum guest capacity
+* Test zero number of guests entered
+* Test exceeding number of guests
+
+Test Reservation Create view
+* Test GET request to reservation view
+* Test an invalid POST request to reservation view
+* Test an invalid POST request to the reservation update view
+* Test the GET request to the reservation list view for an authenticated user
+* Test the GET request to the reservation list view for an unauthenticated user
+
 
 ## Manual user testing script
  
