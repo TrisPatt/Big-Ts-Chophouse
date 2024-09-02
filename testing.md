@@ -79,10 +79,10 @@ The project was tested on multiple web browsers to check for compatibility issue
 ![Firefox- Mac](documentation/readme-imgs/firefox.png)
 </details>
 
-## Device Testing
+## Manual device Testing
 
 Device testing was conducted on a variety of phone models, including Samsung Galaxy A52, Honor magic 6 pro, iPhone X, iphone 13 and Honor 70. 
-Testing was conducted on an ipad ... and amazon ...
+Testing was also conducted on an Amazon fire HD10 for manual tablet responsiveness.
 Both a Microsoft surface laptop 4 running Windows 11 23H2 and Macbook pro running MacOs13 Ventura laptops were used for testing. The assistance of family members and friends were sought to perform the testing. This comprehensive approach ensured that the website was thoroughly evaluated on different devices and platforms, contributing to a more robust and user-friendly final product.
 
 ## Code Validation
@@ -467,7 +467,7 @@ Both a Microsoft surface laptop 4 running Windows 11 23H2 and Macbook pro runnin
 | Create Reservation | Enter "24" for number of guests where "0" guests are already booked | Displays confirmation message with date, time and number of guests booked | Error message displays saying 0 guest slots available | Even though the correct logic was applied in Python, only 10 tables were created in the admin panel from the tables model, giving a maximum of 20 instead of 24. 2 extra tables were therefore added in table model |
 | Update Profile | Enter date of birth | Date of birth entered and submit form | unknown date of birth format | Added help text to date_of_birth field to display the correct user format required   |
 | create Reservation | Enter date using datepicker | Date picker displays, highlighting todays date and greyed out unavailable dates  | date picker is unformatted even though javascript and css are written to render otherwise| Missing links in header of base.html for bootstrap datepicker and incorrect order of script files at bottom of base.html corrected   |
-| Hom page | browse events section on tablet | should look good and show responsive design  | poster image and event information overlaying | CSS was fixed to display the items in the grid  |
+| Home page | browse events section on tablet | should look good and show responsive design  | poster image and event information overlaying | CSS was fixed to display the items in the grid  |
 
 
 ### Unresolved Bugs
@@ -528,7 +528,8 @@ Test Reservation Create view
 | Home Page (Logged In - User)  |   
 |               | After Login | Users name is displayed in top right of navigation bar | PASS |              |          |  |
 |               | After Login | Sign Up link now displays as "logout" and "My Account" | PASS |
-| Reservation   | Click on reservations link in navigation bar | Displays create reservation form | PASS |
+| Reservation     |               |                  |                  |
+|               | Click on reservations link in navigation bar | Displays create reservation form | PASS |
 |               | Complete reservation form with valid date and time (in the future), number of guests below 24 and other required information and click submit button | Displays confirmation message containing your entered date and time and number of guests. (if access to the terminal, this will display an email confirmation message) | PASS |
 |               | click on back to Home button| Redirects to homepage | PASS |
 |               | Click on Reservations link in navigation bar | redirects to create reservation form | PASS |
@@ -544,7 +545,8 @@ Test Reservation Create view
 |               | click on cancel button next to your reservation| Displays confirm cancellation screen | PASS |
 |               | click on submit| Redirects to my reservations, displays cancel confirmtion in top left and changes the status of the reservation to cancelled in red | PASS |
 |               | click on cancel button next to your reservation| Displays confirm cancellation screen | PASS |
-|    Reviews    | Click on Reviews link in navigation menu | Redirect to display reviews | PASS |
+|   Reviews     |               |                  |                  |
+|               | Click on Reviews link in navigation menu | Redirect to display reviews | PASS |
 |               | Click on Reviews write review button| Redirect to submit a review form | PASS |
 |               | Click submit with a blank form | does not allow mandatory fields to be left blank | PASS |
 |               | Complete all fields including a invalid date (a date in the future Try with the datepicker or by typing directly (format is yyyy/mm/dd))| Does not allow a date from the future to be added | PASS |
@@ -553,7 +555,8 @@ Test Reservation Create view
 |               | Edit some or all fields and save changes| redirects to review list displaying the changes made. Displays a message in the top left confirming the chages | PASS |
 |               | Click on delete button next to your review| Redirects to confirm delete page | PASS |
 |               | Click on confirm buttonn| Redirects to review page, the deleted review has been deleted, a confirmation message is displayed in top left| PASS |
-|   My Account  | Click on My Account link on top right of navigation bar| Redirects to My account page | PASS |
+|   My Account  |               |                  |                  |
+|               | Click on My Account link on top right of navigation bar| Redirects to My account page | PASS |
 |               | Click on Home page button| Redirect to homepage | PASS |
 |               | Go back to My Account screen and click update my details button| Redirect to update profile form | PASS |
 |               | Complete all fields including the validated email field and date of birth and click update| redirects to Profile updated | PASS |
@@ -569,7 +572,7 @@ Test Reservation Create view
 |               | sign in with correct login details| Logs in, confirmation message displayed in top left | PASS |
 |   My Account  | Click on My Account link on top right of navigation bar| Redirects to My account page | PASS |
 |               | Click on update my details button and then delete my account| redirects to confirm deletion page and warns user this cannot be undone | PASS |
-|   My Account  | Confirm deletion| Redirects tohome page, displays confirmation of deletion in top left | PASS |
+|               | Confirm deletion| Redirects tohome page, displays confirmation of deletion in top left | PASS |
 |               | Click on Reviews link on top right of navigation bar| Redirects to Reviews page | PASS |
 |               | Check to see if any of your reviews are there| Once user deletes account, reviews are automatically deleted | PASS |
 

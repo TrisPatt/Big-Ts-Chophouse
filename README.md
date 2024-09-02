@@ -474,6 +474,8 @@ Entity Relationship Diagram (ERD)
 * [Am I Responsive](https://ui.dev/amiresponsive) - To show the website image on a range of devices.
 * [Git](https://git-scm.com/) - Version control
 * [Favicon Generator](https://realfavicongenerator.net/) - Used to create a favicon
+* [Pixabay](https://pixabay.com/images/search/free%20images/) - Used to for hero images
+* [Vistaprint](https://www.vistaprint.co.uk/design) - Used to create a logo design
 * [JSHint](https://jshint.com/) - Used to validate JavaScript
 * [W3C Markup Validation Service](https://validator.w3.org/) - Used to validate HTML
 * [CSS Validation Service](https://jigsaw.w3.org/css-validator/) - Used to validate CSS
