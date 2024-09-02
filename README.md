@@ -434,6 +434,10 @@ Entity Relationship Diagram (ERD)
     * The log shows all the tasks that have been completed or failed
 ![Cron job log](documentation/readme-imgs/cron-job-logs.png)
 
+### Permsissions
+
+* Permissions are controlled in the Django admin panel. A general user with have permissions to control their own inputs once an account is created, whereas the admins can affect any users inputs.
+
 
 ### Features Left to Implement 
 
