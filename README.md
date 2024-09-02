@@ -19,11 +19,10 @@ Book your table today!
 * [Registered user](#registered-user)
 
 ### [Design](#design-1)
-* [Color Scheme](#color-scheme)
+* [Colour Scheme](#colour-scheme)
 * [Wireframes](#wireframes)
 * [Data Model](#data-models)
-* [User Journey](#user-journey)
-* [Database Scheme](#database-scheme)
+* [Database Scheme](#database-schema)
 ### [Security Features](#security-features-1)
 ### [Features](#features-1)
 * [Existing Features](#existing-features)
@@ -165,7 +164,7 @@ The overall mood created by the colour scheme is warm and inviting, reminiscent 
 This color scheme not only reflects the restaurant's identity but also enhances the user experience by making the website visually appealing and aligned with the brand's core values.
 
 ### Colour Scheme
-![Color Scheme](documentation/readme-imgs/color-chart.png)
+![Colour Scheme](documentation/readme-imgs/color-chart.png)
 
 ### Background
 
